@@ -1,0 +1,10 @@
+﻿key_resp_practice_instruction.started,key_resp_practice_instruction.keys,key_resp_practice_instruction.rt,participant,date,expName,psychopyVersion,OS,frameRate,key_resp.started,key_resp.keys,key_resp.rt,key_resp_practice_reset.keys,key_resp_practice_reset.rt,key_resp_practice_slots.keys,key_resp_practice_slots.rt,presentationInterval,reward_seq,reward_Img,Cuml_rew,currentTrialReward,practice_trials.thisRepN,practice_trials.thisTrialN,practice_trials.thisN,practice_trials.thisIndex,practice_trials.ran
+,space,0.92,test,2022-10-26_11h33.51.472,slotMachine_updated,2022.2.4,Win32,74.29420505,,,,,,,,,,,,,,,,,
+,,,test,2022-10-26_11h33.51.472,slotMachine_updated,2022.2.4,Win32,74.29420505,,space,0.225,,,,,,,,,,,,,,
+,,,test,2022-10-26_11h33.51.472,slotMachine_updated,2022.2.4,Win32,74.29420505,,,,space,0.231,,,,,,,,,,,,
+,,,test,2022-10-26_11h33.51.472,slotMachine_updated,2022.2.4,Win32,74.29420505,,,,,,down,4.145,1,"[2,1,3]",stimuli/card_100_transparent.png,100,100,0,0,0,0,1
+,,,test,2022-10-26_11h33.51.472,slotMachine_updated,2022.2.4,Win32,74.29420505,,,,,,right,0.117,1.5,"[2,1,3]",stimuli/card_0_transparent.png,100,0,1,0,1,0,1
+,,,test,2022-10-26_11h33.51.472,slotMachine_updated,2022.2.4,Win32,74.29420505,,,,,,down,0.487,1,"[2,1,3]",stimuli/card_100_transparent.png,200,100,2,0,2,0,1
+,,,test,2022-10-26_11h33.51.472,slotMachine_updated,2022.2.4,Win32,74.29420505,,,,,,down,0.732,0.5,"[2,1,3]",stimuli/card_100_transparent.png,300,100,3,0,3,0,1
+,,,test,2022-10-26_11h33.51.472,slotMachine_updated,2022.2.4,Win32,74.29420505,,,,,,down,0.558,1,"[2,1,3]",stimuli/card_100_transparent.png,400,100,4,0,4,0,1
+,,,test,2022-10-26_11h33.51.472,slotMachine_updated,2022.2.4,Win32,74.29420505,,,,,,down,0.064,1.5,"[2,1,3]",stimuli/card_10_transparent.png,410,10,5,0,5,0,1
