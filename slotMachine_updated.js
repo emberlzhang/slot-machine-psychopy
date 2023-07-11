@@ -2,7 +2,7 @@
  * Slotmachine_Updated Test *
  ****************************/
 
-import { core, data, sound, util, visual, hardware } from './lib/psychojs-2022.2.4.js';
+import { core, data, sound, util, visual, hardware } from './lib/psychojs-2023.1.3.js';
 const { PsychoJS } = core;
 const { TrialHandler, MultiStairHandler } = data;
 const { Scheduler } = util;
@@ -106,27 +106,30 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'stimuli/card_circ.PNG', 'path': 'stimuli/card_circ.PNG'},
-    {'name': 'stimuli/card_100.PNG', 'path': 'stimuli/card_100.PNG'},
-    {'name': 'stimuli/card_star_transparent.png', 'path': 'stimuli/card_star_transparent.png'},
-    {'name': 'stimuli/card_tri.PNG', 'path': 'stimuli/card_tri.PNG'},
-    {'name': 'stimuli/card_0.PNG', 'path': 'stimuli/card_0.PNG'},
-    {'name': 'stimuli/card_100_transparent.png', 'path': 'stimuli/card_100_transparent.png'},
+    // resources:
+    {'name': 'stimuli/arrow_transparent.png', 'path': 'stimuli/arrow_transparent.png'},
+    {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
+    {'name': 'stimuli/arrow.png', 'path': 'stimuli/arrow.png'},
+    {'name': 'stimuli/arrow_transparent.png', 'path': 'stimuli/arrow_transparent.png'},
+    {'name': 'stimuli/blank.jpg', 'path': 'stimuli/blank.jpg'},
     {'name': 'stimuli/blank_transparent.png', 'path': 'stimuli/blank_transparent.png'},
-    {'name': 'stimuli/card_star.PNG', 'path': 'stimuli/card_star.PNG'},
-    {'name': 'stimuli/card_pent_transparent.png', 'path': 'stimuli/card_pent_transparent.png'},
+    {'name': 'stimuli/blank2.jpg', 'path': 'stimuli/blank2.jpg'},
+    {'name': 'stimuli/card_0.PNG', 'path': 'stimuli/card_0.PNG'},
+    {'name': 'stimuli/card_0_transparent.png', 'path': 'stimuli/card_0_transparent.png'},
+    {'name': 'stimuli/card_10.PNG', 'path': 'stimuli/card_10.PNG'},
     {'name': 'stimuli/card_10_transparent.png', 'path': 'stimuli/card_10_transparent.png'},
+    {'name': 'stimuli/card_100.PNG', 'path': 'stimuli/card_100.PNG'},
+    {'name': 'stimuli/card_100_transparent.png', 'path': 'stimuli/card_100_transparent.png'},
+    {'name': 'stimuli/card_circ.PNG', 'path': 'stimuli/card_circ.PNG'},
+    {'name': 'stimuli/card_circ_transparent.png', 'path': 'stimuli/card_circ_transparent.png'},
+    {'name': 'stimuli/card_pent.PNG', 'path': 'stimuli/card_pent.PNG'},
+    {'name': 'stimuli/card_pent_transparent.png', 'path': 'stimuli/card_pent_transparent.png'},
     {'name': 'stimuli/card_sqr.PNG', 'path': 'stimuli/card_sqr.PNG'},
     {'name': 'stimuli/card_sqr_transparent.png', 'path': 'stimuli/card_sqr_transparent.png'},
-    {'name': 'stimuli/card_pent.PNG', 'path': 'stimuli/card_pent.PNG'},
-    {'name': 'stimuli/card_10.PNG', 'path': 'stimuli/card_10.PNG'},
+    {'name': 'stimuli/card_star.PNG', 'path': 'stimuli/card_star.PNG'},
+    {'name': 'stimuli/card_star_transparent.png', 'path': 'stimuli/card_star_transparent.png'},
+    {'name': 'stimuli/card_tri.PNG', 'path': 'stimuli/card_tri.PNG'},
     {'name': 'stimuli/card_tri_transparent.png', 'path': 'stimuli/card_tri_transparent.png'},
-    {'name': 'stimuli/arrow.png', 'path': 'stimuli/arrow.png'},
-    {'name': 'stimuli/card_circ_transparent.png', 'path': 'stimuli/card_circ_transparent.png'},
-    {'name': 'stimuli/blank.jpg', 'path': 'stimuli/blank.jpg'},
-    {'name': 'stimuli/blank2.jpg', 'path': 'stimuli/blank2.jpg'},
-    {'name': 'stimuli/arrow_transparent.png', 'path': 'stimuli/arrow_transparent.png'},
-    {'name': 'stimuli/card_0_transparent.png', 'path': 'stimuli/card_0_transparent.png'}
   ]
 });
 
@@ -139,10 +142,9 @@ async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
   expInfo['expName'] = expName;
-  expInfo['psychopyVersion'] = '2022.2.4';
+  expInfo['psychopyVersion'] = '2023.1.3';
   expInfo['OS'] = window.navigator.platform;
 
-  psychoJS.experiment.dataFileName = (("." + "/") + `data/${expInfo["participant"]}_${expName}_${expInfo["date"]}`);
 
   // store frame rate of monitor if we can measure it successfully
   expInfo['frameRate'] = psychoJS.window.getActualFrameRate();
@@ -154,6 +156,11 @@ async function updateInfo() {
   // add info from the URL:
   util.addInfoFromUrl(expInfo);
   
+
+  
+  psychoJS.experiment.dataFileName = (("." + "/") + `data/${expInfo["participant"]}_${expName}_${expInfo["date"]}`);
+
+
   return Scheduler.Event.NEXT;
 }
 
@@ -326,6 +333,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_circ', units : undefined, 
     image : slotImageLocations[0], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[0], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -335,6 +343,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_pent', units : undefined, 
     image : slotImageLocations[1], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[1], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -344,6 +353,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_sqr', units : undefined, 
     image : slotImageLocations[2], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[2], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -353,6 +363,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'arrow_4', units : undefined, 
     image : 'stimuli/arrow_transparent.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : arrow_loc, size : arrowSize,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -361,7 +372,8 @@ async function experimentInit() {
   image = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -370,7 +382,8 @@ async function experimentInit() {
   image_18 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_18', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -379,7 +392,8 @@ async function experimentInit() {
   image_19 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_19', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -388,7 +402,8 @@ async function experimentInit() {
   image_20 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_20', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -397,7 +412,8 @@ async function experimentInit() {
   image_21 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_21', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -431,6 +447,7 @@ async function experimentInit() {
     win: psychoJS.window, name: 'polygon', 
     width: [0.17, 0.17][0], height: [0.17, 0.17][1],
     ori: 0.0, pos: consReward_pos[0],
+    anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),
@@ -446,6 +463,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_circ_6', units : undefined, 
     image : slotImageLocations[0], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[0], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -455,6 +473,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_pent_6', units : undefined, 
     image : slotImageLocations[1], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[1], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -464,6 +483,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_sqr_6', units : undefined, 
     image : slotImageLocations[2], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[2], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -473,6 +493,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'arrow_5', units : undefined, 
     image : 'stimuli/arrow_transparent.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : arrow_loc, size : arrowSize,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -481,7 +502,8 @@ async function experimentInit() {
   image_22 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_22', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -490,7 +512,8 @@ async function experimentInit() {
   image_23 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_23', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -499,7 +522,8 @@ async function experimentInit() {
   image_24 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_24', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -508,7 +532,8 @@ async function experimentInit() {
   image_25 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_25', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -517,7 +542,8 @@ async function experimentInit() {
   image_26 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_26', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -539,6 +565,7 @@ async function experimentInit() {
     win: psychoJS.window, name: 'polygon_2', 
     width: [0.17, 0.17][0], height: [0.17, 0.17][1],
     ori: 0.0, pos: consReward_pos[0],
+    anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),
@@ -550,6 +577,7 @@ async function experimentInit() {
     win: psychoJS.window, name: 'polygon_practice_interval', 
     width: card_size[0], height: card_size[1],
     ori: 0.0, pos: [0, 0],
+    anchor: 'center',
     lineWidth: 1.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color([0.7255, (- 0.8431), (- 0.5294)]),
@@ -567,6 +595,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_circ_7', units : undefined, 
     image : slotImageLocations[0], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[0], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -576,6 +605,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_pent_7', units : undefined, 
     image : slotImageLocations[1], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[1], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -585,6 +615,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_sqr_7', units : undefined, 
     image : slotImageLocations[2], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[2], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -594,6 +625,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'arrow_6', units : undefined, 
     image : 'stimuli/arrow_transparent.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : arrow_loc, size : arrowSize,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -602,7 +634,8 @@ async function experimentInit() {
   image_27 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_27', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : rewardImageSize,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -611,7 +644,8 @@ async function experimentInit() {
   image_28 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_28', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -620,7 +654,8 @@ async function experimentInit() {
   image_29 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_29', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[1], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -629,7 +664,8 @@ async function experimentInit() {
   image_30 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_30', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[2], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -638,7 +674,8 @@ async function experimentInit() {
   image_31 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_31', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[3], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -647,7 +684,8 @@ async function experimentInit() {
   image_32 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_32', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[4], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -657,6 +695,7 @@ async function experimentInit() {
     win: psychoJS.window, name: 'polygon_3', 
     width: [0.17, 0.17][0], height: [0.17, 0.17][1],
     ori: 0.0, pos: consReward_pos[0],
+    anchor: 'center',
     lineWidth: 20.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),
@@ -723,6 +762,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_circ_3', units : undefined, 
     image : slotImageLocations[0], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[0], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -732,6 +772,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_pent_3', units : undefined, 
     image : slotImageLocations[1], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[1], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -741,6 +782,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_sqr_3', units : undefined, 
     image : slotImageLocations[2], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[2], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -750,6 +792,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'arrow', units : undefined, 
     image : 'stimuli/arrow_transparent.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : arrow_loc, size : arrowSize,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -758,7 +801,8 @@ async function experimentInit() {
   image_3 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_3', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -767,7 +811,8 @@ async function experimentInit() {
   image_6 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_6', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -776,7 +821,8 @@ async function experimentInit() {
   image_9 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_9', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -785,7 +831,8 @@ async function experimentInit() {
   image_12 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_12', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -794,7 +841,8 @@ async function experimentInit() {
   image_15 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_15', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -828,6 +876,7 @@ async function experimentInit() {
     win: psychoJS.window, name: 'polygon_4', 
     width: [0.17, 0.17][0], height: [0.17, 0.17][1],
     ori: 0.0, pos: consReward_pos[0],
+    anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),
@@ -843,6 +892,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_circ_5', units : undefined, 
     image : slotImageLocations[0], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[0], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -852,6 +902,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_pent_5', units : undefined, 
     image : slotImageLocations[1], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[1], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -861,6 +912,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_sqr_5', units : undefined, 
     image : slotImageLocations[2], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[2], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -870,6 +922,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'arrow_2', units : undefined, 
     image : 'stimuli/arrow_transparent.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : arrow_loc, size : arrowSize,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -878,7 +931,8 @@ async function experimentInit() {
   image_4 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_4', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -887,7 +941,8 @@ async function experimentInit() {
   image_7 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_7', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -896,7 +951,8 @@ async function experimentInit() {
   image_10 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_10', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -905,7 +961,8 @@ async function experimentInit() {
   image_13 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_13', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -914,7 +971,8 @@ async function experimentInit() {
   image_16 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_16', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -924,6 +982,7 @@ async function experimentInit() {
     win: psychoJS.window, name: 'polygon_selection_interval', 
     width: card_size[0], height: card_size[1],
     ori: 0.0, pos: [0, 0],
+    anchor: 'center',
     lineWidth: 1.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color([0.7255, (- 0.8431), (- 0.5294)]),
@@ -935,6 +994,7 @@ async function experimentInit() {
     win: psychoJS.window, name: 'polygon_5', 
     width: [0.17, 0.17][0], height: [0.17, 0.17][1],
     ori: 0.0, pos: consReward_pos[0],
+    anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),
@@ -977,6 +1037,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_circ_4', units : undefined, 
     image : slotImageLocations[0], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[0], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -986,6 +1047,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_pent_4', units : undefined, 
     image : slotImageLocations[1], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[1], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -995,6 +1057,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'card_sqr_4', units : undefined, 
     image : slotImageLocations[2], mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : cardPositions[2], size : card_size,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -1004,6 +1067,7 @@ async function experimentInit() {
     win : psychoJS.window,
     name : 'arrow_3', units : undefined, 
     image : 'stimuli/arrow_transparent.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : arrow_loc, size : arrowSize,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -1012,7 +1076,8 @@ async function experimentInit() {
   image_2 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_2', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : [0, 0], size : rewardImageSize,
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -1021,7 +1086,8 @@ async function experimentInit() {
   image_5 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_5', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[0], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -1030,7 +1096,8 @@ async function experimentInit() {
   image_8 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_8', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[1], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -1039,7 +1106,8 @@ async function experimentInit() {
   image_11 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_11', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[2], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -1048,7 +1116,8 @@ async function experimentInit() {
   image_14 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_14', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[3], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -1057,7 +1126,8 @@ async function experimentInit() {
   image_17 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'image_17', units : undefined, 
-    image : undefined, mask : undefined,
+    image : 'default.png', mask : undefined,
+    anchor : 'center',
     ori : 0.0, pos : consReward_pos[4], size : [0.15, 0.15],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
@@ -1067,6 +1137,7 @@ async function experimentInit() {
     win: psychoJS.window, name: 'polygon_6', 
     width: [0.17, 0.17][0], height: [0.17, 0.17][1],
     ori: 0.0, pos: consReward_pos[0],
+    anchor: 'center',
     lineWidth: 20.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),
@@ -1192,6 +1263,7 @@ function practice_instructionRoutineEachFrame() {
       if (_key_resp_practice_instruction_allKeys.length > 0) {
         key_resp_practice_instruction.keys = _key_resp_practice_instruction_allKeys[_key_resp_practice_instruction_allKeys.length - 1].name;  // just the last key pressed
         key_resp_practice_instruction.rt = _key_resp_practice_instruction_allKeys[_key_resp_practice_instruction_allKeys.length - 1].rt;
+        key_resp_practice_instruction.duration = _key_resp_practice_instruction_allKeys[_key_resp_practice_instruction_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
@@ -1239,6 +1311,7 @@ function practice_instructionRoutineEnd(snapshot) {
     psychoJS.experiment.addData('key_resp_practice_instruction.keys', key_resp_practice_instruction.keys);
     if (typeof key_resp_practice_instruction.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_practice_instruction.rt', key_resp_practice_instruction.rt);
+        psychoJS.experiment.addData('key_resp_practice_instruction.duration', key_resp_practice_instruction.duration);
         routineTimer.reset();
         }
     
@@ -1271,7 +1344,7 @@ function instruction2RoutineBegin(snapshot) {
     key_resp.rt = undefined;
     _key_resp_allKeys = [];
     // Run 'Begin Routine' code from code_2
-    psychoJS.experiment.addData("key_resp.started", instruction2Clock.getTime());
+    psychoJS.experiment.addData("key_resp.started", globalClock.getTime());
     
     // keep track of which components have finished
     instruction2Components = [];
@@ -1322,6 +1395,7 @@ function instruction2RoutineEachFrame() {
       if (_key_resp_allKeys.length > 0) {
         key_resp.keys = _key_resp_allKeys[_key_resp_allKeys.length - 1].name;  // just the last key pressed
         key_resp.rt = _key_resp_allKeys[_key_resp_allKeys.length - 1].rt;
+        key_resp.duration = _key_resp_allKeys[_key_resp_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
@@ -1369,6 +1443,7 @@ function instruction2RoutineEnd(snapshot) {
     psychoJS.experiment.addData('key_resp.keys', key_resp.keys);
     if (typeof key_resp.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp.rt', key_resp.rt);
+        psychoJS.experiment.addData('key_resp.duration', key_resp.duration);
         routineTimer.reset();
         }
     
@@ -1469,6 +1544,7 @@ function practice_resetRoutineEachFrame() {
       if (_key_resp_practice_reset_allKeys.length > 0) {
         key_resp_practice_reset.keys = _key_resp_practice_reset_allKeys[_key_resp_practice_reset_allKeys.length - 1].name;  // just the last key pressed
         key_resp_practice_reset.rt = _key_resp_practice_reset_allKeys[_key_resp_practice_reset_allKeys.length - 1].rt;
+        key_resp_practice_reset.duration = _key_resp_practice_reset_allKeys[_key_resp_practice_reset_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
@@ -1516,6 +1592,7 @@ function practice_resetRoutineEnd(snapshot) {
     psychoJS.experiment.addData('key_resp_practice_reset.keys', key_resp_practice_reset.keys);
     if (typeof key_resp_practice_reset.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_practice_reset.rt', key_resp_practice_reset.rt);
+        psychoJS.experiment.addData('key_resp_practice_reset.duration', key_resp_practice_reset.duration);
         routineTimer.reset();
         }
     
@@ -1756,6 +1833,7 @@ function practice_slotsRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from Code_practice_slots
+    psychoJS.experiment.addData("key_resp_practice_slots.started", globalClock.getTime());
     textMsg = ("Total reward: " + nCorr.toString());
     endMsg = " ";
     endTrial = false;
@@ -1957,6 +2035,7 @@ function practice_slotsRoutineEachFrame() {
       if (_key_resp_practice_slots_allKeys.length > 0) {
         key_resp_practice_slots.keys = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].name;  // just the last key pressed
         key_resp_practice_slots.rt = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].rt;
+        key_resp_practice_slots.duration = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
@@ -2004,6 +2083,7 @@ function practice_slotsRoutineEnd(snapshot) {
     psychoJS.experiment.addData('key_resp_practice_slots.keys', key_resp_practice_slots.keys);
     if (typeof key_resp_practice_slots.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_practice_slots.rt', key_resp_practice_slots.rt);
+        psychoJS.experiment.addData('key_resp_practice_slots.duration', key_resp_practice_slots.duration);
         routineTimer.reset();
         }
     
@@ -2680,7 +2760,7 @@ function practice_endRoutineBegin(snapshot) {
     key_resp_practice_end.rt = undefined;
     _key_resp_practice_end_allKeys = [];
     // Run 'Begin Routine' code from code_3
-    psychoJS.experiment.addData("key_resp_practice_end.started", key_resp_practice_end.started);
+    psychoJS.experiment.addData("key_resp_practice_end.started", globalClock.getTime());
     
     // keep track of which components have finished
     practice_endComponents = [];
@@ -2731,6 +2811,7 @@ function practice_endRoutineEachFrame() {
       if (_key_resp_practice_end_allKeys.length > 0) {
         key_resp_practice_end.keys = _key_resp_practice_end_allKeys[_key_resp_practice_end_allKeys.length - 1].name;  // just the last key pressed
         key_resp_practice_end.rt = _key_resp_practice_end_allKeys[_key_resp_practice_end_allKeys.length - 1].rt;
+        key_resp_practice_end.duration = _key_resp_practice_end_allKeys[_key_resp_practice_end_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
@@ -2778,6 +2859,7 @@ function practice_endRoutineEnd(snapshot) {
     psychoJS.experiment.addData('key_resp_practice_end.keys', key_resp_practice_end.keys);
     if (typeof key_resp_practice_end.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_practice_end.rt', key_resp_practice_end.rt);
+        psychoJS.experiment.addData('key_resp_practice_end.duration', key_resp_practice_end.duration);
         routineTimer.reset();
         }
     
@@ -2808,8 +2890,9 @@ function Main_InstructionRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_main_instruction
+    psychoJS.experiment.addData("text_main_instruction.started", globalClock.getTime());
     conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
-    psychoJS.experiment.addData("key_resp_main_instruction.started", key_resp_main_instruction.started);
+    psychoJS.experiment.addData("key_resp_main_instruction.started", globalClock.getTime());
     
     key_resp_main_instruction.keys = undefined;
     key_resp_main_instruction.rt = undefined;
@@ -2863,6 +2946,7 @@ function Main_InstructionRoutineEachFrame() {
       if (_key_resp_main_instruction_allKeys.length > 0) {
         key_resp_main_instruction.keys = _key_resp_main_instruction_allKeys[_key_resp_main_instruction_allKeys.length - 1].name;  // just the last key pressed
         key_resp_main_instruction.rt = _key_resp_main_instruction_allKeys[_key_resp_main_instruction_allKeys.length - 1].rt;
+        key_resp_main_instruction.duration = _key_resp_main_instruction_allKeys[_key_resp_main_instruction_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
@@ -2910,6 +2994,7 @@ function Main_InstructionRoutineEnd(snapshot) {
     psychoJS.experiment.addData('key_resp_main_instruction.keys', key_resp_main_instruction.keys);
     if (typeof key_resp_main_instruction.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_main_instruction.rt', key_resp_main_instruction.rt);
+        psychoJS.experiment.addData('key_resp_main_instruction.duration', key_resp_main_instruction.duration);
         routineTimer.reset();
         }
     
@@ -3026,6 +3111,7 @@ function slots_presentationRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from Code_slots_presentation
+    psychoJS.experiment.addData("key_resp_slots_presentation.started", globalClock.getTime());
     textMsg = ("Total reward: " + nCorr.toString());
     endMsg = " ";
     endTrial = false;
@@ -3227,6 +3313,7 @@ function slots_presentationRoutineEachFrame() {
       if (_key_resp_slots_presentation_allKeys.length > 0) {
         key_resp_slots_presentation.keys = _key_resp_slots_presentation_allKeys[_key_resp_slots_presentation_allKeys.length - 1].name;  // just the last key pressed
         key_resp_slots_presentation.rt = _key_resp_slots_presentation_allKeys[_key_resp_slots_presentation_allKeys.length - 1].rt;
+        key_resp_slots_presentation.duration = _key_resp_slots_presentation_allKeys[_key_resp_slots_presentation_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
@@ -3274,6 +3361,7 @@ function slots_presentationRoutineEnd(snapshot) {
     psychoJS.experiment.addData('key_resp_slots_presentation.keys', key_resp_slots_presentation.keys);
     if (typeof key_resp_slots_presentation.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_slots_presentation.rt', key_resp_slots_presentation.rt);
+        psychoJS.experiment.addData('key_resp_slots_presentation.duration', key_resp_slots_presentation.duration);
         routineTimer.reset();
         }
     
@@ -3961,6 +4049,7 @@ function Block_breakRoutineBegin(snapshot) {
     routineTimer.add(5.000000);
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_block_break
+    psychoJS.experiment.addData("text_block_break.started", globalClock.getTime());
     block_reward.push(nCorr);
     blockMsg = (("Total reward for this day: " + nCorr.toString()) + "\n Next day starts soon");
     

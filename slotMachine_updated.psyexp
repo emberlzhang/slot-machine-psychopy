@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" ?>
-<PsychoPy2experiment encoding="utf-8" version="2022.2.4">
+<PsychoPy2experiment encoding="utf-8" version="2023.1.3">
   <Settings>
     <Param val="use prefs" valType="str" updates="None" name="Audio latency priority"/>
     <Param val="use prefs" valType="str" updates="None" name="Audio lib"/>
@@ -7,6 +7,7 @@
     <Param val="auto" valType="str" updates="None" name="Data file delimiter"/>
     <Param val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code" updates="None" name="Data filename"/>
     <Param val="True" valType="bool" updates="None" name="Enable Escape"/>
+    <Param val="" valType="str" updates="None" name="End Message"/>
     <Param val="{'participant': ''}" valType="code" updates="None" name="Experiment info"/>
     <Param val="True" valType="bool" updates="None" name="Force stereo"/>
     <Param val="True" valType="bool" updates="None" name="Full-screen window"/>
@@ -26,6 +27,8 @@
     <Param val="height" valType="str" updates="None" name="Units"/>
     <Param val="" valType="str" updates="None" name="Use version"/>
     <Param val="[1536, 864]" valType="list" updates="None" name="Window size (pixels)"/>
+    <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+    <Param val="" valType="str" updates="None" name="backgroundImg"/>
     <Param val="avg" valType="str" updates="None" name="blendMode"/>
     <Param val="1.0000, 1.0000, 1.0000" valType="color" updates="None" name="color"/>
     <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
@@ -61,10 +64,11 @@
     <Param val="" valType="str" updates="None" name="tbModel"/>
     <Param val="60" valType="num" updates="None" name="tbSampleRate"/>
     <Param val="" valType="str" updates="None" name="tbSerialNo"/>
+    <Param val="pyglet" valType="str" updates="None" name="winBackend"/>
   </Settings>
   <Routines>
     <Routine name="reward_reset">
-      <CodeComponent name="code_reward_reset">
+      <CodeComponent name="code_reward_reset" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="block_reward = []&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
@@ -83,13 +87,13 @@
       </CodeComponent>
     </Routine>
     <Routine name="Block_break">
-      <CodeComponent name="code_block_break">
+      <CodeComponent name="code_block_break" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="block_reward.push(nCorr);&amp;#10;blockMsg = ((&quot;Total reward for this day: &quot; + nCorr.toString()) + &quot;\n Next day starts soon&quot;);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="block_reward.append(nCorr)&amp;#10;&amp;#10;blockMsg = &quot;Total reward for this day: &quot; + str(nCorr) + &quot;\n Next day starts soon&quot;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="psychoJS.experiment.addData(&quot;text_block_break.started&quot;, globalClock.getTime());&amp;#10;block_reward.push(nCorr);&amp;#10;blockMsg = ((&quot;Total reward for this day: &quot; + nCorr.toString()) + &quot;\n Next day starts soon&quot;);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="thisExp.addData('text_block_break.started', globalClock.getTime())&amp;#10;&amp;#10;block_reward.append(nCorr)&amp;#10;&amp;#10;blockMsg = &quot;Total reward for this day: &quot; + str(nCorr) + &quot;\n Next day starts soon&quot;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -100,7 +104,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code_block_break" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <TextComponent name="text_block_break">
+      <TextComponent name="text_block_break" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -127,7 +131,7 @@
       </TextComponent>
     </Routine>
     <Routine name="End_ins">
-      <CodeComponent name="code">
+      <CodeComponent name="code" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
@@ -144,7 +148,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <TextComponent name="text_end_ins">
+      <TextComponent name="text_end_ins" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -171,13 +175,13 @@
       </TextComponent>
     </Routine>
     <Routine name="Main_Instruction">
-      <CodeComponent name="code_main_instruction">
+      <CodeComponent name="code_main_instruction" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="nBlocks = 6&amp;#10;nTrials = 20&amp;#10;#reversalNo = 3&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="nBlocks = 6;&amp;#10;nTrials = 20;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];&amp;#10;psychoJS.experiment.addData(&quot;key_resp_main_instruction.started&quot;, key_resp_main_instruction.started);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="#thisExp.addData('Main_Instruction_onset',t)&amp;#10;#thisExp.nextEntry()&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;thisExp.addData('key_resp_main_instruction.started',key_resp_main_instruction.started)" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="psychoJS.experiment.addData(&quot;text_main_instruction.started&quot;, globalClock.getTime());&amp;#10;conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];&amp;#10;psychoJS.experiment.addData(&quot;key_resp_main_instruction.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="#thisExp.addData('Main_Instruction_onset',t)&amp;#10;#thisExp.nextEntry()&amp;#10;thisExp.addData('text_main_instruction.started', globalClock.getTime())&amp;#10;&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;thisExp.addData('key_resp_main_instruction.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -188,7 +192,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code_main_instruction" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <TextComponent name="text_main_instruction">
+      <TextComponent name="text_main_instruction" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -213,7 +217,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <KeyboardComponent name="key_resp_main_instruction">
+      <KeyboardComponent name="key_resp_main_instruction" plugin="None">
         <Param val="'space'" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -221,6 +225,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
         <Param val="key_resp_main_instruction" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -233,13 +238,13 @@
       </KeyboardComponent>
     </Routine>
     <Routine name="slots_presentation">
-      <CodeComponent name="Code_slots_presentation">
+      <CodeComponent name="Code_slots_presentation" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="textMsg = (&quot;Total reward: &quot; + nCorr.toString());&amp;#10;endMsg = &quot; &quot;;&amp;#10;endTrial = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="#routineTimer = core.CountdownTimer(8)&amp;#10;#routineTimer.add(6.000000)&amp;#10;&amp;#10;textMsg = &quot;Total reward: &quot; + str(nCorr)&amp;#10;endMsg = &quot; &quot;&amp;#10;&amp;#10;endTrial = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="psychoJS.experiment.addData(&quot;key_resp_slots_presentation.started&quot;, globalClock.getTime());&amp;#10;textMsg = (&quot;Total reward: &quot; + nCorr.toString());&amp;#10;endMsg = &quot; &quot;;&amp;#10;endTrial = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="#routineTimer = core.CountdownTimer(8)&amp;#10;#routineTimer.add(6.000000)&amp;#10;thisExp.addData('key_resp_slots_presentation.started', globalClock.getTime())&amp;#10;&amp;#10;textMsg = &quot;Total reward: &quot; + str(nCorr)&amp;#10;endMsg = &quot; &quot;&amp;#10;&amp;#10;endTrial = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="&amp;#10;if t&gt;5.0 and len(key_resp_slots_presentation.getKeys()) == 0:&amp;#10;    endMsg = &quot;Too Slow&quot;&amp;#10;    endTrial = True&amp;#10;    if t&gt;5.5 and len(key_resp_slots_presentation.getKeys()) == 0:&amp;#10;        continueRoutine = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="if (((t &gt; 5.0) &amp;&amp; (key_resp_slots_presentation.getKeys().length === 0))) {&amp;#10;    endMsg = &quot;Too Slow&quot;;&amp;#10;    endTrial = true;&amp;#10;    if (((t &gt; 5.5) &amp;&amp; (key_resp_slots_presentation.getKeys().length === 0))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -250,7 +255,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="Code_slots_presentation" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <ImageComponent name="card_circ_3">
+      <ImageComponent name="card_circ_3" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -277,7 +282,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_pent_3">
+      <ImageComponent name="card_pent_3" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -304,7 +309,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_sqr_3">
+      <ImageComponent name="card_sqr_3" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -331,7 +336,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="arrow">
+      <ImageComponent name="arrow" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -358,7 +363,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_3">
+      <ImageComponent name="image_3" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -385,7 +390,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_6">
+      <ImageComponent name="image_6" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -412,7 +417,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_9">
+      <ImageComponent name="image_9" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -439,7 +444,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_12">
+      <ImageComponent name="image_12" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -466,7 +471,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_15">
+      <ImageComponent name="image_15" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -493,7 +498,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <TextComponent name="text_slots_presentation">
+      <TextComponent name="text_slots_presentation" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -518,7 +523,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <TextComponent name="text_slots_presentation_2">
+      <TextComponent name="text_slots_presentation_2" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -543,7 +548,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <PolygonComponent name="polygon_4">
+      <PolygonComponent name="polygon_4" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -570,7 +575,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
-      <KeyboardComponent name="key_resp_slots_presentation">
+      <KeyboardComponent name="key_resp_slots_presentation" plugin="None">
         <Param val="'1','2','3','left','down','right'" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -578,6 +583,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
         <Param val="key_resp_slots_presentation" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -590,7 +596,7 @@
       </KeyboardComponent>
     </Routine>
     <Routine name="selection_interval">
-      <CodeComponent name="Code_selection_interval">
+      <CodeComponent name="Code_selection_interval" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
@@ -607,7 +613,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="Code_selection_interval" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <ImageComponent name="card_circ_5">
+      <ImageComponent name="card_circ_5" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -634,7 +640,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_pent_5">
+      <ImageComponent name="card_pent_5" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -661,7 +667,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_sqr_5">
+      <ImageComponent name="card_sqr_5" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -688,7 +694,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="arrow_2">
+      <ImageComponent name="arrow_2" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -715,7 +721,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_4">
+      <ImageComponent name="image_4" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -742,7 +748,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_7">
+      <ImageComponent name="image_7" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -769,7 +775,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_10">
+      <ImageComponent name="image_10" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -796,7 +802,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_13">
+      <ImageComponent name="image_13" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -823,7 +829,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_16">
+      <ImageComponent name="image_16" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -850,7 +856,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <PolygonComponent name="polygon_selection_interval">
+      <PolygonComponent name="polygon_selection_interval" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -877,7 +883,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
-      <PolygonComponent name="polygon_5">
+      <PolygonComponent name="polygon_5" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -904,7 +910,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
-      <TextComponent name="text_selection_interval">
+      <TextComponent name="text_selection_interval" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -931,7 +937,7 @@
       </TextComponent>
     </Routine>
     <Routine name="reward_presentation">
-      <CodeComponent name="code_reward_presentation">
+      <CodeComponent name="code_reward_presentation" plugin="None">
         <Param val="reward_seqs = []" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="var reward_seqs = [];" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="'''&amp;#10;shuffle(conditions)&amp;#10;thisExp.addData('Main_conditions',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;currentCondition = conditions[0]&amp;#10;thisExp.addData('Main_currentCondition',currentCondition)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;conditions.remove(currentCondition) ## Check if this works&amp;#10;thisExp.addData('Main_conditionsAfterRemoval',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;'''&amp;#10;rewPos = [0,0]&amp;#10;rewImg = &quot;stimuli/blank_transparent.png&quot;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
@@ -948,7 +954,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code_reward_presentation" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <ImageComponent name="card_circ_4">
+      <ImageComponent name="card_circ_4" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -975,7 +981,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_pent_4">
+      <ImageComponent name="card_pent_4" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1002,7 +1008,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_sqr_4">
+      <ImageComponent name="card_sqr_4" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1029,7 +1035,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="arrow_3">
+      <ImageComponent name="arrow_3" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1056,7 +1062,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_2">
+      <ImageComponent name="image_2" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1083,7 +1089,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_5">
+      <ImageComponent name="image_5" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1110,7 +1116,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_8">
+      <ImageComponent name="image_8" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1137,7 +1143,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_11">
+      <ImageComponent name="image_11" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1164,7 +1170,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_14">
+      <ImageComponent name="image_14" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1191,7 +1197,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_17">
+      <ImageComponent name="image_17" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1218,7 +1224,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <PolygonComponent name="polygon_6">
+      <PolygonComponent name="polygon_6" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -1245,7 +1251,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
-      <TextComponent name="text_reward_presentation">
+      <TextComponent name="text_reward_presentation" plugin="None">
         <Param val="0.0039, 0.0039, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -1272,7 +1278,7 @@
       </TextComponent>
     </Routine>
     <Routine name="practice_instruction">
-      <CodeComponent name="code_practice_instruction">
+      <CodeComponent name="code_practice_instruction" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="#nBlocks = 2&amp;#10;nPracticeTrials = 20&amp;#10;#reversalNo = 3&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
@@ -1289,7 +1295,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code_practice_instruction" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <TextComponent name="text_practice_instruction">
+      <TextComponent name="text_practice_instruction" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -1314,7 +1320,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <KeyboardComponent name="key_resp_practice_instruction">
+      <KeyboardComponent name="key_resp_practice_instruction" plugin="None">
         <Param val="" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -1322,6 +1328,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
         <Param val="key_resp_practice_instruction" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1334,13 +1341,13 @@
       </KeyboardComponent>
     </Routine>
     <Routine name="practice_reset">
-      <CodeComponent name="code_practice_reset">
+      <CodeComponent name="code_practice_reset" plugin="None">
         <Param val="card_size = [0.4, 0.4]&amp;#10;cardPositions = [(-0.5, 0.2), (0, 0.2), (0.5, 0.2)]&amp;#10;slotImageLocations = [&quot;stimuli/card_circ_transparent.png&quot;, &quot;stimuli/card_pent_transparent.png&quot;, &amp;#10;                      &quot;stimuli/card_sqr_transparent.png&quot;, &quot;stimuli/card_star_transparent.png&quot;, &amp;#10;                      &quot;stimuli/card_tri_transparent.png&quot;]&amp;#10;&amp;#10;textPosition = [0,-0.1]&amp;#10;&amp;#10;intervalAfterSelection = [0.5, 1, 1.5]&amp;#10;&amp;#10;arrowSize = [0.20, 0.20]&amp;#10;arrow_loc = [0.50,-0.30]&amp;#10;&amp;#10;boxPos = [0,0]&amp;#10;&amp;#10;rewardImageSize = [0.30,0.25]&amp;#10;rewardPresentationTime = 0.3&amp;#10;rewardImagePostions = [(-0.530, 0.210), (-0.025, 0.210), (0.475, 0.210)]&amp;#10;rewardImageLocations = [&quot;stimuli/card_100_transparent.png&quot;, &quot;stimuli/card_10_transparent.png&quot;, &amp;#10;                        &quot;stimuli/card_0_transparent.png&quot;]&amp;#10;consReward_pos = [[0.2,-0.30],[0,-0.30],[-0.2,-0.30],[-0.4,-0.30],[-0.6,-0.30]]&amp;#10;&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;rewardSeq = [[[2,1,3],[2,3,1]],&amp;#10;             [[1,3,2],[3,2,1]], &amp;#10;             [[3,1,2],[1,2,3]], &amp;#10;             [[1,2,3],[3,2,1]], &amp;#10;             [[2,3,1],[2,1,3],[1,3,2]],&amp;#10;             [[3,2,1],[1,3,2]]]&amp;#10;DictCondRew = {(12,20): [[2,1,3],[2,3,1]], &amp;#10;                (8,20): [[1,3,2],[3,2,1]], &amp;#10;                (7,20): [[3,1,2],[1,2,3]], &amp;#10;                (10,20): [[1,2,3],[3,2,1]], &amp;#10;                (7,14,20): [[2,3,1],[2,1,3],[1,3,2]],&amp;#10;                (13,20):[[3,2,1],[1,3,2]]}" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="var card_size = [0.4, 0.4];&amp;#10;var cardPositions = [[(- 0.5), 0.2], [0, 0.2], [0.5, 0.2]];&amp;#10;var slotImageLocations = [&quot;stimuli/card_circ_transparent.png&quot;, &quot;stimuli/card_pent_transparent.png&quot;, &quot;stimuli/card_sqr_transparent.png&quot;, &quot;stimuli/card_star_transparent.png&quot;, &quot;stimuli/card_tri_transparent.png&quot;];&amp;#10;var textPosition = [0, (- 0.1)];&amp;#10;var intervalAfterSelection = [0.5, 1, 1.5];&amp;#10;var arrowSize = [0.2, 0.2];&amp;#10;var arrow_loc = [0.5, (- 0.3)];&amp;#10;var boxPos = [0, 0];&amp;#10;var rewardImageSize = [0.3, 0.25];&amp;#10;var rewardPresentationTime = 0.3;&amp;#10;var rewardImagePostions = [[(- 0.53), 0.21], [(- 0.025), 0.21], [0.475, 0.21]];&amp;#10;var rewardImageLocations = [&quot;stimuli/card_100_transparent.png&quot;, &quot;stimuli/card_10_transparent.png&quot;, &quot;stimuli/card_0_transparent.png&quot;];&amp;#10;var consReward_pos = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0.3)], [(- 0.6), (- 0.3)]];&amp;#10;var conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];&amp;#10;var rewardSeq = [[[2, 1, 3], [2, 3, 1]], [[1, 3, 2], [3, 2, 1]], [[3, 1, 2], [1, 2, 3]], [[1, 2, 3], [3, 2, 1]], [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[3, 2, 1], [1, 3, 2]]];&amp;#10;var DictCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3, 2, 1]], [[7, 20]]: [[3, 1, 2], [1, 2, 3]], [[10, 20]]: [[1, 2, 3], [3, 2, 1]], [[7, 14, 20]]: [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[13, 20]]: [[3, 2, 1], [1, 3, 2]]};&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="#block_reward = []&amp;#10;#&amp;#10;#conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20)]&amp;#10;#" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="/*&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;shuffle(conditions)&amp;#10;thisExp.addData('conditions',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;currentCondition = conditions[0]&amp;#10;thisExp.addData('currentCondition',currentCondition)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;conditions.remove(currentCondition) ## Check if this works&amp;#10;thisExp.addData('conditionsAfterRemoval',conditions)&amp;#10;thisExp.nextEntry()*/&amp;#10;&amp;#10;nCorr = 0;&amp;#10;consRewardImgs = [&quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;];&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="'''&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;shuffle(conditions)&amp;#10;thisExp.addData('conditions',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;currentCondition = conditions[0]&amp;#10;thisExp.addData('currentCondition',currentCondition)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;conditions.remove(currentCondition) ## Check if this works&amp;#10;thisExp.addData('conditionsAfterRemoval',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;'''&amp;#10;nCorr = 0&amp;#10;&amp;#10;consRewardImgs = [&quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;]&amp;#10;&amp;#10;thisExp.addData('key_resp_practice_reset.started', practice_resetClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="'''&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;shuffle(conditions)&amp;#10;thisExp.addData('conditions',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;currentCondition = conditions[0]&amp;#10;thisExp.addData('currentCondition',currentCondition)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;conditions.remove(currentCondition) ## Check if this works&amp;#10;thisExp.addData('conditionsAfterRemoval',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;'''&amp;#10;thisExp.addData('key_resp_practice_reset.started', globalClock.getTime())&amp;#10;&amp;#10;nCorr = 0&amp;#10;&amp;#10;consRewardImgs = [&quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;]&amp;#10;&amp;#10;thisExp.addData('key_resp_practice_reset.started', practice_resetClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Both" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1351,7 +1358,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code_practice_reset" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <TextComponent name="text_practice_reset">
+      <TextComponent name="text_practice_reset" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -1376,7 +1383,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <KeyboardComponent name="key_resp_practice_reset">
+      <KeyboardComponent name="key_resp_practice_reset" plugin="None">
         <Param val="" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -1384,6 +1391,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
         <Param val="key_resp_practice_reset" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1396,13 +1404,13 @@
       </KeyboardComponent>
     </Routine>
     <Routine name="practice_slots">
-      <CodeComponent name="Code_practice_slots">
+      <CodeComponent name="Code_practice_slots" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="textMsg = (&quot;Total reward: &quot; + nCorr.toString());&amp;#10;endMsg = &quot; &quot;;&amp;#10;endTrial = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="&amp;#10;textMsg = &quot;Total reward: &quot; + str(nCorr)&amp;#10;endMsg = &quot; &quot;&amp;#10;&amp;#10;endTrial = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="psychoJS.experiment.addData(&quot;key_resp_practice_slots.started&quot;, globalClock.getTime());&amp;#10;textMsg = (&quot;Total reward: &quot; + nCorr.toString());&amp;#10;endMsg = &quot; &quot;;&amp;#10;endTrial = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="thisExp.addData('key_resp_practice_slots.started', globalClock.getTime())&amp;#10;&amp;#10;textMsg = &quot;Total reward: &quot; + str(nCorr)&amp;#10;endMsg = &quot; &quot;&amp;#10;&amp;#10;endTrial = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="&amp;#10;if t &gt; 5.0 and len(key_resp_practice_slots.getKeys()) == 0:&amp;#10;    endMsg = &quot;Too slow&quot;&amp;#10;    endTrial = True&amp;#10;    if t &gt; 5.5 and len(key_resp_practice_slots.getKeys()) == 0:&amp;#10;        continueRoutine = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="if (((t &gt; 5.0) &amp;&amp; (key_resp_practice_slots.getKeys().length === 0))) {&amp;#10;    endMsg = &quot;Too slow&quot;;&amp;#10;    endTrial = true;&amp;#10;    if (((t &gt; 5.5) &amp;&amp; (key_resp_practice_slots.getKeys().length === 0))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1413,7 +1421,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="Code_practice_slots" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <ImageComponent name="card_circ">
+      <ImageComponent name="card_circ" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1440,7 +1448,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_pent">
+      <ImageComponent name="card_pent" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1467,7 +1475,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_sqr">
+      <ImageComponent name="card_sqr" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1494,7 +1502,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="arrow_4">
+      <ImageComponent name="arrow_4" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1521,7 +1529,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image">
+      <ImageComponent name="image" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1548,7 +1556,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_18">
+      <ImageComponent name="image_18" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1575,7 +1583,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_19">
+      <ImageComponent name="image_19" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1602,7 +1610,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_20">
+      <ImageComponent name="image_20" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1629,7 +1637,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_21">
+      <ImageComponent name="image_21" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1656,7 +1664,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <TextComponent name="text_practice_slots">
+      <TextComponent name="text_practice_slots" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -1681,7 +1689,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <TextComponent name="text_practice_slots_2">
+      <TextComponent name="text_practice_slots_2" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -1706,7 +1714,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <PolygonComponent name="polygon">
+      <PolygonComponent name="polygon" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -1733,7 +1741,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
-      <KeyboardComponent name="key_resp_practice_slots">
+      <KeyboardComponent name="key_resp_practice_slots" plugin="None">
         <Param val="'1','2','3','left','down','right'" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -1741,6 +1749,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
         <Param val="key_resp_practice_slots" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1753,7 +1762,7 @@
       </KeyboardComponent>
     </Routine>
     <Routine name="practice_interval">
-      <CodeComponent name="Code_practice_interval">
+      <CodeComponent name="Code_practice_interval" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
@@ -1770,7 +1779,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="Code_practice_interval" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <ImageComponent name="card_circ_6">
+      <ImageComponent name="card_circ_6" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1797,7 +1806,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_pent_6">
+      <ImageComponent name="card_pent_6" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1824,7 +1833,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_sqr_6">
+      <ImageComponent name="card_sqr_6" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1851,7 +1860,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="arrow_5">
+      <ImageComponent name="arrow_5" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1878,7 +1887,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_22">
+      <ImageComponent name="image_22" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1905,7 +1914,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_23">
+      <ImageComponent name="image_23" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1932,7 +1941,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_24">
+      <ImageComponent name="image_24" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1959,7 +1968,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_25">
+      <ImageComponent name="image_25" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -1986,7 +1995,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_26">
+      <ImageComponent name="image_26" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2013,7 +2022,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <TextComponent name="text_practice_interval">
+      <TextComponent name="text_practice_interval" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -2038,7 +2047,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <PolygonComponent name="polygon_2">
+      <PolygonComponent name="polygon_2" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -2065,7 +2074,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
-      <PolygonComponent name="polygon_practice_interval">
+      <PolygonComponent name="polygon_practice_interval" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -2094,7 +2103,7 @@
       </PolygonComponent>
     </Routine>
     <Routine name="practice_rewards">
-      <CodeComponent name="code_practice_rewards">
+      <CodeComponent name="code_practice_rewards" plugin="None">
         <Param val="joystickValues = [0,1,2]&amp;#10;keyboardNumbers = ['1', '2', '3']&amp;#10;keyboardArrows = ['left', 'down', 'right']&amp;#10;reward_seq = []&amp;#10;rand_val = 0&amp;#10;currentTrialReward = 0&amp;#10;" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="var joystickValues = [0, 1, 2];&amp;#10;var keyboardNumbers = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];&amp;#10;var keyboardArrows = [&quot;left&quot;, &quot;down&quot;, &quot;right&quot;];&amp;#10;var reward_seq = [];&amp;#10;var rand_val = 0;&amp;#10;var currentTrialReward = 0;&amp;#10;var x, y, z;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="&amp;#10;rewPos = [0,0]&amp;#10;rewImg = &quot;stimuli/blank_transparent.png&quot;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
@@ -2111,7 +2120,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code_practice_rewards" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <ImageComponent name="card_circ_7">
+      <ImageComponent name="card_circ_7" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2138,7 +2147,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_pent_7">
+      <ImageComponent name="card_pent_7" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2165,7 +2174,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="card_sqr_7">
+      <ImageComponent name="card_sqr_7" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2192,7 +2201,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="arrow_6">
+      <ImageComponent name="arrow_6" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2219,7 +2228,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_27">
+      <ImageComponent name="image_27" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2246,7 +2255,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_28">
+      <ImageComponent name="image_28" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2273,7 +2282,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_29">
+      <ImageComponent name="image_29" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2300,7 +2309,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_30">
+      <ImageComponent name="image_30" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2327,7 +2336,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_31">
+      <ImageComponent name="image_31" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2354,7 +2363,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <ImageComponent name="image_32">
+      <ImageComponent name="image_32" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -2381,7 +2390,7 @@
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ImageComponent>
-      <PolygonComponent name="polygon_3">
+      <PolygonComponent name="polygon_3" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -2408,7 +2417,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
-      <TextComponent name="text_practice_rewards">
+      <TextComponent name="text_practice_rewards" plugin="None">
         <Param val="0.0039, 0.0039, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -2435,7 +2444,7 @@
       </TextComponent>
     </Routine>
     <Routine name="practice_end">
-      <TextComponent name="text_practice_end">
+      <TextComponent name="text_practice_end" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -2460,7 +2469,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <KeyboardComponent name="key_resp_practice_end">
+      <KeyboardComponent name="key_resp_practice_end" plugin="None">
         <Param val="'space'" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -2468,6 +2477,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
         <Param val="key_resp_practice_end" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -2478,13 +2488,13 @@
         <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
         <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
       </KeyboardComponent>
-      <CodeComponent name="code_3">
+      <CodeComponent name="code_3" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="psychoJS.experiment.addData(&quot;key_resp_practice_end.started&quot;, key_resp_practice_end.started);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="thisExp.addData('key_resp_practice_end.started',key_resp_practice_end.started)" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="psychoJS.experiment.addData(&quot;key_resp_practice_end.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="thisExp.addData('key_resp_practice_end.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -2497,7 +2507,7 @@
       </CodeComponent>
     </Routine>
     <Routine name="Video_instruction">
-      <MovieComponent name="video">
+      <MovieComponent name="video" plugin="None">
         <Param val="False" valType="bool" updates="None" name="No audio"/>
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="moviepy" valType="str" updates="None" name="backend"/>
@@ -2522,7 +2532,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="1" valType="num" updates="None" name="volume"/>
       </MovieComponent>
-      <TextComponent name="text_video">
+      <TextComponent name="text_video" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -2547,7 +2557,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <KeyboardComponent name="key_resp_video">
+      <KeyboardComponent name="key_resp_video" plugin="None">
         <Param val="" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -2555,6 +2565,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
         <Param val="key_resp_video" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -2567,7 +2578,7 @@
       </KeyboardComponent>
     </Routine>
     <Routine name="instruction2">
-      <TextComponent name="text">
+      <TextComponent name="text" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -2592,7 +2603,7 @@
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <KeyboardComponent name="key_resp">
+      <KeyboardComponent name="key_resp" plugin="None">
         <Param val="" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -2600,6 +2611,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
         <Param val="key_resp" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -2610,13 +2622,13 @@
         <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
         <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
       </KeyboardComponent>
-      <CodeComponent name="code_2">
+      <CodeComponent name="code_2" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="psychoJS.experiment.addData(&quot;key_resp.started&quot;, instruction2Clock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="thisExp.addData('key_resp.started', instruction2Clock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="psychoJS.experiment.addData(&quot;key_resp.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="thisExp.addData('key_resp.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
