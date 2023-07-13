@@ -39,7 +39,7 @@ var DictCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3
 // Run 'Before Experiment' code from code_practice_rewards
 var joystickValues = [0, 1, 2];
 var keyboardNumbers = ["1", "2", "3"];
-var keyboardArrows = ["left", "down", "right"];
+var keyboardArrows = ["left", "up", "right"];
 var reward_seq = [];
 var rand_val = 0;
 var currentTrialReward = 0;
@@ -71,6 +71,9 @@ psychoJS.scheduleCondition(function() { return (psychoJS.gui.dialogComponent.but
 // flowScheduler gets run if the participants presses OK
 flowScheduler.add(updateInfo); // add timeStamp
 flowScheduler.add(experimentInit);
+flowScheduler.add(intro_videoRoutineBegin());
+flowScheduler.add(intro_videoRoutineEachFrame());
+flowScheduler.add(intro_videoRoutineEnd());
 flowScheduler.add(practice_instructionRoutineBegin());
 flowScheduler.add(practice_instructionRoutineEachFrame());
 flowScheduler.add(practice_instructionRoutineEnd());
@@ -107,6 +110,7 @@ psychoJS.start({
   expInfo: expInfo,
   resources: [
     // resources:
+    {'name': 'stimuli/The Slot Machine Game_FINAL_3.29.23.mp4', 'path': 'stimuli/The Slot Machine Game_FINAL_3.29.23.mp4'},
     {'name': 'stimuli/arrow_transparent.png', 'path': 'stimuli/arrow_transparent.png'},
     {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
     {'name': 'stimuli/arrow.png', 'path': 'stimuli/arrow.png'},
@@ -165,6 +169,9 @@ async function updateInfo() {
 }
 
 
+var intro_videoClock;
+var movieClock;
+var movie;
 var practice_instructionClock;
 var nPracticeTrials;
 var text_practice_instruction;
@@ -274,6 +281,23 @@ var text_end_ins;
 var globalClock;
 var routineTimer;
 async function experimentInit() {
+  // Initialize components for Routine "intro_video"
+  intro_videoClock = new util.Clock();
+  movieClock = new util.Clock();
+  movie = new visual.MovieStim({
+    win: psychoJS.window,
+    name: 'movie',
+    units: psychoJS.window.units,
+    movie: 'stimuli/The Slot Machine Game_FINAL_3.29.23.mp4',
+    pos: [0, 0],
+    anchor: 'center',
+    size: [0.75, 0.5],
+    ori: 0.0,
+    opacity: undefined,
+    loop: false,
+    noAudio: false,
+    depth: 0
+    });
   // Initialize components for Routine "practice_instruction"
   practice_instructionClock = new util.Clock();
   // Run 'Begin Experiment' code from code_practice_instruction
@@ -316,7 +340,7 @@ async function experimentInit() {
   text_practice_reset = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_practice_reset',
-    text: 'Every day, the malfunctioning machines will be different and they also may or may not change within the same day. So the correct selection may become the wrong one after a while. You will have to adapt!\n\nThe game takes approximately 10 minutes to complete and starts with a quick practice.\n\nPress the LEFT, DOWN or RIGHT arrows on the keyboard to select your slot machine.\n\nPress any key to continue.',
+    text: 'Every day, the malfunctioning machines will be different and they also may or may not change within the same day. So the correct selection may become the wrong one after a while. You will have to adapt!\n\nThe game takes approximately 10 minutes to complete and starts with a quick practice.\n\nPress the LEFT, UP or RIGHT arrows on the keyboard to select your slot machine.\n\nPress any key to continue.',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -1196,6 +1220,98 @@ async function experimentInit() {
 var t;
 var frameN;
 var continueRoutine;
+var intro_videoComponents;
+function intro_videoRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'intro_video' ---
+    t = 0;
+    intro_videoClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    // keep track of which components have finished
+    intro_videoComponents = [];
+    intro_videoComponents.push(movie);
+    
+    for (const thisComponent of intro_videoComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function intro_videoRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'intro_video' ---
+    // get current time
+    t = intro_videoClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *movie* updates
+    if (t >= 0.0 && movie.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      movie.tStart = t;  // (not accounting for frame time here)
+      movie.frameNStart = frameN;  // exact frame index
+      
+      movie.setAutoDraw(true);
+      movie.play();
+    }
+
+    if (movie.status === PsychoJS.Status.FINISHED) {  // force-end the routine
+        continueRoutine = false;
+    }
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of intro_videoComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function intro_videoRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'intro_video' ---
+    for (const thisComponent of intro_videoComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    movie.stop();
+    // the Routine "intro_video" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
 var _key_resp_practice_instruction_allKeys;
 var practice_instructionComponents;
 function practice_instructionRoutineBegin(snapshot) {
@@ -2030,7 +2146,7 @@ function practice_slotsRoutineEachFrame() {
     }
 
     if (key_resp_practice_slots.status === PsychoJS.Status.STARTED) {
-      let theseKeys = key_resp_practice_slots.getKeys({keyList: ['1', '2', '3', 'left', 'down', 'right'], waitRelease: false});
+      let theseKeys = key_resp_practice_slots.getKeys({keyList: ['1', '2', '3', 'left', 'up', 'right'], waitRelease: false});
       _key_resp_practice_slots_allKeys = _key_resp_practice_slots_allKeys.concat(theseKeys);
       if (_key_resp_practice_slots_allKeys.length > 0) {
         key_resp_practice_slots.keys = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].name;  // just the last key pressed
@@ -3308,7 +3424,7 @@ function slots_presentationRoutineEachFrame() {
     }
 
     if (key_resp_slots_presentation.status === PsychoJS.Status.STARTED) {
-      let theseKeys = key_resp_slots_presentation.getKeys({keyList: ['1', '2', '3', 'left', 'down', 'right'], waitRelease: false});
+      let theseKeys = key_resp_slots_presentation.getKeys({keyList: ['1', '2', '3', 'left', 'up', 'right'], waitRelease: false});
       _key_resp_slots_presentation_allKeys = _key_resp_slots_presentation_allKeys.concat(theseKeys);
       if (_key_resp_slots_presentation_allKeys.length > 0) {
         key_resp_slots_presentation.keys = _key_resp_slots_presentation_allKeys[_key_resp_slots_presentation_allKeys.length - 1].name;  // just the last key pressed
