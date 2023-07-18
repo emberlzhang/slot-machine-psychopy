@@ -764,7 +764,7 @@ async function experimentInit() {
   text_main_instruction = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_main_instruction',
-    text: 'Press one of the following arrows on the keyboard to select your slot machine\n\nLEFT, DOWN, RIGHT\n\n\nPress SPACE key to continue',
+    text: 'Press one of the following arrows on the keyboard to select your slot machine\n\nLEFT, UP, RIGHT\n\n\nPress SPACE key to continue',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
