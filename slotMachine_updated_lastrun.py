@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Jul 12 15:55:24 2023
+    on Wed Jul 19 16:09:38 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -116,7 +116,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # --- Setup the Window ---
 win = visual.Window(
-    size=[1536, 864], fullscr=True, screen=0, 
+    size=[1440, 900], fullscr=True, screen=0, 
     winType='pyglet', allowStencil=False,
     monitor='testMonitor', color=[1.0000, 1.0000, 1.0000], colorSpace='rgb',
     backgroundImage='', backgroundFit='none',
@@ -143,6 +143,16 @@ eyetracker = None
 
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard(backend='iohub')
+
+# --- Initialize components for Routine "intro_video" ---
+movie = visual.MovieStim(
+    win, name='movie',
+    filename='stimuli/The Slot Machine Game_FINAL_3.29.23.mp4', movieLib='ffpyplayer',
+    loop=False, volume=1.0, noAudio=False,
+    pos=(0, 0), size=(0.9, 0.5), units=win.units,
+    ori=0.0, anchor='center',opacity=None, contrast=1.0,
+    depth=0
+)
 
 # --- Initialize components for Routine "practice_instruction" ---
 # Run 'Begin Experiment' code from code_practice_instruction
@@ -481,16 +491,6 @@ text_practice_end = visual.TextStim(win=win, name='text_practice_end',
     languageStyle='LTR',
     depth=0.0);
 key_resp_practice_end = keyboard.Keyboard()
-
-# --- Initialize components for Routine "intro_video" ---
-movie = visual.MovieStim(
-    win, name='movie',
-    filename='stimuli/The Slot Machine Game_FINAL_3.29.23.mp4', movieLib='ffpyplayer',
-    loop=False, volume=1.0, noAudio=False,
-    pos=(0, 0), size=(0.75, 0.5), units=win.units,
-    ori=0.0, anchor='center',opacity=None, contrast=1.0,
-    depth=0
-)
 
 # --- Initialize components for Routine "Main_Instruction" ---
 # Run 'Begin Experiment' code from code_main_instruction
@@ -833,6 +833,79 @@ text_end_ins = visual.TextStim(win=win, name='text_end_ins',
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.Clock()  # to track time remaining of each (possibly non-slip) routine 
+
+# --- Prepare to start Routine "intro_video" ---
+continueRoutine = True
+# update component parameters for each repeat
+# keep track of which components have finished
+intro_videoComponents = [movie]
+for thisComponent in intro_videoComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "intro_video" ---
+routineForceEnded = not continueRoutine
+while continueRoutine:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *movie* updates
+    
+    # if movie is starting this frame...
+    if movie.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        movie.frameNStart = frameN  # exact frame index
+        movie.tStart = t  # local t and not account for scr refresh
+        movie.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(movie, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'movie.started')
+        # update status
+        movie.status = STARTED
+        movie.setAutoDraw(True)
+        movie.play()
+    if movie.isFinished:  # force-end the routine
+        continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in intro_videoComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "intro_video" ---
+for thisComponent in intro_videoComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+movie.stop()
+# the Routine "intro_video" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
 
 # --- Prepare to start Routine "practice_instruction" ---
 continueRoutine = True
@@ -2628,79 +2701,6 @@ if key_resp_practice_end.keys != None:  # we had a response
     thisExp.addData('key_resp_practice_end.duration', key_resp_practice_end.duration)
 thisExp.nextEntry()
 # the Routine "practice_end" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
-
-# --- Prepare to start Routine "intro_video" ---
-continueRoutine = True
-# update component parameters for each repeat
-# keep track of which components have finished
-intro_videoComponents = [movie]
-for thisComponent in intro_videoComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-frameN = -1
-
-# --- Run Routine "intro_video" ---
-routineForceEnded = not continueRoutine
-while continueRoutine:
-    # get current time
-    t = routineTimer.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # *movie* updates
-    
-    # if movie is starting this frame...
-    if movie.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        movie.frameNStart = frameN  # exact frame index
-        movie.tStart = t  # local t and not account for scr refresh
-        movie.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(movie, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'movie.started')
-        # update status
-        movie.status = STARTED
-        movie.setAutoDraw(True)
-        movie.play()
-    if movie.isFinished:  # force-end the routine
-        continueRoutine = False
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-        if eyetracker:
-            eyetracker.setConnectionState(False)
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        routineForceEnded = True
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in intro_videoComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# --- Ending Routine "intro_video" ---
-for thisComponent in intro_videoComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-movie.stop()
-# the Routine "intro_video" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
 # --- Prepare to start Routine "Main_Instruction" ---
