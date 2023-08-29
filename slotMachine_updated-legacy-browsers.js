@@ -24,10 +24,34 @@ var rewardPresentationTime = 0.3;
 var rewardImagePostions = [[(- 0.53), 0.21], [(- 0.025), 0.21], [0.475, 0.21]];
 var rewardImageLocations = ["stimuli/card_100_transparent.png", "stimuli/card_10_transparent.png", "stimuli/card_0_transparent.png"];
 var consReward_pos = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0.3)], [(- 0.6), (- 0.3)]];
-var conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
-var rewardSeq = [[[2, 1, 3], [2, 3, 1]], [[1, 3, 2], [3, 2, 1]], [[3, 1, 2], [1, 2, 3]], [[1, 2, 3], [3, 2, 1]], [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[3, 2, 1], [1, 3, 2]]];
-var DictCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3, 2, 1]], [[7, 20]]: [[3, 1, 2], [1, 2, 3]], [[10, 20]]: [[1, 2, 3], [3, 2, 1]], [[7, 14, 20]]: [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[13, 20]]: [[3, 2, 1], [1, 3, 2]]};
-
+// var conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
+var conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]];
+// var rewardSeq = [[[2, 1, 3], [2, 3, 1]], [[1, 3, 2], [3, 2, 1]], [[3, 1, 2], [1, 2, 3]], [[1, 2, 3], [3, 2, 1]], [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[3, 2, 1], [1, 3, 2]]];
+var rewardSeq = [
+  [[2, 1, 3], [2, 3, 1]], 
+  [[1, 3, 2], [3, 2, 1]], 
+  [[3, 1, 2], [3, 1, 2]],
+  [[2, 3, 1], [1, 2, 3]], 
+  [[1, 2, 3], [3, 1, 2]], 
+  [[2, 3, 1], [1, 3, 2], [3, 2, 1]], 
+  [[1, 3, 2], [2, 3, 1]], 
+  [[2, 1, 3], [1, 2, 3]], 
+  [[3, 2, 1], [3, 1, 2]], 
+  [[3, 1, 2], [1, 3, 2]]
+];
+// var DictCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3, 2, 1]], [[7, 20]]: [[3, 1, 2], [1, 2, 3]], [[10, 20]]: [[1, 2, 3], [3, 2, 1]], [[7, 14, 20]]: [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[13, 20]]: [[3, 2, 1], [1, 3, 2]]};
+var DictCondRew = {
+  [[12, 15]]: [[2, 1, 3], [2, 3, 1]], 
+  [[6, 15]]: [[1, 3, 2], [3, 2, 1]], 
+  [[15, 15]]: [[3, 1, 2], [3, 1, 2]],
+  [[7, 15]]: [[2, 3, 1], [1, 2, 3]],  
+  [[5, 15]]: [[1, 2, 3], [3, 1, 2]],
+  [[4, 10, 15]]: [[2, 3, 1], [1, 3, 2], [3, 2, 1]], 
+  [[9, 15]]: [[1, 3, 2], [2, 3, 1]], 
+  [[11, 15]]: [[2, 1, 3], [1, 2, 3]], 
+  [[8, 15]]: [[3, 2, 1], [3, 1, 2]],
+  [[10, 15]]: [[3, 1, 2], [1, 3, 2]]
+};
 // Run 'Before Experiment' code from code_practice_rewards
 var joystickValues = [0, 1, 2];
 var keyboardNumbers = ["1", "2", "3"];
@@ -298,7 +322,7 @@ async function experimentInit() {
   text_practice_instruction = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_practice_instruction',
-    text: 'Welcome to slot machine game.\n\nImagine that you go to a casino to play with three slot machines for six days. Each day you can play 20 rounds on any of these machines. Each round, you can select a machine and you will receive a reward.\n\nPress any key to continue',
+    text: 'Welcome to slot machine game.\n\nImagine that you go to a casino to play with three slot machines for ten days. Each day you can play 15 rounds on any of these machines. Each round, you can select a machine and you will receive a reward.\n\nPress any key to continue',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -3010,7 +3034,8 @@ function Main_InstructionRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_main_instruction
     psychoJS.experiment.addData("text_main_instruction.started", globalClock.getTime());
-    conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
+    // conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
+    conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]];
     psychoJS.experiment.addData("key_resp_main_instruction.started", globalClock.getTime());
     
     key_resp_main_instruction.keys = undefined;
