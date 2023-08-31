@@ -219,9 +219,6 @@ async function updateInfo() {
   return Scheduler.Event.NEXT;
 }
 
-thisExp.addData('BlockCondition',block_option)
-thisExp.addData('BlockOrderIndices',block_order)
-
 var intro_videoClock;
 var movieClock;
 var movie;
@@ -3063,8 +3060,11 @@ function Main_InstructionRoutineBegin(snapshot) {
     psychoJS.experiment.addData("text_main_instruction.started", globalClock.getTime());
     // conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
     // conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]];
-    const conditions = Object.keys(DictCondRew); // check this is right reference
-    console.log("conditions made 3038")
+    // const conditions = Object.keys(DictCondRew); // check this is right reference
+    console.log("conditions made in Main_InstructionsRoutineBegin")
+
+    psychoJS.experiment.addData('BlockCondition',block_option);
+    psychoJS.experiment.addData('BlockOrderIndices',block_order);
 
     psychoJS.experiment.addData("key_resp_main_instruction.started", globalClock.getTime());
     
@@ -3881,12 +3881,12 @@ function reward_presentationRoutineBegin(snapshot) {
         */
         
     
-        for (const [index, element] of currentCondition.entries()) {
-            if (((main_trials.thisN + 1) > element)) {
-            reward_seqs = DictCondRew[currentCondition];
-            reward_seq = reward_seqs[(index + 1)];
-            }
-        }
+        // for (const [index, element] of currentCondition.entries()) {
+        //     if (((main_trials.thisN + 1) > element)) {
+        //     reward_seqs = DictCondRew[currentCondition];
+        //     reward_seq = reward_seqs[(index + 1)];
+        //     }
+        // }
     
         psychoJS.experiment.addData("Main_reward_seq", reward_seq);
         rand_val = Math.random();
