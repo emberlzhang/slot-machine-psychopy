@@ -38,7 +38,6 @@ var block_order;
 var block_options = [1, 2, 3];
 var block_option = util.randchoice(block_options); // randomly choose 1 of 3 block order conditions to use
 console.log("block_option: " + block_option)
-thisExp.addData('BlockCondition',block_option)
 switch(block_option){
   case 1:
     block_order = [0,1,2,3,4,5,6,7,8,9]; // block orders are by indices starting from zero. 
@@ -54,7 +53,6 @@ switch(block_option){
     break;
 }
 console.log("Assigned block order: " + block_order)
-thisExp.addData('BlockOrderIndices',block_order)
 
 // var DictCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3, 2, 1]], [[7, 20]]: [[3, 1, 2], [1, 2, 3]], [[10, 20]]: [[1, 2, 3], [3, 2, 1]], [[7, 14, 20]]: [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[13, 20]]: [[3, 2, 1], [1, 3, 2]]};
 var DictCondRew = {
@@ -221,6 +219,8 @@ async function updateInfo() {
   return Scheduler.Event.NEXT;
 }
 
+thisExp.addData('BlockCondition',block_option)
+thisExp.addData('BlockOrderIndices',block_order)
 
 var intro_videoClock;
 var movieClock;
@@ -333,6 +333,7 @@ var End_insClock;
 var text_end_ins;
 var globalClock;
 var routineTimer;
+
 async function experimentInit() {
   // Initialize components for Routine "intro_video"
   intro_videoClock = new util.Clock();
