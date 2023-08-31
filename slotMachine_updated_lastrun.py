@@ -499,7 +499,7 @@ nTrials = 20
 #reversalNo = 3
 
 text_main_instruction = visual.TextStim(win=win, name='text_main_instruction',
-    text='Press one of the following arrows on the keyboard to select your slot machine\n\nLEFT, DOWN, RIGHT\n\n\nPress SPACE key to continue',
+    text='Press one of the following arrows on the keyboard to select your slot machine\n\nLEFT, UP, RIGHT\n\n\nPress SPACE key to continue',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color=[-1.0000, -1.0000, -1.0000], colorSpace='rgb', opacity=None, 

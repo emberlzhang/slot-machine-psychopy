@@ -32,21 +32,30 @@ var rewardPresentationTime = 0.3;
 var rewardImagePostions = [[(- 0.53), 0.21], [(- 0.025), 0.21], [0.475, 0.21]];
 var rewardImageLocations = ["stimuli/card_100_transparent.png", "stimuli/card_10_transparent.png", "stimuli/card_0_transparent.png"];
 var consReward_pos = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0.3)], [(- 0.6), (- 0.3)]];
-// var conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]]; // for old study when there are 6 days and 20 trials
-var conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]];
-// var rewardSeq = [[[2, 1, 3], [2, 3, 1]], [[1, 3, 2], [3, 2, 1]], [[3, 1, 2], [1, 2, 3]], [[1, 2, 3], [3, 2, 1]], [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[3, 2, 1], [1, 3, 2]]]; // for old study when there are 6 days and 20 trials
-var rewardSeq = [
-  [[2, 1, 3], [2, 3, 1]], 
-  [[1, 3, 2], [3, 2, 1]], 
-  [[3, 1, 2], [3, 1, 2]],
-  [[2, 3, 1], [1, 2, 3]], 
-  [[1, 2, 3], [3, 1, 2]], 
-  [[2, 3, 1], [1, 3, 2], [3, 2, 1]], 
-  [[1, 3, 2], [2, 3, 1]], 
-  [[2, 1, 3], [1, 2, 3]], 
-  [[3, 2, 1], [3, 1, 2]], 
-  [[3, 1, 2], [1, 3, 2]]
-];
+
+// Semi-randomization function for block orders
+var block_order;
+var block_options = [1, 2, 3];
+var block_option = util.randchoice(block_options); // randomly choose 1 of 3 block order conditions to use
+console.log("block_option: " + block_option)
+thisExp.addData('BlockCondition',block_option)
+switch(block_option){
+  case 1:
+    block_order = [0,1,2,3,4,5,6,7,8,9]; // block orders are by indices starting from zero. 
+    // actual nums: 1 2 3 4 5 6 7 8 9 10
+    break;
+  case 2:
+    block_order = [2,4,8,0,1,3,9,6,8,5]; // block orders are by indices starting from zero.
+    // actual nums: 3 5 8 1 2 4 10 7 9 6
+    break;
+  case 3:
+    block_order = [0,4,6,3,5,7,8,1,9,2]; // block orders are by indices starting from zero. 
+    // actual nums: 1 5 7 4 6 8 9 2 10 3
+    break;
+}
+console.log("Assigned block order: " + block_order)
+thisExp.addData('BlockOrderIndices',block_order)
+
 // var DictCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3, 2, 1]], [[7, 20]]: [[3, 1, 2], [1, 2, 3]], [[10, 20]]: [[1, 2, 3], [3, 2, 1]], [[7, 14, 20]]: [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[13, 20]]: [[3, 2, 1], [1, 3, 2]]};
 var DictCondRew = {
   [[12, 15]]: [[2, 1, 3], [2, 3, 1]], 
@@ -60,6 +69,25 @@ var DictCondRew = {
   [[8, 15]]: [[3, 2, 1], [3, 1, 2]],
   [[10, 15]]: [[3, 1, 2], [1, 3, 2]]
 };
+// var conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]]; // for old study when there are 6 days and 20 trials
+// var conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]]; // version used before dictionary key and values used
+const conditions = Object.keys(DictCondRew);
+
+// var rewardSeq = [[[2, 1, 3], [2, 3, 1]], [[1, 3, 2], [3, 2, 1]], [[3, 1, 2], [1, 2, 3]], [[1, 2, 3], [3, 2, 1]], [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[3, 2, 1], [1, 3, 2]]]; // for old study when there are 6 days and 20 trials
+// var rewardSeq = [
+//   [[2, 1, 3], [2, 3, 1]], 
+//   [[1, 3, 2], [3, 2, 1]], 
+//   [[3, 1, 2], [3, 1, 2]],
+//   [[2, 3, 1], [1, 2, 3]], 
+//   [[1, 2, 3], [3, 1, 2]], 
+//   [[2, 3, 1], [1, 3, 2], [3, 2, 1]], 
+//   [[1, 3, 2], [2, 3, 1]], 
+//   [[2, 1, 3], [1, 2, 3]], 
+//   [[3, 2, 1], [3, 1, 2]], 
+//   [[3, 1, 2], [1, 3, 2]]
+// ];
+const rewardSeq = Object.values(DictCondRew);
+
 
 // Run 'Before Experiment' code from code_practice_rewards
 var joystickValues = [0, 1, 2];
@@ -3033,7 +3061,10 @@ function Main_InstructionRoutineBegin(snapshot) {
     // Run 'Begin Routine' code from code_main_instruction
     psychoJS.experiment.addData("text_main_instruction.started", globalClock.getTime());
     // conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
-    conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]];
+    // conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]];
+    const conditions = Object.keys(DictCondRew); // check this is right reference
+    console.log("conditions made 3038")
+
     psychoJS.experiment.addData("key_resp_main_instruction.started", globalClock.getTime());
     
     key_resp_main_instruction.keys = undefined;
@@ -3152,9 +3183,12 @@ function Main_InstructionRoutineEnd(snapshot) {
   }
 }
 
+const block_conditions = Object.keys(DictCondRew); // check this is right reference
 
 var currentCondition;
 var reward_resetComponents;
+var current_block_index;
+
 function reward_resetRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -3170,11 +3204,15 @@ function reward_resetRoutineBegin(snapshot) {
     // util.shuffle(conditions); // old code -- block order should not be shuffled
     console.log("Remaining Conditions: " + conditions)
     psychoJS.experiment.addData("conditions", conditions);
-    currentCondition = conditions[0];
+    // currentCondition = conditions[0];
+    current_block_index = block_order[0];
+    currentCondition = conditions[current_block_index];
     console.log("Current Condition: " + currentCondition)
 
     psychoJS.experiment.addData("currentCondition", currentCondition);
-    conditions.shift();
+    // conditions.shift();
+    block_order.shift();
+
     psychoJS.experiment.addData("conditionsAfterRemoval", conditions);
     nCorr = 0;
     consRewardImgs = ["stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png"];
