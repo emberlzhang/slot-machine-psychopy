@@ -1862,7 +1862,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
     currentLoop = block;  // we're now the current loop
     
     // Schedule all the trials in the trialList:
-    for (const thisBlock of block) {
+    for (const [i, thisBlock] of block) {
       snapshot = block.getSnapshot();
       blockLoopScheduler.add(importConditions(snapshot));
       blockLoopScheduler.add(reward_resetRoutineBegin(snapshot));
@@ -1872,7 +1872,11 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
       blockLoopScheduler.add(main_trialsLoopBegin(main_trialsLoopScheduler, snapshot));
       blockLoopScheduler.add(main_trialsLoopScheduler);
       blockLoopScheduler.add(main_trialsLoopEnd);
-      blockLoopScheduler.add(Block_breakRoutineBegin(snapshot));
+      if (i === block.length-1){
+        continue; // Skip the "next day starts" text block on the last block of sequence
+      } else {
+        blockLoopScheduler.add(Block_breakRoutineBegin(snapshot)); // Prints "next day starts" text
+      }
       blockLoopScheduler.add(Block_breakRoutineEachFrame());
       blockLoopScheduler.add(Block_breakRoutineEnd(snapshot));
       blockLoopScheduler.add(blockLoopEndIteration(blockLoopScheduler, snapshot));
