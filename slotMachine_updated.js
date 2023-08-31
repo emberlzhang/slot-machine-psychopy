@@ -3045,7 +3045,7 @@ function practice_endRoutineEnd(snapshot) {
 }
 
 
-var conditions;
+// var conditions;
 var _key_resp_main_instruction_allKeys;
 var Main_InstructionComponents;
 function Main_InstructionRoutineBegin(snapshot) {
