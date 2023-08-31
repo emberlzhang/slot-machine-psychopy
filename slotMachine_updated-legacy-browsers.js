@@ -760,7 +760,7 @@ async function experimentInit() {
   text_practice_end = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_practice_end',
-    text: 'You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to contunue',
+    text: 'You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to continue',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,

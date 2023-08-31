@@ -3166,9 +3166,13 @@ function reward_resetRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_reward_reset
-    util.shuffle(conditions);
+    
+    // util.shuffle(conditions); // old code -- block order should not be shuffled
+    console.log("Remaining Conditions: " + conditions)
     psychoJS.experiment.addData("conditions", conditions);
     currentCondition = conditions[0];
+    console.log("Current Condition: " + currentCondition)
+
     psychoJS.experiment.addData("currentCondition", currentCondition);
     conditions.shift();
     psychoJS.experiment.addData("conditionsAfterRemoval", conditions);

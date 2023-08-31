@@ -484,7 +484,7 @@ text_practice_rewards = visual.TextStim(win=win, name='text_practice_rewards',
 
 # --- Initialize components for Routine "practice_end" ---
 text_practice_end = visual.TextStim(win=win, name='text_practice_end',
-    text='You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to contunue',
+    text='You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to continue',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color=[-1.0000, -1.0000, -1.0000], colorSpace='rgb', opacity=None, 
@@ -2848,7 +2848,7 @@ for thisBlock in block:
     # update component parameters for each repeat
     # Run 'Begin Routine' code from code_reward_reset
     
-    shuffle(conditions)
+    # shuffle(conditions) # old code - should not randomize order of block conditions
     thisExp.addData('conditions',conditions)
     #thisExp.nextEntry()
     
