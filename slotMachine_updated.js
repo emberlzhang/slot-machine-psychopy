@@ -33,6 +33,26 @@ var rewardImagePostions = [[(- 0.53), 0.21], [(- 0.025), 0.21], [0.475, 0.21]];
 var rewardImageLocations = ["stimuli/card_100_transparent.png", "stimuli/card_10_transparent.png", "stimuli/card_0_transparent.png"];
 var consReward_pos = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0.3)], [(- 0.6), (- 0.3)]];
 
+var practice_DictCondRew = { // Note: conditions are by number of trials for first reward set, not trial index
+  [[9, 15]]: [[2, 1, 3], [2, 3, 1]], 
+  [[6, 15]]: [[1, 3, 2], [3, 1, 2]]
+};
+const practice_conditions = Object.keys(practice_DictCondRew); // Notes: conditions are by number of trials for first reward set, not trial index
+// [[9, 15], [6, 15]];
+const practice_rewardSeq = Object.values(DictCondRew);
+// [ [[2, 1, 3], [2, 3, 1]], 
+//   [[1, 3, 2], [3, 2, 1]] ];
+
+// Run 'Before Experiment' code from code_practice_rewards
+var joystickValues = [0, 1, 2];
+var keyboardNumbers = ["1", "2", "3"];
+var keyboardArrows = ["left", "up", "right"];
+var reward_seq = [];
+var rand_val = 0;
+var currentTrialReward = 0;
+var x, y, z;
+
+// Run 'Before Experiment' code from code_slots_presentation
 // Semi-randomization function for block orders
 var block_order;
 var block_options = [1, 2, 3];
@@ -86,15 +106,6 @@ const conditions = Object.keys(DictCondRew); // list of arrays, each array repre
 // ];
 const rewardSeq = Object.values(DictCondRew);
 
-
-// Run 'Before Experiment' code from code_practice_rewards
-var joystickValues = [0, 1, 2];
-var keyboardNumbers = ["1", "2", "3"];
-var keyboardArrows = ["left", "up", "right"];
-var reward_seq = [];
-var rand_val = 0;
-var currentTrialReward = 0;
-var x, y, z;
 // Run 'Before Experiment' code from code_reward_presentation
 var reward_seqs = [];
 // init psychoJS:
@@ -418,21 +429,6 @@ async function experimentInit() {
 
   // Initialize components for Routine "practice_reset"
   practice_resetClock = new util.Clock();
-  // Run 'Begin Experiment' code from code_practice_reset
-  
-  // text_practice_reset = new visual.TextStim({
-  //   win: psychoJS.window,
-  //   name: 'text_practice_reset',
-  //   text: 'Every day, the malfunctioning machines will be different and they also may or may not change within the same day. So the correct selection may become the wrong one after a while. You will have to adapt!\n\nThe game takes approximately 10 minutes to complete and starts with a quick practice.\n\nPress the LEFT, UP or RIGHT arrows on the keyboard to select your slot machine.\n\nPress any key to continue.',
-  //   font: 'Open Sans',
-  //   units: undefined, 
-  //   pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
-  //   languageStyle: 'LTR',
-  //   color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
-  //   depth: -1.0 
-  // });
-  
-  key_resp_practice_reset = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "practice_slots"
   practice_slotsClock = new util.Clock();
@@ -1828,11 +1824,12 @@ function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
   }
 }
 
-// to remove: all references to: key_resp_practice_reset
+
 var nCorr;
 var consRewardImgs;
-var _key_resp_practice_reset_allKeys;
 var practice_resetComponents;
+var currentPracticeCondition;
+
 function practice_resetRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1842,18 +1839,20 @@ function practice_resetRoutineBegin(snapshot) {
     practice_resetClock.reset(); // clock
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
-    // update component parameters for each repeat
-    // Run 'Begin Routine' code from code_practice_reset    
     nCorr = 0;
     consRewardImgs = ["stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png"];
+    // update component parameters for each repeat
     
-    key_resp_practice_reset.keys = undefined;
-    key_resp_practice_reset.rt = undefined;
-    _key_resp_practice_reset_allKeys = [];
+    // Run 'Begin Routine' code from code_practice_reset
+    psychoJS.experiment.addData("conditions", conditions);
+    
+    currentPracticeCondition = practice_conditions[0];
+    console.log("Current Practice Condition: " + currentPracticeCondition)
+
+    psychoJS.experiment.addData("currentPracticeCondition", currentPracticeCondition);
+    
     // keep track of which components have finished
     practice_resetComponents = [];
-    // practice_resetComponents.push(text_practice_reset);
-    practice_resetComponents.push(key_resp_practice_reset);
     
     for (const thisComponent of practice_resetComponents)
       if ('status' in thisComponent)
@@ -1862,7 +1861,6 @@ function practice_resetRoutineBegin(snapshot) {
   }
 }
 
-
 function practice_resetRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'practice_reset' ---
@@ -1870,41 +1868,6 @@ function practice_resetRoutineEachFrame() {
     t = practice_resetClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
-    
-    // *text_practice_reset* updates
-    if (t >= 0.0 && text_practice_reset.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      text_practice_reset.tStart = t;  // (not accounting for frame time here)
-      text_practice_reset.frameNStart = frameN;  // exact frame index
-      
-      text_practice_reset.setAutoDraw(true);
-    }
-
-    
-    // *key_resp_practice_reset* updates
-    if (t >= 0.0 && key_resp_practice_reset.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      key_resp_practice_reset.tStart = t;  // (not accounting for frame time here)
-      key_resp_practice_reset.frameNStart = frameN;  // exact frame index
-      
-      // keyboard checking is just starting
-      psychoJS.window.callOnFlip(function() { key_resp_practice_reset.clock.reset(); });  // t=0 on next screen flip
-      psychoJS.window.callOnFlip(function() { key_resp_practice_reset.start(); }); // start on screen flip
-      psychoJS.window.callOnFlip(function() { key_resp_practice_reset.clearEvents(); });
-    }
-
-    if (key_resp_practice_reset.status === PsychoJS.Status.STARTED) {
-      let theseKeys = key_resp_practice_reset.getKeys({keyList: [], waitRelease: false});
-      _key_resp_practice_reset_allKeys = _key_resp_practice_reset_allKeys.concat(theseKeys);
-      if (_key_resp_practice_reset_allKeys.length > 0) {
-        key_resp_practice_reset.keys = _key_resp_practice_reset_allKeys[_key_resp_practice_reset_allKeys.length - 1].name;  // just the last key pressed
-        key_resp_practice_reset.rt = _key_resp_practice_reset_allKeys[_key_resp_practice_reset_allKeys.length - 1].rt;
-        key_resp_practice_reset.duration = _key_resp_practice_reset_allKeys[_key_resp_practice_reset_allKeys.length - 1].duration;
-        // a response ends the routine
-        continueRoutine = false;
-      }
-    }
-    
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
@@ -1928,9 +1891,8 @@ function practice_resetRoutineEachFrame() {
     } else {
       return Scheduler.Event.NEXT;
     }
-  };
+  }
 }
-
 
 function practice_resetRoutineEnd(snapshot) {
   return async function () {
@@ -1940,18 +1902,6 @@ function practice_resetRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     }
-    // update the trial handler
-    if (currentLoop instanceof MultiStairHandler) {
-      currentLoop.addResponse(key_resp_practice_reset.corr, level);
-    }
-    psychoJS.experiment.addData('key_resp_practice_reset.keys', key_resp_practice_reset.keys);
-    if (typeof key_resp_practice_reset.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_practice_reset.rt', key_resp_practice_reset.rt);
-        psychoJS.experiment.addData('key_resp_practice_reset.duration', key_resp_practice_reset.duration);
-        routineTimer.reset();
-        }
-    
-    key_resp_practice_reset.stop();
     // the Routine "practice_reset" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
@@ -2779,17 +2729,17 @@ function practice_rewardsRoutineBegin(snapshot) {
         }
         continueRoutine = false;
     } else {
-        reward_seq = [2, 1, 3];
-        psychoJS.experiment.addData("reward_seq", reward_seq);
-        if (((practice_trials.thisN + 1) > 9)) {
-            reward_seq = [2, 3, 1];
-            psychoJS.experiment.addData("reward_seq", reward_seq);
+        if (((practice_trials.thisN + 1) > practiceSwitchTrial)) {
+            practice_reward_seqs.shift(); // shift to next reward_seq
         }
+        current_practice_reward_seq = practice_reward_seqs[0];
+        psychoJS.experiment.addData("reward_seq", reward_seq);
+
         rand_val = Math.random();
         currentTrialReward = 0;
-        x = util.index(reward_seq, 1);
-        y = util.index(reward_seq, 2);
-        z = util.index(reward_seq, 3);
+        x = util.index(practice_reward_seq, 1);
+        y = util.index(practice_reward_seq, 2);
+        z = util.index(practice_reward_seq, 3);
         if (((key_resp_practice_slots.keys === keyboardNumbers[x]) || (key_resp_practice_slots.keys === keyboardArrows[x]))) {
             if ((rand_val >= 0.2)) {
                 currentTrialReward = 100;
@@ -2854,7 +2804,7 @@ function practice_rewardsRoutineBegin(snapshot) {
         }
         psychoJS.experiment.addData("reward_Img", rewImg);
         psychoJS.experiment.addData("Cuml_rew", nCorr);
-        psychoJS.experiment.addData("currentTrialReward", currentTrialReward);
+        psychoJS.experiment.addData("currentPracticeTrialReward", currentTrialReward);
         consRewardImgs.push(rewImg);
         if ((consRewardImgs.length > 5)) {
             consRewardImgs.shift();
@@ -4074,13 +4024,13 @@ function reward_presentationRoutineBegin(snapshot) {
         reward_seqs = DictCondRew[currentCondition]; // 
         reward_seq = reward_seqs[0];
         
-        for (var i, _pj_c = 0, _pj_a = enumerate(currentCondition), _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
-            i = _pj_a[_pj_c];
-            if (((main_trials.thisN + 1) > i[1])) {
-                reward_seqs = DictCondRew[currentCondition];
-                reward_seq = reward_seqs[(i[0] + 1)];
-            }
-        }
+        // for (var i, _pj_c = 0, _pj_a = enumerate(currentCondition), _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
+        //     i = _pj_a[_pj_c];
+        //     if (((main_trials.thisN + 1) > i[1])) {
+        //         reward_seqs = DictCondRew[currentCondition];
+        //         reward_seq = reward_seqs[(i[0] + 1)];
+        //     }
+        // }
     
         for (const [index, element] of currentCondition.entries()) {
             if (((main_trials.thisN + 1) > element)) {
