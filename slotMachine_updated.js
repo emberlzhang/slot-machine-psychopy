@@ -1818,11 +1818,7 @@ function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
       practice_blockLoopScheduler.add(practice_trialsLoopBegin(practice_trialsLoopScheduler, snapshot));
       practice_blockLoopScheduler.add(practice_trialsLoopScheduler);
       practice_blockLoopScheduler.add(practice_trialsLoopEnd);
-      // if (thisPracticeBlock === practice_blocks.length-1){
-      //   continue; // Skip the "next day starts" text block on the last block of sequence
-      // } else {
       practice_blockLoopScheduler.add(Block_breakRoutineBegin(snapshot)); // Prints "next day starts" text
-      // }
       practice_blockLoopScheduler.add(Block_breakRoutineEachFrame());
       practice_blockLoopScheduler.add(Block_breakRoutineEnd(snapshot));
       practice_blockLoopScheduler.add(blockLoopEndIteration(blockLoopScheduler, snapshot));
@@ -2037,9 +2033,9 @@ function practice_trialsLoopEndIteration(scheduler, snapshot) {
   };
 }
 
-async function practice_blocksLoopEnd() {
+async function practice_blockLoopEnd() {
   // terminate loop
-  psychoJS.experiment.removeLoop(practice_blocks);
+  psychoJS.experiment.removeLoop(practice_block);
   // update the current loop from the ExperimentHandler
   if (psychoJS.experiment._unfinishedLoops.length>0)
     currentLoop = psychoJS.experiment._unfinishedLoops.at(-1);
