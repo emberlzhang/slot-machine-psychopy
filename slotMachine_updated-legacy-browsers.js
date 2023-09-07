@@ -24,21 +24,28 @@ var rewardPresentationTime = 0.3;
 var rewardImagePostions = [[(- 0.53), 0.21], [(- 0.025), 0.21], [0.475, 0.21]];
 var rewardImageLocations = ["stimuli/card_100_transparent.png", "stimuli/card_10_transparent.png", "stimuli/card_0_transparent.png"];
 var consReward_pos = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0.3)], [(- 0.6), (- 0.3)]];
-// var conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
-var conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]];
-// var rewardSeq = [[[2, 1, 3], [2, 3, 1]], [[1, 3, 2], [3, 2, 1]], [[3, 1, 2], [1, 2, 3]], [[1, 2, 3], [3, 2, 1]], [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[3, 2, 1], [1, 3, 2]]];
-var rewardSeq = [
-  [[2, 1, 3], [2, 3, 1]], 
-  [[1, 3, 2], [3, 2, 1]], 
-  [[3, 1, 2], [3, 1, 2]],
-  [[2, 3, 1], [1, 2, 3]], 
-  [[1, 2, 3], [3, 1, 2]], 
-  [[2, 3, 1], [1, 3, 2], [3, 2, 1]], 
-  [[1, 3, 2], [2, 3, 1]], 
-  [[2, 1, 3], [1, 2, 3]], 
-  [[3, 2, 1], [3, 1, 2]], 
-  [[3, 1, 2], [1, 3, 2]]
-];
+
+// Semi-randomization function for block orders
+var block_order;
+var block_options = [1, 2, 3];
+var block_option = util.randchoice(block_options); // randomly choose 1 of 3 block order conditions to use
+console.log("block_option: " + block_option)
+switch(block_option){
+  case 1:
+    block_order = [0,1,2,3,4,5,6,7,8,9]; // block orders are by indices starting from zero. 
+    // actual nums: 1 2 3 4 5 6 7 8 9 10
+    break;
+  case 2:
+    block_order = [2,4,8,0,1,3,9,6,8,5]; // block orders are by indices starting from zero.
+    // actual nums: 3 5 8 1 2 4 10 7 9 6
+    break;
+  case 3:
+    block_order = [0,4,6,3,5,7,8,1,9,2]; // block orders are by indices starting from zero. 
+    // actual nums: 1 5 7 4 6 8 9 2 10 3
+    break;
+}
+console.log("Assigned block order: " + block_order)
+
 // var DictCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3, 2, 1]], [[7, 20]]: [[3, 1, 2], [1, 2, 3]], [[10, 20]]: [[1, 2, 3], [3, 2, 1]], [[7, 14, 20]]: [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[13, 20]]: [[3, 2, 1], [1, 3, 2]]};
 var DictCondRew = {
   [[12, 15]]: [[2, 1, 3], [2, 3, 1]], 
@@ -52,6 +59,25 @@ var DictCondRew = {
   [[8, 15]]: [[3, 2, 1], [3, 1, 2]],
   [[10, 15]]: [[3, 1, 2], [1, 3, 2]]
 };
+// var conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
+// var conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]];
+// var rewardSeq = [[[2, 1, 3], [2, 3, 1]], [[1, 3, 2], [3, 2, 1]], [[3, 1, 2], [1, 2, 3]], [[1, 2, 3], [3, 2, 1]], [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[3, 2, 1], [1, 3, 2]]];
+const conditions = Object.keys(DictCondRew);
+
+// var rewardSeq = [
+//   [[2, 1, 3], [2, 3, 1]], 
+//   [[1, 3, 2], [3, 2, 1]], 
+//   [[3, 1, 2], [3, 1, 2]],
+//   [[2, 3, 1], [1, 2, 3]], 
+//   [[1, 2, 3], [3, 1, 2]], 
+//   [[2, 3, 1], [1, 3, 2], [3, 2, 1]], 
+//   [[1, 3, 2], [2, 3, 1]], 
+//   [[2, 1, 3], [1, 2, 3]], 
+//   [[3, 2, 1], [3, 1, 2]], 
+//   [[3, 1, 2], [1, 3, 2]]
+// ];
+const rewardSeq = Object.values(DictCondRew);
+
 // Run 'Before Experiment' code from code_practice_rewards
 var joystickValues = [0, 1, 2];
 var keyboardNumbers = ["1", "2", "3"];
@@ -90,9 +116,9 @@ flowScheduler.add(experimentInit);
 flowScheduler.add(intro_videoRoutineBegin());
 flowScheduler.add(intro_videoRoutineEachFrame());
 flowScheduler.add(intro_videoRoutineEnd());
-flowScheduler.add(practice_instructionRoutineBegin());
-flowScheduler.add(practice_instructionRoutineEachFrame());
-flowScheduler.add(practice_instructionRoutineEnd());
+flowScheduler.add(instruction1RoutineBegin());
+flowScheduler.add(instruction1RoutineEachFrame());
+flowScheduler.add(instruction1RoutineEnd());
 flowScheduler.add(instruction2RoutineBegin());
 flowScheduler.add(instruction2RoutineEachFrame());
 flowScheduler.add(instruction2RoutineEnd());
@@ -188,10 +214,10 @@ async function updateInfo() {
 var intro_videoClock;
 var movieClock;
 var movie;
-var practice_instructionClock;
+var instruction1Clock;
 var nPracticeTrials;
-var text_practice_instruction;
-var key_resp_practice_instruction;
+var text_instruction1;
+var key_resp_instruction1;
 var instruction2Clock;
 var text;
 var key_resp;
@@ -314,14 +340,14 @@ async function experimentInit() {
     noAudio: false,
     depth: 0
     });
-  // Initialize components for Routine "practice_instruction"
-  practice_instructionClock = new util.Clock();
-  // Run 'Begin Experiment' code from code_practice_instruction
+  // Initialize components for Routine "instruction1"
+  instruction1Clock = new util.Clock();
+  // Run 'Begin Experiment' code from code_instruction1
   nPracticeTrials = 20;
   
-  text_practice_instruction = new visual.TextStim({
+  text_instruction1 = new visual.TextStim({
     win: psychoJS.window,
-    name: 'text_practice_instruction',
+    name: 'text_instruction1',
     text: 'Welcome to slot machine game.\n\nImagine that you go to a casino to play with three slot machines for ten days. Each day you can play 15 rounds on any of these machines. Each round, you can select a machine and you will receive a reward.\n\nPress any key to continue',
     font: 'Open Sans',
     units: undefined, 
@@ -331,7 +357,7 @@ async function experimentInit() {
     depth: -1.0 
   });
   
-  key_resp_practice_instruction = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  key_resp_instruction1 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "instruction2"
   instruction2Clock = new util.Clock();
@@ -1329,30 +1355,30 @@ function intro_videoRoutineEnd(snapshot) {
 }
 
 
-var _key_resp_practice_instruction_allKeys;
-var practice_instructionComponents;
-function practice_instructionRoutineBegin(snapshot) {
+var _key_resp_instruction1_allKeys;
+var instruction1Components;
+function instruction1RoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
     
-    //--- Prepare to start Routine 'practice_instruction' ---
+    //--- Prepare to start Routine 'instruction1' ---
     t = 0;
-    practice_instructionClock.reset(); // clock
+    instruction1Clock.reset(); // clock
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
-    // Run 'Begin Routine' code from code_practice_instruction
-    psychoJS.experiment.addData("key_resp_practice_instruction.started", globalClock.getTime());
+    // Run 'Begin Routine' code from code_instruction1
+    psychoJS.experiment.addData("key_resp_instruction1.started", globalClock.getTime());
     
-    key_resp_practice_instruction.keys = undefined;
-    key_resp_practice_instruction.rt = undefined;
-    _key_resp_practice_instruction_allKeys = [];
+    key_resp_instruction1.keys = undefined;
+    key_resp_instruction1.rt = undefined;
+    _key_resp_instruction1_allKeys = [];
     // keep track of which components have finished
-    practice_instructionComponents = [];
-    practice_instructionComponents.push(text_practice_instruction);
-    practice_instructionComponents.push(key_resp_practice_instruction);
+    instruction1Components = [];
+    instruction1Components.push(text_instruction1);
+    instruction1Components.push(key_resp_instruction1);
     
-    practice_instructionComponents.forEach( function(thisComponent) {
+    instruction1Components.forEach( function(thisComponent) {
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
        });
@@ -1361,43 +1387,43 @@ function practice_instructionRoutineBegin(snapshot) {
 }
 
 
-function practice_instructionRoutineEachFrame() {
+function instruction1RoutineEachFrame() {
   return async function () {
-    //--- Loop for each frame of Routine 'practice_instruction' ---
+    //--- Loop for each frame of Routine 'instruction1' ---
     // get current time
-    t = practice_instructionClock.getTime();
+    t = instruction1Clock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
-    // *text_practice_instruction* updates
-    if (t >= 0.0 && text_practice_instruction.status === PsychoJS.Status.NOT_STARTED) {
+    // *text_instruction1* updates
+    if (t >= 0.0 && text_instruction1.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      text_practice_instruction.tStart = t;  // (not accounting for frame time here)
-      text_practice_instruction.frameNStart = frameN;  // exact frame index
+      text_instruction1.tStart = t;  // (not accounting for frame time here)
+      text_instruction1.frameNStart = frameN;  // exact frame index
       
-      text_practice_instruction.setAutoDraw(true);
+      text_instruction1.setAutoDraw(true);
     }
 
     
-    // *key_resp_practice_instruction* updates
-    if (t >= 0.0 && key_resp_practice_instruction.status === PsychoJS.Status.NOT_STARTED) {
+    // *key_resp_instruction1* updates
+    if (t >= 0.0 && key_resp_instruction1.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      key_resp_practice_instruction.tStart = t;  // (not accounting for frame time here)
-      key_resp_practice_instruction.frameNStart = frameN;  // exact frame index
+      key_resp_instruction1.tStart = t;  // (not accounting for frame time here)
+      key_resp_instruction1.frameNStart = frameN;  // exact frame index
       
       // keyboard checking is just starting
-      psychoJS.window.callOnFlip(function() { key_resp_practice_instruction.clock.reset(); });  // t=0 on next screen flip
-      psychoJS.window.callOnFlip(function() { key_resp_practice_instruction.start(); }); // start on screen flip
-      psychoJS.window.callOnFlip(function() { key_resp_practice_instruction.clearEvents(); });
+      psychoJS.window.callOnFlip(function() { key_resp_instruction1.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_instruction1.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_instruction1.clearEvents(); });
     }
 
-    if (key_resp_practice_instruction.status === PsychoJS.Status.STARTED) {
-      let theseKeys = key_resp_practice_instruction.getKeys({keyList: [], waitRelease: false});
-      _key_resp_practice_instruction_allKeys = _key_resp_practice_instruction_allKeys.concat(theseKeys);
-      if (_key_resp_practice_instruction_allKeys.length > 0) {
-        key_resp_practice_instruction.keys = _key_resp_practice_instruction_allKeys[_key_resp_practice_instruction_allKeys.length - 1].name;  // just the last key pressed
-        key_resp_practice_instruction.rt = _key_resp_practice_instruction_allKeys[_key_resp_practice_instruction_allKeys.length - 1].rt;
-        key_resp_practice_instruction.duration = _key_resp_practice_instruction_allKeys[_key_resp_practice_instruction_allKeys.length - 1].duration;
+    if (key_resp_instruction1.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_instruction1.getKeys({keyList: [], waitRelease: false});
+      _key_resp_instruction1_allKeys = _key_resp_instruction1_allKeys.concat(theseKeys);
+      if (_key_resp_instruction1_allKeys.length > 0) {
+        key_resp_instruction1.keys = _key_resp_instruction1_allKeys[_key_resp_instruction1_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_instruction1.rt = _key_resp_instruction1_allKeys[_key_resp_instruction1_allKeys.length - 1].rt;
+        key_resp_instruction1.duration = _key_resp_instruction1_allKeys[_key_resp_instruction1_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
@@ -1414,7 +1440,7 @@ function practice_instructionRoutineEachFrame() {
     }
     
     continueRoutine = false;  // reverts to True if at least one component still running
-    practice_instructionComponents.forEach( function(thisComponent) {
+    instruction1Components.forEach( function(thisComponent) {
       if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
         continueRoutine = true;
       }
@@ -1430,27 +1456,27 @@ function practice_instructionRoutineEachFrame() {
 }
 
 
-function practice_instructionRoutineEnd(snapshot) {
+function instruction1RoutineEnd(snapshot) {
   return async function () {
-    //--- Ending Routine 'practice_instruction' ---
-    practice_instructionComponents.forEach( function(thisComponent) {
+    //--- Ending Routine 'instruction1' ---
+    instruction1Components.forEach( function(thisComponent) {
       if (typeof thisComponent.setAutoDraw === 'function') {
         thisComponent.setAutoDraw(false);
       }
     });
     // update the trial handler
     if (currentLoop instanceof MultiStairHandler) {
-      currentLoop.addResponse(key_resp_practice_instruction.corr, level);
+      currentLoop.addResponse(key_resp_instruction1.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_practice_instruction.keys', key_resp_practice_instruction.keys);
-    if (typeof key_resp_practice_instruction.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_practice_instruction.rt', key_resp_practice_instruction.rt);
-        psychoJS.experiment.addData('key_resp_practice_instruction.duration', key_resp_practice_instruction.duration);
+    psychoJS.experiment.addData('key_resp_instruction1.keys', key_resp_instruction1.keys);
+    if (typeof key_resp_instruction1.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('key_resp_instruction1.rt', key_resp_instruction1.rt);
+        psychoJS.experiment.addData('key_resp_instruction1.duration', key_resp_instruction1.duration);
         routineTimer.reset();
         }
     
-    key_resp_practice_instruction.stop();
-    // the Routine "practice_instruction" was not non-slip safe, so reset the non-slip timer
+    key_resp_instruction1.stop();
+    // the Routine "instruction1" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
     // Routines running outside a loop should always advance the datafile row

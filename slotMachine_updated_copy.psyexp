@@ -94,7 +94,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="psychoJS.experiment.addData(&quot;text_block_break.started&quot;, globalClock.getTime());&amp;#10;block_reward.push(nCorr);&amp;#10;blockMsg = ((&quot;Total reward for this day: &quot; + nCorr.toString()) + &quot;\n Next day starts soon&quot;);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="thisExp.addData('text_block_break.started', globalClock.getTime())&amp;#10;&amp;#10;block_reward.append(nCorr)&amp;#10;&amp;#10;blockMsg = &quot;Total reward for this day: &quot; + str(nCorr) + &quot;\n Next day starts soon&quot;" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -138,7 +138,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="final_pay = randchoice(range(len(block_reward)))&amp;#10;blockID = final_pay + 1 &amp;#10;&amp;#10;#print(&quot;correct per block&quot;, block_correct)&amp;#10;#print('block number: ', blockID)&amp;#10;#print('You earned: ', block_correct[final_pay])&amp;#10;thisExp.addData('reward_block_chosen', blockID)" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -178,11 +178,11 @@
       <CodeComponent name="code_main_instruction" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="nBlocks = 10&amp;#10;nTrials = 15&amp;#10;#reversalNo = 3&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="nBlocks = 10;&amp;#10;nTrials = 15;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="psychoJS.experiment.addData(&quot;text_main_instruction.started&quot;, globalClock.getTime());&amp;#10;psychoJS.experiment.addData(&quot;key_resp_main_instruction.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="#thisExp.addData('Main_Instruction_onset',t)&amp;#10;#thisExp.nextEntry()&amp;#10;thisExp.addData('text_main_instruction.started', globalClock.getTime())&amp;#10;&amp;#10;#conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;thisExp.addData('key_resp_main_instruction.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="nBlocks = 6&amp;#10;nTrials = 20&amp;#10;#reversalNo = 3&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="nBlocks = 6;&amp;#10;nTrials = 20;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="psychoJS.experiment.addData(&quot;text_main_instruction.started&quot;, globalClock.getTime());&amp;#10;conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];&amp;#10;psychoJS.experiment.addData(&quot;key_resp_main_instruction.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="#thisExp.addData('Main_Instruction_onset',t)&amp;#10;#thisExp.nextEntry()&amp;#10;thisExp.addData('text_main_instruction.started', globalClock.getTime())&amp;#10;&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;thisExp.addData('key_resp_main_instruction.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -245,7 +245,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="psychoJS.experiment.addData(&quot;key_resp_slots_presentation.started&quot;, globalClock.getTime());&amp;#10;textMsg = (&quot;Total reward: &quot; + nCorr.toString());&amp;#10;endMsg = &quot; &quot;;&amp;#10;endTrial = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="#routineTimer = core.CountdownTimer(8)&amp;#10;#routineTimer.add(6.000000)&amp;#10;thisExp.addData('key_resp_slots_presentation.started', globalClock.getTime())&amp;#10;&amp;#10;textMsg = &quot;Total reward: &quot; + str(nCorr)&amp;#10;endMsg = &quot; &quot;&amp;#10;&amp;#10;endTrial = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="&amp;#10;if t&gt;5.0 and len(key_resp_slots_presentation.getKeys()) == 0:&amp;#10;    endMsg = &quot;Too Slow&quot;&amp;#10;    endTrial = True&amp;#10;    if t&gt;5.5 and len(key_resp_slots_presentation.getKeys()) == 0:&amp;#10;        continueRoutine = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="if (((t &gt; 5.0) &amp;&amp; (key_resp_slots_presentation.getKeys().length === 0))) {&amp;#10;    endMsg = &quot;Too Slow&quot;;&amp;#10;    endTrial = true;&amp;#10;    if (((t &gt; 5.5) &amp;&amp; (key_resp_slots_presentation.getKeys().length === 0))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -603,7 +603,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="if (endTrial) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;presentationInterval = util.randchoice(intervalAfterSelection);&amp;#10;psychoJS.experiment.addData(&quot;Main_presentationInterval&quot;, presentationInterval);&amp;#10;if (((key_resp_slots_presentation.keys === keyboardNumbers[0]) || (key_resp_slots_presentation.keys === keyboardArrows[0]))) {&amp;#10;    boxPos = cardPositions[0];&amp;#10;} else {&amp;#10;    if (((key_resp_slots_presentation.keys === keyboardNumbers[1]) || (key_resp_slots_presentation.keys === keyboardArrows[1]))) {&amp;#10;        boxPos = cardPositions[1];&amp;#10;    } else {&amp;#10;        if (((key_resp_slots_presentation.keys === keyboardNumbers[2]) || (key_resp_slots_presentation.keys === keyboardArrows[2]))) {&amp;#10;            boxPos = cardPositions[2];&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="if endTrial:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;presentationInterval = randchoice(intervalAfterSelection)&amp;#10;&amp;#10;thisExp.addData('Main_presentationInterval',presentationInterval)&amp;#10;#thisExp.nextEntry()&amp;#10;&amp;#10;#presentationInterval = random.choice(intervalAfterSelection)&amp;#10;&amp;#10;#textMsg = &quot;Reward obtained so far: &quot; + str(nCorr)&amp;#10;if key_resp_slots_presentation.keys == keyboardNumbers[0] or key_resp_slots_presentation.keys == keyboardArrows[0]:&amp;#10;    boxPos = cardPositions[0]&amp;#10;elif key_resp_slots_presentation.keys == keyboardNumbers[1] or key_resp_slots_presentation.keys == keyboardArrows[1]:&amp;#10;    boxPos = cardPositions[1]&amp;#10;elif key_resp_slots_presentation.keys == keyboardNumbers[2] or key_resp_slots_presentation.keys == keyboardArrows[2]:&amp;#10;    boxPos = cardPositions[2]&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -1277,15 +1277,78 @@
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
     </Routine>
+    <Routine name="practice_instruction">
+      <CodeComponent name="code_practice_instruction" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="#nBlocks = 2&amp;#10;nPracticeTrials = 20&amp;#10;#reversalNo = 3&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="nPracticeTrials = 20;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="psychoJS.experiment.addData(&quot;key_resp_practice_instruction.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="thisExp.addData('key_resp_practice_instruction.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="code_practice_instruction" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <TextComponent name="text_practice_instruction" plugin="None">
+        <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="text_practice_instruction" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Welcome to slot machine game.&amp;#10;&amp;#10;Imagine that you go to a casino to play with three slot machines for ten days. Each day you can play 15 rounds on any of these machines. Each round, you can select a machine and you will receive a reward.&amp;#10;&amp;#10;Press any key to continue" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <KeyboardComponent name="key_resp_practice_instruction" plugin="None">
+        <Param val="" valType="list" updates="constant" name="allowedKeys"/>
+        <Param val="" valType="str" updates="constant" name="correctAns"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="constant" name="discard previous"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
+        <Param val="key_resp_practice_instruction" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="last key" valType="str" updates="constant" name="store"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
+      </KeyboardComponent>
+    </Routine>
     <Routine name="practice_reset">
       <CodeComponent name="code_practice_reset" plugin="None">
-        <Param val="card_size = [0.4, 0.4]&amp;#10;cardPositions = [(-0.5, 0.2), (0, 0.2), (0.5, 0.2)]&amp;#10;slotImageLocations = [&quot;stimuli/card_circ_transparent.png&quot;, &quot;stimuli/card_pent_transparent.png&quot;, &amp;#10;                      &quot;stimuli/card_sqr_transparent.png&quot;, &quot;stimuli/card_star_transparent.png&quot;, &amp;#10;                      &quot;stimuli/card_tri_transparent.png&quot;]&amp;#10;&amp;#10;textPosition = [0,-0.1]&amp;#10;&amp;#10;intervalAfterSelection = [0.5, 1, 1.5]&amp;#10;&amp;#10;arrowSize = [0.20, 0.20]&amp;#10;arrow_loc = [0.50,-0.30]&amp;#10;&amp;#10;boxPos = [0,0]&amp;#10;&amp;#10;rewardImageSize = [0.30,0.25]&amp;#10;rewardPresentationTime = 0.3&amp;#10;rewardImagePostions = [(-0.530, 0.210), (-0.025, 0.210), (0.475, 0.210)]&amp;#10;rewardImageLocations = [&quot;stimuli/card_100_transparent.png&quot;, &quot;stimuli/card_10_transparent.png&quot;, &amp;#10;                        &quot;stimuli/card_0_transparent.png&quot;]&amp;#10;consReward_pos = [[0.2,-0.30],[0,-0.30],[-0.2,-0.30],[-0.4,-0.30],[-0.6,-0.30]]&amp;#10;&amp;#10;#conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;#rewardSeq = [[[2,1,3],[2,3,1]],&amp;#10;#             [[1,3,2],[3,2,1]], &amp;#10;#             [[3,1,2],[1,2,3]], &amp;#10;#             [[1,2,3],[3,2,1]], &amp;#10;#             [[2,3,1],[2,1,3],[1,3,2]],&amp;#10;#             [[3,2,1],[1,3,2]]]&amp;#10;#DictCondRew = {(12,20): [[2,1,3],[2,3,1]], &amp;#10;#                (8,20): [[1,3,2],[3,2,1]], &amp;#10;#                (7,20): [[3,1,2],[1,2,3]], &amp;#10;#                (10,20): [[1,2,3],[3,2,1]], &amp;#10;#                (7,14,20): [[2,3,1],[2,1,3],[1,3,2]],&amp;#10;#                (13,20):[[3,2,1],[1,3,2]]}" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="card_size = [0.4, 0.4]&amp;#10;cardPositions = [(-0.5, 0.2), (0, 0.2), (0.5, 0.2)]&amp;#10;slotImageLocations = [&quot;stimuli/card_circ_transparent.png&quot;, &quot;stimuli/card_pent_transparent.png&quot;, &amp;#10;                      &quot;stimuli/card_sqr_transparent.png&quot;, &quot;stimuli/card_star_transparent.png&quot;, &amp;#10;                      &quot;stimuli/card_tri_transparent.png&quot;]&amp;#10;&amp;#10;textPosition = [0,-0.1]&amp;#10;&amp;#10;intervalAfterSelection = [0.5, 1, 1.5]&amp;#10;&amp;#10;arrowSize = [0.20, 0.20]&amp;#10;arrow_loc = [0.50,-0.30]&amp;#10;&amp;#10;boxPos = [0,0]&amp;#10;&amp;#10;rewardImageSize = [0.30,0.25]&amp;#10;rewardPresentationTime = 0.3&amp;#10;rewardImagePostions = [(-0.530, 0.210), (-0.025, 0.210), (0.475, 0.210)]&amp;#10;rewardImageLocations = [&quot;stimuli/card_100_transparent.png&quot;, &quot;stimuli/card_10_transparent.png&quot;, &amp;#10;                        &quot;stimuli/card_0_transparent.png&quot;]&amp;#10;consReward_pos = [[0.2,-0.30],[0,-0.30],[-0.2,-0.30],[-0.4,-0.30],[-0.6,-0.30]]&amp;#10;&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;rewardSeq = [[[2,1,3],[2,3,1]],&amp;#10;             [[1,3,2],[3,2,1]], &amp;#10;             [[3,1,2],[1,2,3]], &amp;#10;             [[1,2,3],[3,2,1]], &amp;#10;             [[2,3,1],[2,1,3],[1,3,2]],&amp;#10;             [[3,2,1],[1,3,2]]]&amp;#10;DictCondRew = {(12,20): [[2,1,3],[2,3,1]], &amp;#10;                (8,20): [[1,3,2],[3,2,1]], &amp;#10;                (7,20): [[3,1,2],[1,2,3]], &amp;#10;                (10,20): [[1,2,3],[3,2,1]], &amp;#10;                (7,14,20): [[2,3,1],[2,1,3],[1,3,2]],&amp;#10;                (13,20):[[3,2,1],[1,3,2]]}" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="var card_size = [0.4, 0.4];&amp;#10;var cardPositions = [[(- 0.5), 0.2], [0, 0.2], [0.5, 0.2]];&amp;#10;var slotImageLocations = [&quot;stimuli/card_circ_transparent.png&quot;, &quot;stimuli/card_pent_transparent.png&quot;, &quot;stimuli/card_sqr_transparent.png&quot;, &quot;stimuli/card_star_transparent.png&quot;, &quot;stimuli/card_tri_transparent.png&quot;];&amp;#10;var textPosition = [0, (- 0.1)];&amp;#10;var intervalAfterSelection = [0.5, 1, 1.5];&amp;#10;var arrowSize = [0.2, 0.2];&amp;#10;var arrow_loc = [0.5, (- 0.3)];&amp;#10;var boxPos = [0, 0];&amp;#10;var rewardImageSize = [0.3, 0.25];&amp;#10;var rewardPresentationTime = 0.3;&amp;#10;var rewardImagePostions = [[(- 0.53), 0.21], [(- 0.025), 0.21], [0.475, 0.21]];&amp;#10;var rewardImageLocations = [&quot;stimuli/card_100_transparent.png&quot;, &quot;stimuli/card_10_transparent.png&quot;, &quot;stimuli/card_0_transparent.png&quot;];&amp;#10;var consReward_pos = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0.3)], [(- 0.6), (- 0.3)]];&amp;#10;var conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];&amp;#10;var rewardSeq = [[[2, 1, 3], [2, 3, 1]], [[1, 3, 2], [3, 2, 1]], [[3, 1, 2], [1, 2, 3]], [[1, 2, 3], [3, 2, 1]], [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[3, 2, 1], [1, 3, 2]]];&amp;#10;var DictCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3, 2, 1]], [[7, 20]]: [[3, 1, 2], [1, 2, 3]], [[10, 20]]: [[1, 2, 3], [3, 2, 1]], [[7, 14, 20]]: [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[13, 20]]: [[3, 2, 1], [1, 3, 2]]};&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="#block_reward = []&amp;#10;#&amp;#10;#conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20)]&amp;#10;#" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="/*&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;shuffle(conditions)&amp;#10;thisExp.addData('conditions',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;currentCondition = conditions[0]&amp;#10;thisExp.addData('currentCondition',currentCondition)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;conditions.remove(currentCondition) ## Check if this works&amp;#10;thisExp.addData('conditionsAfterRemoval',conditions)&amp;#10;thisExp.nextEntry()*/&amp;#10;&amp;#10;nCorr = 0;&amp;#10;consRewardImgs = [&quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;];&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="'''&amp;#10;conditions = [(12,20), (8,20), (7,20), (10,20), (7,14,20), (13,20)]&amp;#10;shuffle(conditions)&amp;#10;thisExp.addData('conditions',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;currentCondition = conditions[0]&amp;#10;thisExp.addData('currentCondition',currentCondition)&amp;#10;thisExp.nextEntry()&amp;#10;&amp;#10;conditions.remove(currentCondition) ## Check if this works&amp;#10;thisExp.addData('conditionsAfterRemoval',conditions)&amp;#10;thisExp.nextEntry()&amp;#10;'''&amp;#10;thisExp.addData('key_resp_practice_reset.started', globalClock.getTime())&amp;#10;&amp;#10;nCorr = 0&amp;#10;&amp;#10;consRewardImgs = [&quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;, &quot;stimuli/blank_transparent.png&quot;]&amp;#10;&amp;#10;#thisExp.addData('key_resp_practice_reset.started', practice_resetClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="Py" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -1295,6 +1358,31 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code_practice_reset" valType="code" updates="None" name="name"/>
       </CodeComponent>
+      <TextComponent name="text_practice_reset" plugin="None">
+        <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="text_practice_reset" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Every day, the malfunctioning machines will be different and they also may or may not change within the same day. So the correct selection may become the wrong one after a while. You will have to adapt!&amp;#10;&amp;#10;The game takes approximately 10 minutes to complete and starts with a quick practice.&amp;#10;&amp;#10;Press the LEFT, UP or RIGHT arrows on the keyboard to select your slot machine.&amp;#10;&amp;#10;Press any key to continue." valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
       <KeyboardComponent name="key_resp_practice_reset" plugin="None">
         <Param val="" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
@@ -1323,7 +1411,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="psychoJS.experiment.addData(&quot;key_resp_practice_slots.started&quot;, globalClock.getTime());&amp;#10;textMsg = (&quot;Total reward: &quot; + nCorr.toString());&amp;#10;endMsg = &quot; &quot;;&amp;#10;endTrial = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="thisExp.addData('key_resp_practice_slots.started', globalClock.getTime())&amp;#10;&amp;#10;textMsg = &quot;Total reward: &quot; + str(nCorr)&amp;#10;endMsg = &quot; &quot;&amp;#10;&amp;#10;endTrial = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="&amp;#10;if t &gt; 5.0 and len(key_resp_practice_slots.getKeys()) == 0:&amp;#10;    endMsg = &quot;Too slow&quot;&amp;#10;    endTrial = True&amp;#10;    if t &gt; 5.5 and len(key_resp_practice_slots.getKeys()) == 0:&amp;#10;        continueRoutine = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="if (((t &gt; 5.0) &amp;&amp; (key_resp_practice_slots.getKeys().length === 0))) {&amp;#10;    endMsg = &quot;Too slow&quot;;&amp;#10;    endTrial = true;&amp;#10;    if (((t &gt; 5.5) &amp;&amp; (key_resp_practice_slots.getKeys().length === 0))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -1681,7 +1769,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="if (endTrial) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;presentationInterval = util.randchoice(intervalAfterSelection);&amp;#10;psychoJS.experiment.addData(&quot;presentationInterval&quot;, presentationInterval);&amp;#10;if (((key_resp_practice_slots.keys === keyboardNumbers[0]) || (key_resp_practice_slots.keys === keyboardArrows[0]))) {&amp;#10;    boxPos = cardPositions[0];&amp;#10;} else {&amp;#10;    if (((key_resp_practice_slots.keys === keyboardNumbers[1]) || (key_resp_practice_slots.keys === keyboardArrows[1]))) {&amp;#10;        boxPos = cardPositions[1];&amp;#10;    } else {&amp;#10;        if (((key_resp_practice_slots.keys === keyboardNumbers[2]) || (key_resp_practice_slots.keys === keyboardArrows[2]))) {&amp;#10;            boxPos = cardPositions[2];&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="&amp;#10;if endTrial:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;presentationInterval = randchoice(intervalAfterSelection)&amp;#10;&amp;#10;thisExp.addData('presentationInterval',presentationInterval)&amp;#10;#thisExp.nextEntry()&amp;#10;&amp;#10;#presentationInterval = random.choice(intervalAfterSelection)&amp;#10;&amp;#10;if key_resp_practice_slots.keys == keyboardNumbers[0] or key_resp_practice_slots.keys == keyboardArrows[0]:&amp;#10;    boxPos = cardPositions[0]&amp;#10;elif key_resp_practice_slots.keys == keyboardNumbers[1] or key_resp_practice_slots.keys == keyboardArrows[1]:&amp;#10;    boxPos = cardPositions[1]&amp;#10;elif key_resp_practice_slots.keys == keyboardNumbers[2] or key_resp_practice_slots.keys == keyboardArrows[2]:&amp;#10;    boxPos = cardPositions[2]&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -2407,7 +2495,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="psychoJS.experiment.addData(&quot;key_resp_practice_end.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="thisExp.addData('key_resp_practice_end.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -2490,7 +2578,7 @@
       </KeyboardComponent>
     </Routine>
     <Routine name="instruction2">
-      <TextComponent name="text_instruction2" plugin="None">
+      <TextComponent name="text" plugin="None">
         <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
@@ -2500,7 +2588,7 @@
         <Param val="Open Sans" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
         <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
-        <Param val="text_instruction2" valType="code" updates="None" name="name"/>
+        <Param val="text" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
@@ -2511,18 +2599,18 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="But there is something strange about these machines: they are malfunctioning! &amp;#10;&amp;#10;There is always a machine that grants many high rewards (most of the rounds 100 points, but sometimes only 10 or even 0). There is always a machine that grants many low rewards (mostly 10 points, sometimes 100 or 0), and a machine that grants no reward most of the rounds (mostly 0 points, sometimes 100 or 10). &amp;#10;&amp;#10;You have to find the appropriate machines to maximise your reward.&amp;#10;&amp;#10;Press any key to continue" valType="str" updates="constant" name="text"/>
+        <Param val="But there is something strange about these machines: they are malfunctioning! &amp;#10;&amp;#10;There is always a machine that grants many high rewards (most of the rounds 100 points, but sometimes only 10 or even 0), there is always a machine that grants many low rewards (mostly 10 points, sometimes 100 or 0), and one that grants no reward most of the rounds (mostly 0 points, sometimes 100 or 10). You have to find the appropriate machines to maximise your reward.&amp;#10;&amp;#10;Press any key to continue" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <KeyboardComponent name="key_resp_instruction2" plugin="None">
+      <KeyboardComponent name="key_resp" plugin="None">
         <Param val="" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="True" valType="bool" updates="constant" name="discard previous"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
-        <Param val="key_resp_instruction2" valType="code" updates="None" name="name"/>
+        <Param val="key_resp" valType="code" updates="None" name="name"/>
         <Param val="press" valType="str" updates="constant" name="registerOn"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
@@ -2534,14 +2622,14 @@
         <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
         <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
       </KeyboardComponent>
-      <CodeComponent name="code_instruction2" plugin="None">
+      <CodeComponent name="code_2" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="psychoJS.experiment.addData(&quot;key_resp_instruction2.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="thisExp.addData('key_resp_instruction2.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
+        <Param val="psychoJS.experiment.addData(&quot;key_resp.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="thisExp.addData('key_resp.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
@@ -2549,7 +2637,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="code_instruction2" valType="code" updates="None" name="name"/>
+        <Param val="code_2" valType="code" updates="None" name="name"/>
       </CodeComponent>
     </Routine>
     <Routine name="intro_video">
@@ -2579,149 +2667,11 @@
         <Param val="1" valType="num" updates="None" name="volume"/>
       </MovieComponent>
     </Routine>
-    <Routine name="instruction1">
-      <CodeComponent name="code_instruction1" plugin="None">
-        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="#nBlocks = 2&amp;#10;nPracticeTrials = 15&amp;#10;#reversalNo = 3&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="nPracticeTrials = 15;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="psychoJS.experiment.addData(&quot;key_resp_instruction1.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="thisExp.addData('key_resp_instruction1.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Py" valType="str" updates="None" name="Code Type"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="code_instruction1" valType="code" updates="None" name="name"/>
-      </CodeComponent>
-      <TextComponent name="text_instruction1" plugin="None">
-        <Param val="-1.0000, -1.0000, -1.0000" valType="color" updates="constant" name="color"/>
-        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
-        <Param val="1" valType="num" updates="constant" name="contrast"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="None" valType="str" updates="constant" name="flip"/>
-        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
-        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
-        <Param val="text_instruction1" valType="code" updates="None" name="name"/>
-        <Param val="" valType="num" updates="constant" name="opacity"/>
-        <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
-        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="" valType="code" updates="None" name="startEstim"/>
-        <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="0.0" valType="code" updates="None" name="startVal"/>
-        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="" valType="code" updates="constant" name="stopVal"/>
-        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Welcome to slot machine game.&amp;#10;&amp;#10;Imagine that you go to a casino to play with three slot machines for ten days. Each day you can play 15 rounds on any of these machines. Each round, you can select a machine and you will receive a reward.&amp;#10;&amp;#10;Press any key to continue" valType="str" updates="constant" name="text"/>
-        <Param val="from exp settings" valType="str" updates="None" name="units"/>
-        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
-      </TextComponent>
-      <KeyboardComponent name="key_resp_instruction1" plugin="None">
-        <Param val="" valType="list" updates="constant" name="allowedKeys"/>
-        <Param val="" valType="str" updates="constant" name="correctAns"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="True" valType="bool" updates="constant" name="discard previous"/>
-        <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
-        <Param val="key_resp_instruction1" valType="code" updates="None" name="name"/>
-        <Param val="press" valType="str" updates="constant" name="registerOn"/>
-        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="" valType="code" updates="None" name="startEstim"/>
-        <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="0.0" valType="code" updates="None" name="startVal"/>
-        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="" valType="code" updates="constant" name="stopVal"/>
-        <Param val="last key" valType="str" updates="constant" name="store"/>
-        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
-        <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
-      </KeyboardComponent>
-    </Routine>
-    <Routine name="instruction3">
-      <TextComponent name="text_instruction3" plugin="None">
-        <Param val="white" valType="color" updates="constant" name="color"/>
-        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
-        <Param val="1" valType="num" updates="constant" name="contrast"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="None" valType="str" updates="constant" name="flip"/>
-        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
-        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
-        <Param val="text_instruction3" valType="code" updates="None" name="name"/>
-        <Param val="" valType="num" updates="constant" name="opacity"/>
-        <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
-        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="" valType="code" updates="None" name="startEstim"/>
-        <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="0.0" valType="code" updates="None" name="startVal"/>
-        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="" valType="code" updates="constant" name="stopVal"/>
-        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Every day, the malfunctioning machines will be different and they also may or may not change within the same day. So the correct selection may become the wrong one after a while. You will have to adapt!&amp;#10;&amp;#10;The game takes approximately 10 minutes to complete and starts with a quick practice.&amp;#10;&amp;#10;Press the LEFT, UP or RIGHT arrows on the keyboard to select your slot machine.&amp;#10;&amp;#10;Press any key to continue." valType="str" updates="constant" name="text"/>
-        <Param val="from exp settings" valType="str" updates="None" name="units"/>
-        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
-      </TextComponent>
-      <KeyboardComponent name="key_resp_instruction3" plugin="None">
-        <Param val="" valType="list" updates="constant" name="allowedKeys"/>
-        <Param val="" valType="str" updates="constant" name="correctAns"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="True" valType="bool" updates="constant" name="discard previous"/>
-        <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
-        <Param val="key_resp_instruction3" valType="code" updates="None" name="name"/>
-        <Param val="press" valType="str" updates="constant" name="registerOn"/>
-        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="" valType="code" updates="None" name="startEstim"/>
-        <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="0.0" valType="code" updates="None" name="startVal"/>
-        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="" valType="code" updates="constant" name="stopVal"/>
-        <Param val="last key" valType="str" updates="constant" name="store"/>
-        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
-        <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
-      </KeyboardComponent>
-      <CodeComponent name="code_instruction3" plugin="None">
-        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="psychoJS.experiment.addData(&quot;key_resp_instruction3.started&quot;, globalClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="thisExp.addData('key_resp_instruction3.started', globalClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Both" valType="str" updates="None" name="Code Type"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="code_instruction3" valType="code" updates="None" name="name"/>
-      </CodeComponent>
-    </Routine>
   </Routines>
   <Flow>
     <Routine name="intro_video"/>
-    <Routine name="instruction1"/>
+    <Routine name="practice_instruction"/>
     <Routine name="instruction2"/>
-    <Routine name="instruction3"/>
-    <LoopInitiator loopType="TrialHandler" name="practice_blocks">
-      <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="" valType="file"/>
-      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="isTrials" updates="None" val="True" valType="bool"/>
-      <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="2" valType="num"/>
-      <Param name="name" updates="None" val="practice_blocks" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
-    </LoopInitiator>
     <Routine name="practice_reset"/>
     <LoopInitiator loopType="TrialHandler" name="practice_trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
@@ -2738,8 +2688,6 @@
     <Routine name="practice_interval"/>
     <Routine name="practice_rewards"/>
     <LoopTerminator name="practice_trials"/>
-    <Routine name="Block_break"/>
-    <LoopTerminator name="practice_blocks"/>
     <Routine name="practice_end"/>
     <Routine name="Main_Instruction"/>
     <LoopInitiator loopType="TrialHandler" name="block">

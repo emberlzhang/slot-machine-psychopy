@@ -157,7 +157,7 @@ movie = visual.MovieStim(
 # --- Initialize components for Routine "practice_instruction" ---
 # Run 'Begin Experiment' code from code_practice_instruction
 #nBlocks = 2
-nPracticeTrials = 15
+nPracticeTrials = 20
 #reversalNo = 3
 
 text_practice_instruction = visual.TextStim(win=win, name='text_practice_instruction',
@@ -494,8 +494,8 @@ key_resp_practice_end = keyboard.Keyboard()
 
 # --- Initialize components for Routine "Main_Instruction" ---
 # Run 'Begin Experiment' code from code_main_instruction
-nBlocks = 10
-nTrials = 15
+nBlocks = 6
+nTrials = 20
 #reversalNo = 3
 
 text_main_instruction = visual.TextStim(win=win, name='text_main_instruction',
