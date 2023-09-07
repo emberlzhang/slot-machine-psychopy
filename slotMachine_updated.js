@@ -33,13 +33,13 @@ var rewardImagePostions = [[(- 0.53), 0.21], [(- 0.025), 0.21], [0.475, 0.21]];
 var rewardImageLocations = ["stimuli/card_100_transparent.png", "stimuli/card_10_transparent.png", "stimuli/card_0_transparent.png"];
 var consReward_pos = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0.3)], [(- 0.6), (- 0.3)]];
 
-var practice_DictCondRew = { // Note: conditions are by number of trials for first reward set, not trial index
+var pracCondRew = { // Note: conditions are by number of trials for first reward set, not trial index
   [[9, 15]]: [[2, 1, 3], [2, 3, 1]], 
   [[6, 15]]: [[1, 3, 2], [3, 1, 2]]
 };
-const practice_conditions = Object.keys(practice_DictCondRew); // Notes: conditions are by number of trials for first reward set, not trial index
+const practiceConditions = Object.keys(pracCondRew); // list of arrays, each array represents a block's trial indices where slot rewards change
 // [[9, 15], [6, 15]];
-const practice_rewardSeq = Object.values(DictCondRew);
+const practiceRewardSeqs = Object.values(pracCondRew); // list of arrays, each array represents a block's slot reward sequences
 // [ [[2, 1, 3], [2, 3, 1]], 
 //   [[1, 3, 2], [3, 2, 1]] ];
 
@@ -47,12 +47,11 @@ const practice_rewardSeq = Object.values(DictCondRew);
 var joystickValues = [0, 1, 2];
 var keyboardNumbers = ["1", "2", "3"];
 var keyboardArrows = ["left", "up", "right"];
-var reward_seq = [];
 var rand_val = 0;
 var currentTrialReward = 0;
 var x, y, z;
 
-// Run 'Before Experiment' code from code_slots_presentation
+// Run 'Before Experiment' code from code_reward_reset
 // Semi-randomization function for block orders
 var block_order;
 var block_options = [1, 2, 3];
@@ -74,8 +73,8 @@ switch(block_option){
 }
 console.log("Assigned block order: " + block_order)
 
-// var DictCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3, 2, 1]], [[7, 20]]: [[3, 1, 2], [1, 2, 3]], [[10, 20]]: [[1, 2, 3], [3, 2, 1]], [[7, 14, 20]]: [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[13, 20]]: [[3, 2, 1], [1, 3, 2]]};
-var DictCondRew = {
+// var mainCondRew = {[[12, 20]]: [[2, 1, 3], [2, 3, 1]], [[8, 20]]: [[1, 3, 2], [3, 2, 1]], [[7, 20]]: [[3, 1, 2], [1, 2, 3]], [[10, 20]]: [[1, 2, 3], [3, 2, 1]], [[7, 14, 20]]: [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[13, 20]]: [[3, 2, 1], [1, 3, 2]]};
+var mainCondRew = {
   [[12, 15]]: [[2, 1, 3], [2, 3, 1]], 
   [[6, 15]]: [[1, 3, 2], [3, 2, 1]], 
   [[15, 15]]: [[3, 1, 2], [3, 1, 2]],
@@ -87,27 +86,12 @@ var DictCondRew = {
   [[8, 15]]: [[3, 2, 1], [3, 1, 2]],
   [[10, 15]]: [[3, 1, 2], [1, 3, 2]]
 };
-// var conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]]; // for old study when there are 6 days and 20 trials
-// var conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]]; // version used before dictionary key and values used
-const conditions = Object.keys(DictCondRew); // list of arrays, each array representing a block's trial indices where slot rewards change
+const mainConditions = Object.keys(mainCondRew); // list of arrays, each array represents a block's trial indices where slot rewards change
+const mainRewardSeqs = Object.values(mainCondRew); // list of arrays, each array represents a block's slot reward sequences
 
-// var rewardSeq = [[[2, 1, 3], [2, 3, 1]], [[1, 3, 2], [3, 2, 1]], [[3, 1, 2], [1, 2, 3]], [[1, 2, 3], [3, 2, 1]], [[2, 3, 1], [2, 1, 3], [1, 3, 2]], [[3, 2, 1], [1, 3, 2]]]; // for old study when there are 6 days and 20 trials
-// var rewardSeq = [
-//   [[2, 1, 3], [2, 3, 1]], 
-//   [[1, 3, 2], [3, 2, 1]], 
-//   [[3, 1, 2], [3, 1, 2]],
-//   [[2, 3, 1], [1, 2, 3]], 
-//   [[1, 2, 3], [3, 1, 2]], 
-//   [[2, 3, 1], [1, 3, 2], [3, 2, 1]], 
-//   [[1, 3, 2], [2, 3, 1]], 
-//   [[2, 1, 3], [1, 2, 3]], 
-//   [[3, 2, 1], [3, 1, 2]], 
-//   [[3, 1, 2], [1, 3, 2]]
-// ];
-const rewardSeq = Object.values(DictCondRew);
-
-// Run 'Before Experiment' code from code_reward_presentation
-var reward_seqs = [];
+// Run 'Before Experiment' code from code_reward_reset
+var main_reward_seqs = [];
+var main_reward_seq = [];
 // init psychoJS:
 const psychoJS = new PsychoJS({
   debug: true
@@ -255,8 +239,6 @@ var instruction3Clock;
 var text_instruction3;
 var key_resp_instruction3;
 var practice_resetClock;
-var text_practice_reset;
-var key_resp_practice_reset;
 var practice_slotsClock;
 var card_circ;
 var card_pent;
@@ -1120,18 +1102,6 @@ async function experimentInit() {
   // Initialize components for Routine "reward_presentation"
   reward_presentationClock = new util.Clock();
   // Run 'Begin Experiment' code from code_reward_presentation
-  /*
-  shuffle(conditions)
-  thisExp.addData('Main_conditions',conditions)
-  thisExp.nextEntry()
-  
-  currentCondition = conditions[0]
-  thisExp.addData('Main_currentCondition',currentCondition)
-  thisExp.nextEntry()
-  
-  conditions.remove(currentCondition) ## Check if this works
-  thisExp.addData('Main_conditionsAfterRemoval',conditions)
-  thisExp.nextEntry()*/
   var rewImg, rewPos;
   rewPos = [0, 0];
   rewImg = "stimuli/blank_transparent.png";
@@ -1803,7 +1773,7 @@ function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
     currentLoop = practice_block;  // we're now the current loop
     
     // Schedule all the trials in the trialList:
-    for (const thisPracticeBlock of practice_block) {
+    for (thisPracticeBlock of practice_block) {
       console.log("thisPracticeBlock: " + thisPracticeBlock)
       snapshot = practice_block.getSnapshot();
       practice_blockLoopScheduler.add(importConditions(snapshot));
@@ -1828,7 +1798,7 @@ function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
 var nCorr;
 var consRewardImgs;
 var practice_resetComponents;
-var currentPracticeCondition;
+var Condition;
 
 function practice_resetRoutineBegin(snapshot) {
   return async function () {
@@ -1844,13 +1814,17 @@ function practice_resetRoutineBegin(snapshot) {
     // update component parameters for each repeat
     
     // Run 'Begin Routine' code from code_practice_reset
-    psychoJS.experiment.addData("conditions", conditions);
-    
-    currentPracticeCondition = practice_conditions[0];
-    console.log("Current Practice Condition: " + currentPracticeCondition)
+    // get conditions for this block
+    practiceCondition = practiceConditions[0]; // array that provides trial indices at which the winning slot changes
+    psychoJS.experiment.addData("practiceCondition", practiceCondition);
+    console.log("PracticeCondition: " + practiceCondition)
+    practiceConditions.shift(); // prep next block's conditions
+    // get reward sequences for this block
+    practice_reward_seqs = practiceRewardSeqs[0];
+    psychoJS.experiment.addData("practice_reward_seqs", practice_reward_seqs);
+    console.log("practice_reward_seqs: " + practice_reward_seqs)
 
-    psychoJS.experiment.addData("currentPracticeCondition", currentPracticeCondition);
-    
+
     // keep track of which components have finished
     practice_resetComponents = [];
     
@@ -2023,11 +1997,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
       blockLoopScheduler.add(main_trialsLoopBegin(main_trialsLoopScheduler, snapshot));
       blockLoopScheduler.add(main_trialsLoopScheduler);
       blockLoopScheduler.add(main_trialsLoopEnd);
-      if (thisBlock === block.length-1){
-        continue; // Skip the "next day starts" text block on the last block of sequence
-      } else {
-        blockLoopScheduler.add(Block_breakRoutineBegin(snapshot)); // Prints "next day starts" text
-      }
+      blockLoopScheduler.add(Block_breakRoutineBegin(snapshot)); // Prints "next day starts" text
       blockLoopScheduler.add(Block_breakRoutineEachFrame());
       blockLoopScheduler.add(Block_breakRoutineEnd(snapshot));
       blockLoopScheduler.add(blockLoopEndIteration(blockLoopScheduler, snapshot));
@@ -2729,11 +2699,17 @@ function practice_rewardsRoutineBegin(snapshot) {
         }
         continueRoutine = false;
     } else {
-        if (((practice_trials.thisN + 1) > practiceSwitchTrial)) {
-            practice_reward_seqs.shift(); // shift to next reward_seq
+        if (practice_trials.thisN + 1 > practiceSwitchTrial) {
+          practice_reward_seqs.shift(); // shift to the next slot reward sequence
+          practiceCondition.shift(); // shift to the next switch trial
         }
-        current_practice_reward_seq = practice_reward_seqs[0];
-        psychoJS.experiment.addData("reward_seq", reward_seq);
+        // get this trial's slot reward sequence
+        practice_reward_seq = practice_reward_seqs[0]; 
+        psychoJS.experiment.addData("practice_reward_seq: " + practice_reward_seq)
+        console.log("practice_reward_seq: " + practice_reward_seq)
+        // get the upcoming switch trial number (Note: trial number, not trial index)
+        practiceSwitchTrial = practiceCondition[0];
+        console.log("practiceSwitchTrial: " + practiceSwitchTrial)
 
         rand_val = Math.random();
         currentTrialReward = 0;
@@ -3196,8 +3172,6 @@ function practice_endRoutineEnd(snapshot) {
   }
 }
 
-
-// var conditions;
 var _key_resp_main_instruction_allKeys;
 var Main_InstructionComponents;
 function Main_InstructionRoutineBegin(snapshot) {
@@ -3212,14 +3186,8 @@ function Main_InstructionRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_main_instruction
     psychoJS.experiment.addData("text_main_instruction.started", globalClock.getTime());
-    // conditions = [[12, 20], [8, 20], [7, 20], [10, 20], [7, 14, 20], [13, 20]];
-    // conditions = [[12, 15], [6, 15], [15, 15], [7, 15], [5, 15], [4, 10, 15], [9, 15], [11, 15], [8, 15], [10, 15]];
-    // const conditions = Object.keys(DictCondRew); // check this is right reference
-    console.log("conditions made in Main_InstructionsRoutineBegin")
-
     psychoJS.experiment.addData('BlockCondition',block_option);
     psychoJS.experiment.addData('BlockOrderIndices',block_order);
-
     psychoJS.experiment.addData("key_resp_main_instruction.started", globalClock.getTime());
     
     key_resp_main_instruction.keys = undefined;
@@ -3338,11 +3306,11 @@ function Main_InstructionRoutineEnd(snapshot) {
   }
 }
 
-const block_conditions = Object.keys(DictCondRew); // check this is right reference
-
 var currentCondition;
 var reward_resetComponents;
 var current_block_index;
+psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
+console.log("mainConditions: " + mainConditions)
 
 function reward_resetRoutineBegin(snapshot) {
   return async function () {
@@ -3353,23 +3321,22 @@ function reward_resetRoutineBegin(snapshot) {
     reward_resetClock.reset(); // clock
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
-    // update component parameters for each repeat
-    // Run 'Begin Routine' code from code_reward_reset
-    
-    console.log("Remaining Conditions: " + conditions)
-    psychoJS.experiment.addData("conditions", conditions);
-    // currentCondition = conditions[0];
-    current_block_index = block_order[0];
-    currentCondition = conditions[current_block_index]; // array that provides trial indices at which the winning slot changes
-    console.log("Current Condition: " + currentCondition)
-
-    psychoJS.experiment.addData("currentCondition", currentCondition);
-
-    block_order.shift();
-
-    psychoJS.experiment.addData("conditionsAfterRemoval", conditions);
     nCorr = 0;
     consRewardImgs = ["stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png"];
+    // update component parameters for each repeat
+    // Run 'Begin Routine' code from code_reward_reset
+
+    // determine which block to run this time
+    current_block_index = block_order[0]; // take first index of block numbers for this session
+    block_order.shift(); // remove the first index block number to prepare for the next block in the experiment
+    // get conditions for this block
+    currentCondition = mainConditions[current_block_index]; // array that provides trial indices at which the winning slot changes
+    psychoJS.experiment.addData("currentCondition", currentCondition);
+    console.log("Current Condition: " + currentCondition)
+    // get reward sequences for this block
+    main_reward_seqs = mainRewardSeqs[current_block_index];
+    psychoJS.experiment.addData("main_reward_seqs", main_reward_seqs);
+    console.log("main_reward_seqs: " + main_reward_seqs)
     
     // keep track of which components have finished
     reward_resetComponents = [];
@@ -4021,31 +3988,39 @@ function reward_presentationRoutineBegin(snapshot) {
         }
         continueRoutine = false;
     } else {
-        reward_seqs = DictCondRew[currentCondition]; // 
-        reward_seq = reward_seqs[0];
-        
+        if (main_trials.thisN + 1 > mainSwitchTrial) {
+          main_reward_seqs.shift(); // shift to the next slot reward sequence
+          currentCondition.shift(); // shift to the next switch trial
+        }
+        // get this trial's slot reward sequence
+        main_reward_seq = main_reward_seqs[0]; 
+        console.log("main_reward_seq: " + main_reward_seq)
+        // get the upcoming switch trial number (Note: trial number, not trial index)
+        mainSwitchTrial = currentCondition[0];
+        console.log("mainSwitchTrial: " + mainSwitchTrial)
+
         // for (var i, _pj_c = 0, _pj_a = enumerate(currentCondition), _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
         //     i = _pj_a[_pj_c];
         //     if (((main_trials.thisN + 1) > i[1])) {
-        //         reward_seqs = DictCondRew[currentCondition];
-        //         reward_seq = reward_seqs[(i[0] + 1)];
+        //         main_reward_seqs = DictCondRew[currentCondition];
+        //         main_reward_seq = main_reward_seqs[(i[0] + 1)];
         //     }
         // }
     
-        for (const [index, element] of currentCondition.entries()) {
-            if (((main_trials.thisN + 1) > element)) {
-            reward_seqs = DictCondRew[currentCondition];
-            reward_seq = reward_seqs[(index + 1)];
-            }
-        }
+        // for (const [index, element] of currentCondition.entries()) {
+        //     if (((main_trials.thisN + 1) > element)) {
+        //       main_reward_seqs = DictCondRew[currentCondition];
+        //       main_reward_seq = main_reward_seqs[(index + 1)];
+        //     }
+        // }
     
-        psychoJS.experiment.addData("Main_reward_seq", reward_seq);
+        psychoJS.experiment.addData("Main_reward_seq", main_reward_seq);
         rand_val = Math.random();
         psychoJS.experiment.addData("Random value generated", rand_val);
         currentTrialReward = 0;
-        x = util.index(reward_seq, 1);
-        y = util.index(reward_seq, 2);
-        z = util.index(reward_seq, 3);
+        x = util.index(main_reward_seq, 1);
+        y = util.index(main_reward_seq, 2);
+        z = util.index(main_reward_seq, 3);
         if (((key_resp_slots_presentation.keys === keyboardNumbers[x]) || (key_resp_slots_presentation.keys === keyboardArrows[x]))) {
             if ((rand_val >= 0.2)) {
                 currentTrialReward = 100;
