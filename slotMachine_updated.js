@@ -1799,6 +1799,7 @@ var nCorr;
 var consRewardImgs;
 var practice_resetComponents;
 var practiceCondition;
+var practice_reward_seqs;
 
 function practice_resetRoutineBegin(snapshot) {
   return async function () {
@@ -2681,6 +2682,7 @@ function practice_intervalRoutineEnd(snapshot) {
 
 
 var practice_rewardsComponents;
+var practice_reward_seq;
 function practice_rewardsRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
