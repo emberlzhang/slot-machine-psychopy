@@ -1773,8 +1773,8 @@ function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
     currentLoop = practice_block;  // we're now the current loop
     
     // Schedule all the trials in the trialList:
-    for (thisPracticeBlock of practice_block) {
-      console.log("thisPracticeBlock: " + thisPracticeBlock)
+    for (const thisPracticeBlock of practice_block) {
+      // console.log("thisPracticeBlock: " + thisPracticeBlock)
       snapshot = practice_block.getSnapshot();
       practice_blockLoopScheduler.add(importConditions(snapshot));
       practice_blockLoopScheduler.add(practice_resetRoutineBegin(snapshot));
@@ -1798,7 +1798,7 @@ function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
 var nCorr;
 var consRewardImgs;
 var practice_resetComponents;
-var Condition;
+var practiceCondition;
 
 function practice_resetRoutineBegin(snapshot) {
   return async function () {
@@ -3309,8 +3309,8 @@ function Main_InstructionRoutineEnd(snapshot) {
 var currentCondition;
 var reward_resetComponents;
 var current_block_index;
-psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
-console.log("mainConditions: " + mainConditions)
+// psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
+// console.log("mainConditions: " + mainConditions)
 
 function reward_resetRoutineBegin(snapshot) {
   return async function () {
@@ -3323,6 +3323,8 @@ function reward_resetRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     nCorr = 0;
     consRewardImgs = ["stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png"];
+    psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
+    console.log("mainConditions: " + mainConditions)
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_reward_reset
 
