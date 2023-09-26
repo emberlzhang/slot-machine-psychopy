@@ -2723,7 +2723,7 @@ function practice_rewardsRoutineBegin(snapshot) {
         psychoJS.experiment.addData("practice_reward_seq: " + practice_reward_seq)
         console.log("practice_reward_seq: " + practice_reward_seq)
         // get the upcoming switch trial number (Note: trial number, not trial index)
-        practiceSwitchTrial = practiceCondition[practiceConditionIndex];
+        practiceSwitchTrial = practiceCondition[0];
         console.log("practiceSwitchTrial: " + practiceSwitchTrial)
 
         rand_val = Math.random();
