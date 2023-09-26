@@ -1799,6 +1799,7 @@ var nCorr;
 var consRewardImgs;
 var practice_resetComponents;
 var practiceCondition;
+var practiceSwitchTrial;
 var practice_reward_seqs;
 
 function practice_resetRoutineBegin(snapshot) {
@@ -1817,8 +1818,10 @@ function practice_resetRoutineBegin(snapshot) {
     // Run 'Begin Routine' code from code_practice_reset
     // get conditions for this block
     practiceCondition = practiceConditions[0]; // array that provides trial indices at which the winning slot changes
+    practiceSwitchTrial = practiceCondition[0]; // upcoming trial at which the winning slot changes
     psychoJS.experiment.addData("practiceCondition", practiceCondition);
     console.log("PracticeCondition: " + practiceCondition)
+    console.log("practiceSwitchTrial: " + practiceSwitchTrial)
     practiceConditions.shift(); // prep next block's conditions
     // get reward sequences for this block
     practice_reward_seqs = practiceRewardSeqs[0];
