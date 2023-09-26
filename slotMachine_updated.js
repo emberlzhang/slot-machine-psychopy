@@ -1824,7 +1824,9 @@ function practice_resetRoutineBegin(snapshot) {
     psychoJS.experiment.addData("practiceCondition", practiceCondition);
     console.log("PracticeCondition: " + practiceCondition)
     console.log("practiceSwitchTrial: " + practiceSwitchTrial)
-    practiceConditions.shift(); // prep next block's conditions
+    if (practiceConditions.length > 1) {
+      practiceConditions.shift(); // prep next block's conditions
+    }
     // get reward sequences for this block
     practice_reward_seqs = practiceRewardSeqs[0];
     if (practiceRewardSeqs.length > 1){
