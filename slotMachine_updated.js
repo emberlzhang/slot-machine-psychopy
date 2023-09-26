@@ -2708,7 +2708,9 @@ function practice_rewardsRoutineBegin(snapshot) {
     } else {
         if (practice_trials.thisN + 1 > practiceSwitchTrial) {
           practice_reward_seqs.shift(); // shift to the next slot reward sequence
-          practiceCondition.shift(); // shift to the next switch trial
+          if (practiceCondition.length > 1) {
+            practiceCondition.shift(); // shift to the next switch trial
+          }
         }
         // get this trial's slot reward sequence
         practice_reward_seq = practice_reward_seqs[0]; 
