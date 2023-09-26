@@ -1,0 +1,5 @@
+﻿participant,date,expName,psychopyVersion,OS,frameRate,key_resp_instruction1.started,key_resp_instruction1.keys,key_resp_instruction1.rt,key_resp_instruction1.duration,key_resp_instruction2.started,key_resp_instruction2.keys,key_resp_instruction2.rt,key_resp_instruction2.duration,key_resp_instruction3.started,key_resp_instruction3.keys,key_resp_instruction3.rt,key_resp_instruction3.duration
+,2023-09-26_09h34.36.186,slotMachine_updated,2023.1.3,MacIntel,60.0024001,,,,,,,,,,,,
+,2023-09-26_09h34.36.186,slotMachine_updated,2023.1.3,MacIntel,60.0024001,124.9285,space,30.8409,,,,,,,,,
+,2023-09-26_09h34.36.186,slotMachine_updated,2023.1.3,MacIntel,60.0024001,,,,,155.7977,space,0.4141,,,,,
+,2023-09-26_09h34.36.186,slotMachine_updated,2023.1.3,MacIntel,60.0024001,,,,,,,,,156.2309,space,0.3602,
