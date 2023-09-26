@@ -37,8 +37,8 @@ var pracCondRew = { // Note: conditions are by number of trials for first reward
   [[9, 15]]: [[2, 1, 3], [2, 3, 1]], 
   [[6, 15]]: [[1, 3, 2], [3, 1, 2]]
 };
-const practiceConditions = Object.keys(pracCondRew); // list of arrays, each array represents a block's trial indices where slot rewards change
-// [[9, 15], [6, 15]];
+// const practiceConditions = Object.keys(pracCondRew); // list of arrays, each array represents a block's trial indices where slot rewards change
+const practiceConditions = [[9, 15], [6, 15]];
 const practiceRewardSeqs = Object.values(pracCondRew); // list of arrays, each array represents a block's slot reward sequences
 // [ [[2, 1, 3], [2, 3, 1]], 
 //   [[1, 3, 2], [3, 2, 1]] ];
@@ -2688,7 +2688,7 @@ function practice_intervalRoutineEnd(snapshot) {
 
 var practice_rewardsComponents;
 var practice_reward_seq;
-var practiceConditionIndex = 0;
+// var practiceConditionIndex = 0;
 function practice_rewardsRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2709,13 +2709,14 @@ function practice_rewardsRoutineBegin(snapshot) {
     } else {
         if (practice_trials.thisN + 1 > practiceSwitchTrial) {
           practice_reward_seqs.shift(); // shift to the next slot reward sequence
-          if (practiceConditionIndex < practiceCondition.length) {
-            practiceConditionIndex += 1;
-            console.log("practiceConditionIndex: " + practiceConditionIndex)
-          }
-          // if (practiceCondition.length > 1) {
-          //   practiceCondition.shift(); // shift to the next switch trial
+          // if (practiceConditionIndex < practiceCondition.length) {
+          //   practiceConditionIndex += 1;
+          //   console.log("practiceConditionIndex: " + practiceConditionIndex)
           // }
+          if (practiceCondition.length > 1) {
+            practiceCondition.shift(); // shift to the next switch trial
+            console.log("practiceCondition shifted")
+          }
         }
         // get this trial's slot reward sequence
         practice_reward_seq = practice_reward_seqs[0]; 
