@@ -1827,8 +1827,12 @@ function practice_resetRoutineBegin(snapshot) {
     practiceConditions.shift(); // prep next block's conditions
     // get reward sequences for this block
     practice_reward_seqs = practiceRewardSeqs[0];
+    if (practiceRewardSeqs.length > 1){
+      practiceRewardSeqs.shift();
+      console.log("practiceRewardSeqs shifted")
+    }
     psychoJS.experiment.addData("practice_reward_seqs", practice_reward_seqs);
-    console.log("practice_reward_seqs: " + practice_reward_seqs)
+    console.log("This block's practice_reward_seqs: " + practice_reward_seqs)
 
 
     // keep track of which components have finished
@@ -2688,7 +2692,6 @@ function practice_intervalRoutineEnd(snapshot) {
 
 var practice_rewardsComponents;
 var practice_reward_seq;
-// var practiceConditionIndex = 0;
 function practice_rewardsRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2708,20 +2711,21 @@ function practice_rewardsRoutineBegin(snapshot) {
         continueRoutine = false;
     } else {
         if (practice_trials.thisN + 1 > practiceSwitchTrial) {
-          practice_reward_seqs.shift(); // shift to the next slot reward sequence
-          // if (practiceConditionIndex < practiceCondition.length) {
-          //   practiceConditionIndex += 1;
-          //   console.log("practiceConditionIndex: " + practiceConditionIndex)
-          // }
+          if (practice_reward_seqs.length > 1){
+            practice_reward_seqs.shift(); // shift to the next slot reward sequence
+            console.log("practice_reward_seqs shifted")
+          }
           if (practiceCondition.length > 1) {
             practiceCondition.shift(); // shift to the next switch trial
             console.log("practiceCondition shifted")
+            console.log("practiceCondition: " + practiceCondition)
           }
         }
         // get this trial's slot reward sequence
         practice_reward_seq = practice_reward_seqs[0]; 
-        psychoJS.experiment.addData("practice_reward_seq: " + practice_reward_seq)
         console.log("practice_reward_seq: " + practice_reward_seq)
+        psychoJS.experiment.addData("practice_reward_seq: " + practice_reward_seq)
+        
         // get the upcoming switch trial number (Note: trial number, not trial index)
         practiceSwitchTrial = practiceCondition[0];
         console.log("practiceSwitchTrial: " + practiceSwitchTrial)
