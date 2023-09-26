@@ -2688,6 +2688,7 @@ function practice_intervalRoutineEnd(snapshot) {
 
 var practice_rewardsComponents;
 var practice_reward_seq;
+var practiceConditionIndex = 0;
 function practice_rewardsRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2708,16 +2709,20 @@ function practice_rewardsRoutineBegin(snapshot) {
     } else {
         if (practice_trials.thisN + 1 > practiceSwitchTrial) {
           practice_reward_seqs.shift(); // shift to the next slot reward sequence
-          if (practiceCondition.length > 1) {
-            practiceCondition.shift(); // shift to the next switch trial
+          if (practiceConditionIndex < practiceCondition.length) {
+            practiceConditionIndex += 1;
+            console.log("practiceConditionIndex: " + practiceConditionIndex)
           }
+          // if (practiceCondition.length > 1) {
+          //   practiceCondition.shift(); // shift to the next switch trial
+          // }
         }
         // get this trial's slot reward sequence
         practice_reward_seq = practice_reward_seqs[0]; 
         psychoJS.experiment.addData("practice_reward_seq: " + practice_reward_seq)
         console.log("practice_reward_seq: " + practice_reward_seq)
         // get the upcoming switch trial number (Note: trial number, not trial index)
-        practiceSwitchTrial = practiceCondition[0];
+        practiceSwitchTrial = practiceCondition[practiceConditionIndex];
         console.log("practiceSwitchTrial: " + practiceSwitchTrial)
 
         rand_val = Math.random();
