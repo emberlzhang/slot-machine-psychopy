@@ -117,9 +117,10 @@ psychoJS.scheduleCondition(function() { return (psychoJS.gui.dialogComponent.but
 // flowScheduler gets run if the participants presses OK
 flowScheduler.add(updateInfo); // add timeStamp
 flowScheduler.add(experimentInit);
-flowScheduler.add(intro_videoRoutineBegin());
-flowScheduler.add(intro_videoRoutineEachFrame());
-flowScheduler.add(intro_videoRoutineEnd());
+/////// Comment below this out if DEBUG mode
+// flowScheduler.add(intro_videoRoutineBegin());
+// flowScheduler.add(intro_videoRoutineEachFrame());
+// flowScheduler.add(intro_videoRoutineEnd());
 flowScheduler.add(instruction1RoutineBegin());
 flowScheduler.add(instruction1RoutineEachFrame());
 flowScheduler.add(instruction1RoutineEnd());
