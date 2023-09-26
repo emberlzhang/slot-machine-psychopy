@@ -1,8 +1,8 @@
 # slotMachinetask
 
-PsychoPy Slot Machine Game 6 Block 20 trials Version 2022 August by Rupak Krishnamurthy
+PsychoPy Slot Machine Game Online Version 2023 by Janet Chang
 
-Adopted from a MATLAB version provided by Vincenzo
+Adapted from 6 Block 20 trials Version 2022 August by Rupak Krishnamurthy and MATLAB version provided by Vincenzo Fiore
 
 Input/Response setting 
 
@@ -12,10 +12,10 @@ Input/Response setting
 
 Experimental flow 
 
-    Instruction 
+    Instructions 
 
-    Practice (20 trials) with feedback 
+    Practice: 2 blocks x 15 trials with feedback 
 
-    6 blocks (20 trials each) with feedback
+    Experiment: 10 blocks x 15 trials no feedback
 
     Close screen  
