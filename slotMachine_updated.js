@@ -341,7 +341,7 @@ var globalClock;
 var routineTimer;
 
 async function experimentInit() {
-  nPracticeBlocks = 2;
+  nPracticeBlocks = 1;
   nPracticeTrials = 15;
 
   // Initialize components for Routine "intro_video"
@@ -807,7 +807,7 @@ async function experimentInit() {
   text_practice_end = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_practice_end',
-    text: 'You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to contunue',
+    text: 'You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to continue',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -3330,6 +3330,7 @@ function Main_InstructionRoutineEnd(snapshot) {
 var currentCondition;
 var reward_resetComponents;
 var current_block_index;
+var mainSwitchTrial;
 // psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
 // console.log("mainConditions: " + mainConditions)
 
@@ -3354,6 +3355,7 @@ function reward_resetRoutineBegin(snapshot) {
     block_order.shift(); // remove the first index block number to prepare for the next block in the experiment
     // get conditions for this block
     currentCondition = mainConditions[current_block_index]; // array that provides trial indices at which the winning slot changes
+    mainSwitchTrial = currentCondition[0];
     psychoJS.experiment.addData("currentCondition", currentCondition);
     console.log("Current Condition: " + currentCondition)
     // get reward sequences for this block
