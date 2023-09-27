@@ -86,7 +86,18 @@ var mainCondRew = {
   [[8, 15]]: [[3, 2, 1], [3, 1, 2]],
   [[10, 15]]: [[3, 1, 2], [1, 3, 2]]
 };
-const mainConditions = Object.keys(mainCondRew); // list of arrays, each array represents a block's trial indices where slot rewards change
+const mainConditions = [ // list of arrays, each array represents a block's trial indices where slot rewards change
+  [12, 15],
+  [6, 15],
+  [15, 15],
+  [7, 15],
+  [5, 15],
+  [4, 10, 15],
+  [9, 15],
+  [11, 15],
+  [8, 15],
+  [10, 15]
+];
 const mainRewardSeqs = Object.values(mainCondRew); // list of arrays, each array represents a block's slot reward sequences
 
 // Run 'Before Experiment' code from code_reward_reset
@@ -3357,11 +3368,11 @@ function reward_resetRoutineBegin(snapshot) {
     currentCondition = mainConditions[current_block_index]; // array that provides trial indices at which the winning slot changes
     mainSwitchTrial = currentCondition[0];
     psychoJS.experiment.addData("currentCondition", currentCondition);
-    console.log("Current Condition: " + currentCondition)
+    console.log("This block currentCondition: " + currentCondition)
     // get reward sequences for this block
     main_reward_seqs = mainRewardSeqs[current_block_index];
     psychoJS.experiment.addData("main_reward_seqs", main_reward_seqs);
-    console.log("main_reward_seqs: " + main_reward_seqs)
+    console.log("This block main_reward_seqs: " + main_reward_seqs)
     
     // keep track of which components have finished
     reward_resetComponents = [];
