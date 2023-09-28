@@ -3342,8 +3342,6 @@ var currentCondition;
 var reward_resetComponents;
 var current_block_index;
 var mainSwitchTrial;
-// psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
-// console.log("mainConditions: " + mainConditions)
 
 function reward_resetRoutineBegin(snapshot) {
   return async function () {
@@ -3356,7 +3354,7 @@ function reward_resetRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     nCorr = 0;
     consRewardImgs = ["stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png"];
-    psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
+    // psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
     console.log("mainConditions: " + mainConditions)
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_reward_reset
@@ -4015,6 +4013,8 @@ function reward_presentationRoutineBegin(snapshot) {
     reward_presentationClock.reset(); // clock
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
+    psychoJS.experiment.addData("rewardPresentationTime", rewardPresentationTime);
+    
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_reward_presentation
     if (endTrial) {
@@ -4398,7 +4398,7 @@ function Block_breakRoutineBegin(snapshot) {
     // Run 'Begin Routine' code from code_block_break
     psychoJS.experiment.addData("text_block_break.started", globalClock.getTime());
     block_reward.push(nCorr);
-    blockMsg = (("Total reward for this day: " + nCorr.toString()) + "\n New day starts soon");
+    blockMsg = (("Total reward for this day: " + nCorr.toString()) + "\n You now have a break of 5 seconds.");
     
     text_block_break.setText(blockMsg);
     // keep track of which components have finished
