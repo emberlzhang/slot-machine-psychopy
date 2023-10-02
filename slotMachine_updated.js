@@ -17,6 +17,7 @@ let expInfo = {
     'participant': '',
 };
 
+
 // Start code blocks for 'Before Experiment'
 // Run 'Before Experiment' code from code_practice_reset
 var card_size = [0.4, 0.4];
@@ -395,7 +396,7 @@ async function experimentInit() {
   text_instruction2 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_instruction2',
-    text: 'But there is something strange about these machines: they are malfunctioning! \n\nThere is always a machine that grants many high rewards (most of the rounds 100 points, but sometimes only 10 or even 0). Tere is always a machine that grants many low rewards (mostly 10 points, sometimes 100 or 0), and a machine that grants no reward most of the rounds (mostly 0 points, sometimes 100 or 10). \n\nYou have to find the appropriate machines to maximise your reward.\n\nPress any key to continue',
+    text: 'But there is something strange about these machines: they are malfunctioning! \n\nThere is always a machine that grants many high rewards (most of the rounds 100 points, but sometimes only 10 or even 0). There is always a machine that grants many low rewards (mostly 10 points, sometimes 100 or 0), and a machine that grants no reward most of the rounds (mostly 0 points, sometimes 100 or 10). \n\nYou have to find the appropriate machines to maximise your reward.\n\nPress any key to continue',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -1262,7 +1263,7 @@ async function experimentInit() {
   text_end_ins = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_end_ins',
-    text: '\nYou have successfully completed the task.\n\nPlease let our researcher know.\n\nThank you.',
+    text: '\nYou have successfully completed the task.\n\nThank you.',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
