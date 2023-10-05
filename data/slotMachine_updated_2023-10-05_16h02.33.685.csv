@@ -1,0 +1,10 @@
+﻿key_resp_welcome.started,key_resp_welcome.keys,key_resp_welcome.rt,key_resp_welcome.duration,participant,date,expName,psychopyVersion,OS,frameRate,key_resp_instruction1.started,key_resp_instruction1.keys,key_resp_instruction1.rt,key_resp_instruction1.duration,key_resp_instruction2.started,key_resp_instruction2.keys,key_resp_instruction2.rt,key_resp_instruction2.duration,key_resp_instruction3.started,key_resp_instruction3.keys,key_resp_instruction3.rt,key_resp_instruction3.duration,practiceCondition,practice_reward_seqs,key_resp_practice_slots.started,key_resp_practice_slots.keys,key_resp_practice_slots.rt,key_resp_practice_slots.duration,presentationInterval,"practice_reward_seq: 2,1,3",reward_Img,Cuml_rew,currentPracticeTrialReward,practice_trials.thisRepN,practice_trials.thisTrialN,practice_trials.thisN,practice_trials.thisIndex,practice_trials.ran
+0.0007,space,4.4878,,,2023-10-05_16h02.33.685,slotMachine_updated,2023.1.3,MacIntel,30.02101471,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,2023-10-05_16h02.33.685,slotMachine_updated,2023.1.3,MacIntel,30.02101471,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,2023-10-05_16h02.33.685,slotMachine_updated,2023.1.3,MacIntel,30.02101471,129.4768,space,5.9069,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,2023-10-05_16h02.33.685,slotMachine_updated,2023.1.3,MacIntel,30.02101471,,,,,135.4557,space,27.7387,,,,,,,,,,,,,,,,,,,,,
+,,,,,2023-10-05_16h02.33.685,slotMachine_updated,2023.1.3,MacIntel,30.02101471,,,,,,,,,163.2264,space,15.4597,,,,,,,,,,,,,,,,,
+,,,,,2023-10-05_16h02.33.685,slotMachine_updated,2023.1.3,MacIntel,30.02101471,,,,,,,,,,,,,"[9,15]","[[2,1,3],[2,3,1]]",178.7295,right,1.47,,1.5,,stimuli/card_0_transparent.png,0,0,0,0,0,0,1
+,,,,,2023-10-05_16h02.33.685,slotMachine_updated,2023.1.3,MacIntel,30.02101471,,,,,,,,,,,,,,,182.0239,up,0.3591,,1,,stimuli/card_100_transparent.png,100,100,1,0,1,0,1
+,,,,,2023-10-05_16h02.33.685,slotMachine_updated,2023.1.3,MacIntel,30.02101471,,,,,,,,,,,,,,,183.6897,left,0.3007,,1.5,,stimuli/card_10_transparent.png,110,10,2,0,2,0,1
+,,,,,2023-10-05_16h02.33.685,slotMachine_updated,2023.1.3,MacIntel,30.02101471,,,,,,,,,,,,,,,185.8047,up,0.0402,,1.5,,stimuli/card_100_transparent.png,210,100,3,0,3,0,1
