@@ -398,10 +398,9 @@ async function experimentInit() {
   text_instruction1 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_instruction1',
-    text: 'Slot Machine Game Instructions' +
+    text: 'SLOT MACHINE GAME INSTRUCTIONS' +
     '\n\nImagine that you go to a casino to play with 3 slot machines for 10 days.' +
-    '\n\nEach day you can play 15 rounds on any of these machines.' +
-    '\n\nEach round, you can select a machine and you will receive a reward.'+
+    '\n\nEach day, you can play 15 rounds. Each round, you select a machine to play and you can earn a reward.'+
     '\n\nPress any key to continue',
     font: 'Open Sans',
     units: undefined, 
@@ -419,14 +418,14 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_instruction2',
     text: 'But there is something strange about these machines: they are malfunctioning!' +
-    '\n\nThere is always a machine that grants many high rewards (mostly 100 points, but sometimes 10 or 0 points).' +
-    '\n\nThere is always a machine that grants many low rewards (mostly 10 points, sometimes 100 or 0 points),' +
-    '\n\nand a machine that grants no reward most of the rounds (mostly 0 points, sometimes 100 or 10 points).' +
-    '\n\nYou have to find the appropriate machines to maximize your reward.'+
+    '\n\nOne machine earns high rewards (mostly 100 points, but sometimes 10 or 0 points).' +
+    '\nOne machine earns low rewards (mostly 10 points, but sometimes 100 or 0 points)' +
+    '\nAnd one machine earns zero reward (mostly 0 points, but sometimes 100 or 10 points).' +
+    '\nIn this game, you will have to find the best machines to maximize your reward.'+
     '\n\nPress any key to continue',
     font: 'Open Sans',
     units: undefined, 
-    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
     depth: 0.0 
@@ -440,8 +439,8 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_instruction3',
     text: 'Every day, the machines will be different. Also, they may or may not change within the same day.'+
-    '\n\nSo the correct selection may become the wrong one after a while. You will have to adapt!'+
-    '\n\nThe game takes about 10 minutes to complete and starts with a quick practice.'+
+    '\n\nSo the best machine may change after a while. You will have to adapt!'+
+    '\n\nThe game takes about 10 minutes and starts with a quick practice.'+
     '\n\nPress LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
     '\n\nPress any key to continue.',
     font: 'Open Sans',
