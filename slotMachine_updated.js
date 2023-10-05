@@ -2198,7 +2198,7 @@ function practice_slotsRoutineBegin(snapshot) {
     // practice_slotsComponents.push(image_21);
     practice_slotsComponents.push(text_practice_slots);
     practice_slotsComponents.push(text_practice_slots_2);
-    practice_slotsComponents.push(polygon);
+    // practice_slotsComponents.push(polygon); // dark grey square marking current trial
     practice_slotsComponents.push(key_resp_practice_slots);
     
     for (const thisComponent of practice_slotsComponents)
@@ -2341,13 +2341,13 @@ function practice_slotsRoutineEachFrame() {
     }
     
     // *polygon* updates
-    if (t >= 0.0 && polygon.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      polygon.tStart = t;  // (not accounting for frame time here)
-      polygon.frameNStart = frameN;  // exact frame index
+    // if (t >= 0.0 && polygon.status === PsychoJS.Status.NOT_STARTED) {
+    //   // keep track of start time/frame for later
+    //   polygon.tStart = t;  // (not accounting for frame time here)
+    //   polygon.frameNStart = frameN;  // exact frame index
       
-      polygon.setAutoDraw(true);
-    }
+    //   polygon.setAutoDraw(true);
+    // }
 
     
     // *key_resp_practice_slots* updates
@@ -2488,7 +2488,7 @@ function practice_intervalRoutineBegin(snapshot) {
     // practice_intervalComponents.push(image_25);
     // practice_intervalComponents.push(image_26);
     practice_intervalComponents.push(text_practice_interval);
-    practice_intervalComponents.push(polygon_2);
+    // practice_intervalComponents.push(polygon_2);
     practice_intervalComponents.push(polygon_practice_interval);
     
     for (const thisComponent of practice_intervalComponents)
@@ -2648,14 +2648,14 @@ function practice_intervalRoutineEachFrame() {
       text_practice_interval.setAutoDraw(false);
     }
     
-    // *polygon_2* updates
-    if (t >= 0.0 && polygon_2.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      polygon_2.tStart = t;  // (not accounting for frame time here)
-      polygon_2.frameNStart = frameN;  // exact frame index
+    // // *polygon_2* updates
+    // if (t >= 0.0 && polygon_2.status === PsychoJS.Status.NOT_STARTED) {
+    //   // keep track of start time/frame for later
+    //   polygon_2.tStart = t;  // (not accounting for frame time here)
+    //   polygon_2.frameNStart = frameN;  // exact frame index
       
-      polygon_2.setAutoDraw(true);
-    }
+    //   polygon_2.setAutoDraw(true);
+    // }
 
     frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (polygon_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
@@ -2859,7 +2859,7 @@ function practice_rewardsRoutineBegin(snapshot) {
     // practice_rewardsComponents.push(image_30);
     // practice_rewardsComponents.push(image_31);
     // practice_rewardsComponents.push(image_32);
-    practice_rewardsComponents.push(polygon_3);
+    // practice_rewardsComponents.push(polygon_3);
     practice_rewardsComponents.push(text_practice_rewards);
     
     for (const thisComponent of practice_rewardsComponents)
@@ -3018,19 +3018,19 @@ function practice_rewardsRoutineEachFrame() {
     //   image_32.setAutoDraw(false);
     // }
     
-    // *polygon_3* updates
-    if (t >= 0.0 && polygon_3.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      polygon_3.tStart = t;  // (not accounting for frame time here)
-      polygon_3.frameNStart = frameN;  // exact frame index
+    // // *polygon_3* updates
+    // if (t >= 0.0 && polygon_3.status === PsychoJS.Status.NOT_STARTED) {
+    //   // keep track of start time/frame for later
+    //   polygon_3.tStart = t;  // (not accounting for frame time here)
+    //   polygon_3.frameNStart = frameN;  // exact frame index
       
-      polygon_3.setAutoDraw(true);
-    }
+    //   polygon_3.setAutoDraw(true);
+    // }
 
-    frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (polygon_3.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      polygon_3.setAutoDraw(false);
-    }
+    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    // if (polygon_3.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+    //   polygon_3.setAutoDraw(false);
+    // }
     
     // *text_practice_rewards* updates
     if (t >= 0 && text_practice_rewards.status === PsychoJS.Status.NOT_STARTED) {
@@ -3501,7 +3501,7 @@ function slots_presentationRoutineBegin(snapshot) {
     // slots_presentationComponents.push(image_15);
     slots_presentationComponents.push(text_slots_presentation);
     slots_presentationComponents.push(text_slots_presentation_2);
-    slots_presentationComponents.push(polygon_4);
+    // slots_presentationComponents.push(polygon_4);
     slots_presentationComponents.push(key_resp_slots_presentation);
     
     for (const thisComponent of slots_presentationComponents)
@@ -3644,13 +3644,13 @@ function slots_presentationRoutineEachFrame() {
     }
     
     // *polygon_4* updates
-    if (t >= 0.0 && polygon_4.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      polygon_4.tStart = t;  // (not accounting for frame time here)
-      polygon_4.frameNStart = frameN;  // exact frame index
+    // if (t >= 0.0 && polygon_4.status === PsychoJS.Status.NOT_STARTED) {
+    //   // keep track of start time/frame for later
+    //   polygon_4.tStart = t;  // (not accounting for frame time here)
+    //   polygon_4.frameNStart = frameN;  // exact frame index
       
-      polygon_4.setAutoDraw(true);
-    }
+    //   polygon_4.setAutoDraw(true);
+    // }
 
     
     // *key_resp_slots_presentation* updates
@@ -3789,7 +3789,7 @@ function selection_intervalRoutineBegin(snapshot) {
     // selection_intervalComponents.push(image_13);
     // selection_intervalComponents.push(image_16);
     selection_intervalComponents.push(polygon_selection_interval);
-    selection_intervalComponents.push(polygon_5);
+    // selection_intervalComponents.push(polygon_5);
     selection_intervalComponents.push(text_selection_interval);
     
     for (const thisComponent of selection_intervalComponents)
@@ -3948,19 +3948,19 @@ function selection_intervalRoutineEachFrame() {
       polygon_selection_interval.setAutoDraw(false);
     }
     
-    // *polygon_5* updates
-    if (t >= 0.0 && polygon_5.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      polygon_5.tStart = t;  // (not accounting for frame time here)
-      polygon_5.frameNStart = frameN;  // exact frame index
+    // // *polygon_5* updates
+    // if (t >= 0.0 && polygon_5.status === PsychoJS.Status.NOT_STARTED) {
+    //   // keep track of start time/frame for later
+    //   polygon_5.tStart = t;  // (not accounting for frame time here)
+    //   polygon_5.frameNStart = frameN;  // exact frame index
       
-      polygon_5.setAutoDraw(true);
-    }
+    //   polygon_5.setAutoDraw(true);
+    // }
 
-    frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (polygon_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      polygon_5.setAutoDraw(false);
-    }
+    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    // if (polygon_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+    //   polygon_5.setAutoDraw(false);
+    // }
     
     // *text_selection_interval* updates
     if (t >= 0.0 && text_selection_interval.status === PsychoJS.Status.NOT_STARTED) {
@@ -4168,7 +4168,7 @@ function reward_presentationRoutineBegin(snapshot) {
     // reward_presentationComponents.push(image_11);
     // reward_presentationComponents.push(image_14);
     // reward_presentationComponents.push(image_17);
-    reward_presentationComponents.push(polygon_6);
+    // reward_presentationComponents.push(polygon_6);
     reward_presentationComponents.push(text_reward_presentation);
     
     for (const thisComponent of reward_presentationComponents)
@@ -4328,18 +4328,18 @@ function reward_presentationRoutineEachFrame() {
     // }
     
     // *polygon_6* updates
-    if (t >= 0.0 && polygon_6.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      polygon_6.tStart = t;  // (not accounting for frame time here)
-      polygon_6.frameNStart = frameN;  // exact frame index
+    // if (t >= 0.0 && polygon_6.status === PsychoJS.Status.NOT_STARTED) {
+    //   // keep track of start time/frame for later
+    //   polygon_6.tStart = t;  // (not accounting for frame time here)
+    //   polygon_6.frameNStart = frameN;  // exact frame index
       
-      polygon_6.setAutoDraw(true);
-    }
+    //   polygon_6.setAutoDraw(true);
+    // }
 
-    frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (polygon_6.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      polygon_6.setAutoDraw(false);
-    }
+    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    // if (polygon_6.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+    //   polygon_6.setAutoDraw(false);
+    // }
     
     // *text_reward_presentation* updates
     if (t >= 0 && text_reward_presentation.status === PsychoJS.Status.NOT_STARTED) {
