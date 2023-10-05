@@ -905,66 +905,66 @@ async function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -3.0 
   });
-  arrow = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'arrow', units : undefined, 
-    image : 'stimuli/arrow_transparent.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : arrow_loc, size : arrowSize,
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -4.0 
-  });
-  image_3 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'image_3', units : undefined, 
-    image : 'default.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -5.0 
-  });
-  image_6 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'image_6', units : undefined, 
-    image : 'default.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -6.0 
-  });
-  image_9 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'image_9', units : undefined, 
-    image : 'default.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -7.0 
-  });
-  image_12 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'image_12', units : undefined, 
-    image : 'default.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -8.0 
-  });
-  image_15 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'image_15', units : undefined, 
-    image : 'default.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -9.0 
-  });
+  // arrow = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'arrow', units : undefined, 
+  //   image : 'stimuli/arrow_transparent.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : arrow_loc, size : arrowSize,
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -4.0 
+  // });
+  // image_3 = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'image_3', units : undefined, 
+  //   image : 'default.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -5.0 
+  // });
+  // image_6 = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'image_6', units : undefined, 
+  //   image : 'default.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -6.0 
+  // });
+  // image_9 = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'image_9', units : undefined, 
+  //   image : 'default.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -7.0 
+  // });
+  // image_12 = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'image_12', units : undefined, 
+  //   image : 'default.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -8.0 
+  // });
+  // image_15 = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'image_15', units : undefined, 
+  //   image : 'default.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -9.0 
+  // });
   text_slots_presentation = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_slots_presentation',
