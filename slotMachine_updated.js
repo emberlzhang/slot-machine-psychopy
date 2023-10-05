@@ -2171,16 +2171,16 @@ function practice_slotsRoutineBegin(snapshot) {
     endMsg = " ";
     endTrial = false;
     
-    image.setPos(consReward_pos[0]);
-    image.setImage(consRewardImgs[4]);
-    image_18.setPos(consReward_pos[1]);
-    image_18.setImage(consRewardImgs[3]);
-    image_19.setPos(consReward_pos[2]);
-    image_19.setImage(consRewardImgs[2]);
-    image_20.setPos(consReward_pos[3]);
-    image_20.setImage(consRewardImgs[1]);
-    image_21.setPos(consReward_pos[4]);
-    image_21.setImage(consRewardImgs[0]);
+    // image.setPos(consReward_pos[0]);
+    // image.setImage(consRewardImgs[4]);
+    // image_18.setPos(consReward_pos[1]);
+    // image_18.setImage(consRewardImgs[3]);
+    // image_19.setPos(consReward_pos[2]);
+    // image_19.setImage(consRewardImgs[2]);
+    // image_20.setPos(consReward_pos[3]);
+    // image_20.setImage(consRewardImgs[1]);
+    // image_21.setPos(consReward_pos[4]);
+    // image_21.setImage(consRewardImgs[0]);
     text_practice_slots.setText(textMsg);
     key_resp_practice_slots.keys = undefined;
     key_resp_practice_slots.rt = undefined;
@@ -2464,16 +2464,16 @@ function practice_intervalRoutineBegin(snapshot) {
         }
     }
     
-    image_22.setPos(consReward_pos[0]);
-    image_22.setImage(consRewardImgs[4]);
-    image_23.setPos(consReward_pos[1]);
-    image_23.setImage(consRewardImgs[3]);
-    image_24.setPos(consReward_pos[2]);
-    image_24.setImage(consRewardImgs[2]);
-    image_25.setPos(consReward_pos[3]);
-    image_25.setImage(consRewardImgs[1]);
-    image_26.setPos(consReward_pos[4]);
-    image_26.setImage(consRewardImgs[0]);
+    // image_22.setPos(consReward_pos[0]);
+    // image_22.setImage(consRewardImgs[4]);
+    // image_23.setPos(consReward_pos[1]);
+    // image_23.setImage(consRewardImgs[3]);
+    // image_24.setPos(consReward_pos[2]);
+    // image_24.setImage(consRewardImgs[2]);
+    // image_25.setPos(consReward_pos[3]);
+    // image_25.setImage(consRewardImgs[1]);
+    // image_26.setPos(consReward_pos[4]);
+    // image_26.setImage(consRewardImgs[0]);
     text_practice_interval.setText(textMsg);
     polygon_practice_interval.setPos(boxPos);
     // keep track of which components have finished
@@ -2841,11 +2841,11 @@ function practice_rewardsRoutineBegin(snapshot) {
     
     image_27.setPos(rewPos);
     image_27.setImage(rewImg);
-    image_28.setImage(consRewardImgs[4]);
-    image_29.setImage(consRewardImgs[3]);
-    image_30.setImage(consRewardImgs[2]);
-    image_31.setImage(consRewardImgs[1]);
-    image_32.setImage(consRewardImgs[0]);
+    // image_28.setImage(consRewardImgs[4]);
+    // image_29.setImage(consRewardImgs[3]);
+    // image_30.setImage(consRewardImgs[2]);
+    // image_31.setImage(consRewardImgs[1]);
+    // image_32.setImage(consRewardImgs[0]);
     text_practice_rewards.setText(textMsg);
     // keep track of which components have finished
     practice_rewardsComponents = [];
@@ -3474,16 +3474,16 @@ function slots_presentationRoutineBegin(snapshot) {
     endMsg = " ";
     endTrial = false;
     
-    image_3.setPos(consReward_pos[0]);
-    image_3.setImage(consRewardImgs[4]);
-    image_6.setPos(consReward_pos[1]);
-    image_6.setImage(consRewardImgs[3]);
-    image_9.setPos(consReward_pos[2]);
-    image_9.setImage(consRewardImgs[2]);
-    image_12.setPos(consReward_pos[3]);
-    image_12.setImage(consRewardImgs[1]);
-    image_15.setPos(consReward_pos[4]);
-    image_15.setImage(consRewardImgs[0]);
+    // image_3.setPos(consReward_pos[0]);
+    // image_3.setImage(consRewardImgs[4]);
+    // image_6.setPos(consReward_pos[1]);
+    // image_6.setImage(consRewardImgs[3]);
+    // image_9.setPos(consReward_pos[2]);
+    // image_9.setImage(consRewardImgs[2]);
+    // image_12.setPos(consReward_pos[3]);
+    // image_12.setImage(consRewardImgs[1]);
+    // image_15.setPos(consReward_pos[4]);
+    // image_15.setImage(consRewardImgs[0]);
     text_slots_presentation.setText(textMsg);
     key_resp_slots_presentation.keys = undefined;
     key_resp_slots_presentation.rt = undefined;
@@ -3765,16 +3765,16 @@ function selection_intervalRoutineBegin(snapshot) {
         }
     }
     
-    image_4.setPos(consReward_pos[0]);
-    image_4.setImage(consRewardImgs[4]);
-    image_7.setPos(consReward_pos[1]);
-    image_7.setImage(consRewardImgs[3]);
-    image_10.setPos(consReward_pos[2]);
-    image_10.setImage(consRewardImgs[2]);
-    image_13.setPos(consReward_pos[3]);
-    image_13.setImage(consRewardImgs[1]);
-    image_16.setPos(consReward_pos[4]);
-    image_16.setImage(consRewardImgs[0]);
+    // image_4.setPos(consReward_pos[0]);
+    // image_4.setImage(consRewardImgs[4]);
+    // image_7.setPos(consReward_pos[1]);
+    // image_7.setImage(consRewardImgs[3]);
+    // image_10.setPos(consReward_pos[2]);
+    // image_10.setImage(consRewardImgs[2]);
+    // image_13.setPos(consReward_pos[3]);
+    // image_13.setImage(consRewardImgs[1]);
+    // image_16.setPos(consReward_pos[4]);
+    // image_16.setImage(consRewardImgs[0]);
     polygon_selection_interval.setPos(boxPos);
     text_selection_interval.setText(textMsg);
     // keep track of which components have finished
@@ -4150,11 +4150,11 @@ function reward_presentationRoutineBegin(snapshot) {
     
     image_2.setPos(rewPos);
     image_2.setImage(rewImg);
-    image_5.setImage(consRewardImgs[4]);
-    image_8.setImage(consRewardImgs[3]);
-    image_11.setImage(consRewardImgs[2]);
-    image_14.setImage(consRewardImgs[1]);
-    image_17.setImage(consRewardImgs[0]);
+    // image_5.setImage(consRewardImgs[4]);
+    // image_8.setImage(consRewardImgs[3]);
+    // image_11.setImage(consRewardImgs[2]);
+    // image_14.setImage(consRewardImgs[1]);
+    // image_17.setImage(consRewardImgs[0]);
     text_reward_presentation.setText(textMsg);
     // keep track of which components have finished
     reward_presentationComponents = [];
