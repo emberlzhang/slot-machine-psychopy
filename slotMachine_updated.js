@@ -129,9 +129,9 @@ psychoJS.scheduleCondition(function() { return (psychoJS.gui.dialogComponent.but
 // flowScheduler gets run if the participants presses OK
 flowScheduler.add(updateInfo); // add timeStamp
 flowScheduler.add(experimentInit);
-// flowScheduler.add(welcomeRoutineBegin());
-// flowScheduler.add(welcomeRoutineEachFrame());
-// flowScheduler.add(welcomeRoutineEnd());
+flowScheduler.add(welcomeRoutineBegin());
+flowScheduler.add(welcomeRoutineEachFrame());
+flowScheduler.add(welcomeRoutineEnd());
 flowScheduler.add(intro_videoRoutineBegin());
 flowScheduler.add(intro_videoRoutineEachFrame());
 flowScheduler.add(intro_videoRoutineEnd());
@@ -376,9 +376,9 @@ async function experimentInit() {
     });
   
   // Initialize components for Routine "welcome"
-  instruction1Clock = new util.Clock();
+  welcomeClock = new util.Clock();
   // Run 'Begin Experiment' code from code_welcome
-  text_instruction1 = new visual.TextStim({
+  text_welcome = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_welcome',
     text: 'Welcome to the Slot Machine Game.\n\nPress any key to continue',
@@ -389,7 +389,7 @@ async function experimentInit() {
     color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
     depth: -1.0 
   });
-  key_resp_instruction1 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  key_resp_welcome = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
 
   // Initialize components for Routine "instruction1"
@@ -398,7 +398,11 @@ async function experimentInit() {
   text_instruction1 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_instruction1',
-    text: 'Welcome to slot machine game.\n\nImagine that you go to a casino to play with three slot machines for ten days. Each day you can play 15 rounds on any of these machines. Each round, you can select a machine and you will receive a reward.\n\nPress any key to continue',
+    text: 'Slot Machine Game Instructions' +
+    '\n\nImagine that you go to a casino to play with 3 slot machines for 10 days.' +
+    '\n\nEach day you can play 15 rounds on any of these machines.' +
+    '\n\nEach round, you can select a machine and you will receive a reward.'+
+    '\n\nPress any key to continue',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -414,7 +418,12 @@ async function experimentInit() {
   text_instruction2 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_instruction2',
-    text: 'But there is something strange about these machines: they are malfunctioning! \n\nThere is always a machine that grants many high rewards (most of the rounds 100 points, but sometimes only 10 or even 0). There is always a machine that grants many low rewards (mostly 10 points, sometimes 100 or 0), and a machine that grants no reward most of the rounds (mostly 0 points, sometimes 100 or 10). \n\nYou have to find the appropriate machines to maximise your reward.\n\nPress any key to continue',
+    text: 'But there is something strange about these machines: they are malfunctioning!' +
+    '\n\nThere is always a machine that grants many high rewards (mostly 100 points, but sometimes 10 or 0 points).' +
+    '\n\nThere is always a machine that grants many low rewards (mostly 10 points, sometimes 100 or 0 points),' +
+    '\n\nand a machine that grants no reward most of the rounds (mostly 0 points, sometimes 100 or 10 points).' +
+    '\n\nYou have to find the appropriate machines to maximize your reward.'+
+    '\n\nPress any key to continue',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -430,7 +439,11 @@ async function experimentInit() {
   text_instruction3 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_instruction3',
-    text: 'Every day, the malfunctioning machines will be different and they also may or may not change within the same day. So the correct selection may become the wrong one after a while. You will have to adapt!\n\nThe game takes approximately 10 minutes to complete and starts with a quick practice.\n\nPress the LEFT, UP or RIGHT arrows on the keyboard to select your slot machine.\n\nPress any key to continue.',
+    text: 'Every day, the machines will be different. Also, they may or may not change within the same day.'+
+    '\n\nSo the correct selection may become the wrong one after a while. You will have to adapt!'+
+    '\n\nThe game takes about 10 minutes to complete and starts with a quick practice.'+
+    '\n\nPress LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
+    '\n\nPress any key to continue.',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -1296,6 +1309,142 @@ async function experimentInit() {
   
   return Scheduler.Event.NEXT;
 }
+
+
+//////////////
+
+
+var _key_resp_welcome_allKeys;
+var welcomeComponents;
+function welcomeRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'welcome' ---
+    t = 0;
+    welcomeClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    // Run 'Begin Routine' code from code_welcome
+    psychoJS.experiment.addData("key_resp_welcome.started", globalClock.getTime());
+    
+    key_resp_welcome.keys = undefined;
+    key_resp_welcome.rt = undefined;
+    _key_resp_welcome_allKeys = [];
+    // keep track of which components have finished
+    welcomeComponents = [];
+    welcomeComponents.push(text_welcome);
+    welcomeComponents.push(key_resp_welcome);
+    
+    for (const thisComponent of welcomeComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function welcomeRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'welcome' ---
+    // get current time
+    t = welcomeClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *text_welcome* updates
+    if (t >= 0.0 && text_welcome.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_welcome.tStart = t;  // (not accounting for frame time here)
+      text_welcome.frameNStart = frameN;  // exact frame index
+      
+      text_welcome.setAutoDraw(true);
+    }
+
+    
+    // *key_resp_welcome* updates
+    if (t >= 0.0 && key_resp_welcome.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_welcome.tStart = t;  // (not accounting for frame time here)
+      key_resp_welcome.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_welcome.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_welcome.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_welcome.clearEvents(); });
+    }
+
+    if (key_resp_welcome.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_welcome.getKeys({keyList: [], waitRelease: false});
+      _key_resp_welcome_allKeys = _key_resp_welcome_allKeys.concat(theseKeys);
+      if (_key_resp_welcome_allKeys.length > 0) {
+        key_resp_welcome.keys = _key_resp_welcome_allKeys[_key_resp_welcome_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_welcome.rt = _key_resp_welcome_allKeys[_key_resp_welcome_allKeys.length - 1].rt;
+        key_resp_welcome.duration = _key_resp_welcome_allKeys[_key_resp_welcome_allKeys.length - 1].duration;
+        // a response ends the routine
+        continueRoutine = false;
+      }
+    }
+    
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of welcomeComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function welcomeRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'welcome' ---
+    for (const thisComponent of welcomeComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    // update the trial handler
+    if (currentLoop instanceof MultiStairHandler) {
+      currentLoop.addResponse(key_resp_welcome.corr, level);
+    }
+    psychoJS.experiment.addData('key_resp_welcome.keys', key_resp_welcome.keys);
+    if (typeof key_resp_welcome.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('key_resp_welcome.rt', key_resp_welcome.rt);
+        psychoJS.experiment.addData('key_resp_welcome.duration', key_resp_welcome.duration);
+        routineTimer.reset();
+        }
+    
+    key_resp_welcome.stop();
+    // the Routine "welcome" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
 
 
 var t;
