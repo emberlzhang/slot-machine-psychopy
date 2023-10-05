@@ -357,24 +357,7 @@ async function experimentInit() {
   nPracticeBlocks = 1;
   nPracticeTrials = 15;
 
-  // Initialize components for Routine "intro_video"
-  intro_videoClock = new util.Clock();
-  movieClock = new util.Clock();
-  movie = new visual.MovieStim({
-    win: psychoJS.window,
-    name: 'movie',
-    units: psychoJS.window.units,
-    movie: 'stimuli/The Slot Machine Game_FINAL_3.29.23.mp4',
-    pos: [0, 0],
-    anchor: 'center',
-    size: [0.75, 0.5],
-    ori: 0.0,
-    opacity: undefined,
-    loop: false,
-    noAudio: false,
-    depth: 0
-    });
-  
+
   // Initialize components for Routine "welcome"
   welcomeClock = new util.Clock();
   // Run 'Begin Experiment' code from code_welcome
@@ -391,6 +374,24 @@ async function experimentInit() {
   });
   key_resp_welcome = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
+   // Initialize components for Routine "intro_video"
+   intro_videoClock = new util.Clock();
+   movieClock = new util.Clock();
+   movie = new visual.MovieStim({
+     win: psychoJS.window,
+     name: 'movie',
+     units: psychoJS.window.units,
+     movie: 'stimuli/The Slot Machine Game_FINAL_3.29.23.mp4',
+     pos: [0, 0],
+     anchor: 'center',
+     size: [0.85, 0.5],
+     ori: 0.0,
+     opacity: undefined,
+     loop: false,
+     noAudio: false,
+     depth: 0
+     });
+   
 
   // Initialize components for Routine "instruction1"
   instruction1Clock = new util.Clock();
@@ -418,10 +419,10 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_instruction2',
     text: 'But there is something strange about these machines: they are malfunctioning!' +
-    '\n\nOne machine earns high rewards (mostly 100 points, but sometimes 10 or 0 points).' +
-    '\nOne machine earns low rewards (mostly 10 points, but sometimes 100 or 0 points)' +
-    '\nAnd one machine earns zero reward (mostly 0 points, but sometimes 100 or 10 points).' +
-    '\nIn this game, you will have to find the best machines to maximize your reward.'+
+    '\n\nOne machine earns high rewards -- mostly 100 points, but sometimes 10 or 0 points.' +
+    '\nOne machine earns low rewards -- mostly 10 points, but sometimes 100 or 0 points.' +
+    '\nAnd one machine earns zero reward -- mostly 0 points, but sometimes 100 or 10 points.' +
+    '\n\nIn this game, you will have to find the best machines to maximize your reward.'+
     '\n\nPress any key to continue',
     font: 'Open Sans',
     units: undefined, 
@@ -445,7 +446,7 @@ async function experimentInit() {
     '\n\nPress any key to continue.',
     font: 'Open Sans',
     units: undefined, 
-    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
     depth: -1.0 
