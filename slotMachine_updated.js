@@ -364,8 +364,8 @@ async function experimentInit() {
   text_welcome = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_welcome',
-    text: 'Welcome to the Slot Machine Game.\n\nPress any key to continue',
-    font: 'Open Sans',
+    text: 'Welcome to the Slot Machine Game！\n\nPress any key to continue',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -384,7 +384,7 @@ async function experimentInit() {
      movie: 'stimuli/The Slot Machine Game_FINAL_3.29.23.mp4',
      pos: [0, 0],
      anchor: 'center',
-     size: [0.85, 0.5],
+     size: [1, 0.6],
      ori: 0.0,
      opacity: undefined,
      loop: false,
@@ -403,7 +403,7 @@ async function experimentInit() {
     '\n\nImagine that you go to a casino to play with 3 slot machines for 10 days.' +
     '\n\nEach day, you can play 15 rounds. Each round, you select a machine to play and you can earn a reward.'+
     '\n\nPress any key to continue',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -418,13 +418,13 @@ async function experimentInit() {
   text_instruction2 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_instruction2',
-    text: 'But there is something strange about these machines: they are malfunctioning!' +
-    '\n\nOne machine earns high rewards -- mostly 100 points, but sometimes 10 or 0 points.' +
-    '\nOne machine earns low rewards -- mostly 10 points, but sometimes 100 or 0 points.' +
-    '\nAnd one machine earns zero reward -- mostly 0 points, but sometimes 100 or 10 points.' +
-    '\n\nIn this game, you will have to find the best machines to maximize your reward.'+
+    text: 'But there is something strange about these machines!' +
+    '\n\nOne machine earns high rewards - mostly 100 points, but sometimes 10 or 0 points.' +
+    '\nOne machine earns low rewards - mostly 10 points, but sometimes 100 or 0 points.' +
+    '\nAnd one machine earns zero reward - mostly 0 points, but sometimes 100 or 10 points.' +
+    '\n\nIn this game, you will have to find the best machines to maximize your rewards.'+
     '\n\nPress any key to continue',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -439,12 +439,13 @@ async function experimentInit() {
   text_instruction3 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_instruction3',
-    text: 'Every day, the machines will be different. Also, they may or may not change within the same day.'+
+    text: 'Every day, the machines will be different.' +
+    '\n\nAlso, the winning machine may or may not change within the same day.' +
     '\n\nSo the best machine may change after a while. You will have to adapt!'+
-    '\n\nThe game takes about 10 minutes and starts with a quick practice.'+
+    '\n\nThe game takes about 10 minutes and starts with a practice.'+
     '\n\nPress LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
     '\n\nPress any key to continue.',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -553,7 +554,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_practice_slots',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: textPosition, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -565,7 +566,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_practice_slots_2',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, (- 0.2)], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -683,7 +684,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_practice_interval',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: textPosition, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -837,7 +838,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_practice_rewards',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: textPosition, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -851,7 +852,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_practice_end',
     text: 'You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to continue',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -871,7 +872,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_main_instruction',
     text: 'Press one of the following arrows on the keyboard to select your slot machine\n\nLEFT, UP, RIGHT\n\n\nPress SPACE key to continue',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -982,7 +983,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_slots_presentation',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: textPosition, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -994,7 +995,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_slots_presentation_2',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, (- 0.2)], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -1136,7 +1137,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_selection_interval',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: textPosition, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -1267,7 +1268,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_reward_presentation',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: textPosition, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -1281,7 +1282,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_block_break',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -1295,7 +1296,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_end_ins',
     text: '\nYou have successfully completed the task.\n\nThank you.',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
