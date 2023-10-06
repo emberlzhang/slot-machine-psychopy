@@ -404,7 +404,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_instruction1',
     text: 'SLOT MACHINE GAME INSTRUCTIONS' +
-    '\n\nImagine that you go to a casino to play with 3 slot machines for 10 days.' +
+    '\n\nImagine that you go to a casino to play with slot machines for 10 days.' +
     '\n\nEach day, you can play 15 rounds. Each round, you select a machine to play and you can earn a reward.'+
     '\n\nPress any key to continue',
     font: 'Arial',
@@ -425,7 +425,7 @@ async function experimentInit() {
     text: 'But there is something strange about these machines!' +
     '\n\nOne machine earns high rewards - mostly 100 points, but sometimes 10 or 0 points.' +
     '\nOne machine earns low rewards - mostly 10 points, but sometimes 100 or 0 points.' +
-    '\nAnd one machine earns zero reward - mostly 0 points, but sometimes 100 or 10 points.' +
+    '\nOne machine earns no rewards - mostly 0 points, but sometimes 100 or 10 points.' +
     '\n\nIn this game, you will have to find the best machines to maximize your rewards.'+
     '\n\nPress any key to continue',
     font: 'Arial',
@@ -445,7 +445,7 @@ async function experimentInit() {
     name: 'text_instruction3',
     text: 'Every day, the machines will be different.' +
     '\n\nAlso, the winning machine may or may not change within the same day.' +
-    '\n\nSo the best machine may change after a while. You will have to adapt!'+
+    'So the best machine may change after a while. You will have to adapt!'+
     '\n\nThe game takes about 10 minutes and starts with a practice.'+
     '\n\nPress LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
     '\n\nPress any key to continue.',
@@ -2348,16 +2348,7 @@ function practice_slotsRoutineBegin(snapshot) {
     endMsg = " ";
     endTrial = false;
     
-    image.setPos(consReward_pos[0]);
-    image.setImage(consRewardImgs[4]);
-    image_18.setPos(consReward_pos[1]);
-    image_18.setImage(consRewardImgs[3]);
-    image_19.setPos(consReward_pos[2]);
-    image_19.setImage(consRewardImgs[2]);
-    image_20.setPos(consReward_pos[3]);
-    image_20.setImage(consRewardImgs[1]);
-    image_21.setPos(consReward_pos[4]);
-    image_21.setImage(consRewardImgs[0]);
+    
     text_practice_slots.setText(textMsg);
     key_resp_practice_slots.keys = undefined;
     key_resp_practice_slots.rt = undefined;
@@ -2369,6 +2360,16 @@ function practice_slotsRoutineBegin(snapshot) {
     practice_slotsComponents.push(card_sqr);
     
     if (show_trial_history == true) {
+      image.setPos(consReward_pos[0]);
+      image.setImage(consRewardImgs[4]);
+      image_18.setPos(consReward_pos[1]);
+      image_18.setImage(consRewardImgs[3]);
+      image_19.setPos(consReward_pos[2]);
+      image_19.setImage(consRewardImgs[2]);
+      image_20.setPos(consReward_pos[3]);
+      image_20.setImage(consRewardImgs[1]);
+      image_21.setPos(consReward_pos[4]);
+      image_21.setImage(consRewardImgs[0]);
       practice_slotsComponents.push(arrow_4);
       practice_slotsComponents.push(image);
       practice_slotsComponents.push(image_18);
@@ -2628,16 +2629,7 @@ function practice_intervalRoutineBegin(snapshot) {
         }
     }
     
-    image_22.setPos(consReward_pos[0]);
-    image_22.setImage(consRewardImgs[4]);
-    image_23.setPos(consReward_pos[1]);
-    image_23.setImage(consRewardImgs[3]);
-    image_24.setPos(consReward_pos[2]);
-    image_24.setImage(consRewardImgs[2]);
-    image_25.setPos(consReward_pos[3]);
-    image_25.setImage(consRewardImgs[1]);
-    image_26.setPos(consReward_pos[4]);
-    image_26.setImage(consRewardImgs[0]);
+    
     text_practice_interval.setText(textMsg);
     polygon_practice_interval.setPos(boxPos);
     // keep track of which components have finished
@@ -2647,6 +2639,16 @@ function practice_intervalRoutineBegin(snapshot) {
     practice_intervalComponents.push(card_sqr_6);
     
     if (show_trial_history == true) {
+      image_22.setPos(consReward_pos[0]);
+      image_22.setImage(consRewardImgs[4]);
+      image_23.setPos(consReward_pos[1]);
+      image_23.setImage(consRewardImgs[3]);
+      image_24.setPos(consReward_pos[2]);
+      image_24.setImage(consRewardImgs[2]);
+      image_25.setPos(consReward_pos[3]);
+      image_25.setImage(consRewardImgs[1]);
+      image_26.setPos(consReward_pos[4]);
+      image_26.setImage(consRewardImgs[0]);
       practice_intervalComponents.push(arrow_5);
       practice_intervalComponents.push(image_22);
       practice_intervalComponents.push(image_23);
@@ -2999,11 +3001,6 @@ function practice_rewardsRoutineBegin(snapshot) {
     
     image_27.setPos(rewPos);
     image_27.setImage(rewImg);
-    image_28.setImage(consRewardImgs[4]);
-    image_29.setImage(consRewardImgs[3]);
-    image_30.setImage(consRewardImgs[2]);
-    image_31.setImage(consRewardImgs[1]);
-    image_32.setImage(consRewardImgs[0]);
     text_practice_rewards.setText(textMsg);
     // keep track of which components have finished
     practice_rewardsComponents = [];
@@ -3013,6 +3010,11 @@ function practice_rewardsRoutineBegin(snapshot) {
     practice_rewardsComponents.push(image_27); // reward display
     
     if (show_trial_history == true) {
+      image_28.setImage(consRewardImgs[4]);
+      image_29.setImage(consRewardImgs[3]);
+      image_30.setImage(consRewardImgs[2]);
+      image_31.setImage(consRewardImgs[1]);
+      image_32.setImage(consRewardImgs[0]);
       practice_rewardsComponents.push(arrow_6);
       practice_rewardsComponents.push(image_28);
       practice_rewardsComponents.push(image_29);
@@ -3632,16 +3634,7 @@ function slots_presentationRoutineBegin(snapshot) {
     endMsg = " ";
     endTrial = false;
     
-    image_3.setPos(consReward_pos[0]);
-    image_3.setImage(consRewardImgs[4]);
-    image_6.setPos(consReward_pos[1]);
-    image_6.setImage(consRewardImgs[3]);
-    image_9.setPos(consReward_pos[2]);
-    image_9.setImage(consRewardImgs[2]);
-    image_12.setPos(consReward_pos[3]);
-    image_12.setImage(consRewardImgs[1]);
-    image_15.setPos(consReward_pos[4]);
-    image_15.setImage(consRewardImgs[0]);
+    
     text_slots_presentation.setText(textMsg);
     key_resp_slots_presentation.keys = undefined;
     key_resp_slots_presentation.rt = undefined;
@@ -3653,6 +3646,16 @@ function slots_presentationRoutineBegin(snapshot) {
     slots_presentationComponents.push(card_sqr_3);
     
     if (show_trial_history == true) {
+      image_3.setPos(consReward_pos[0]);
+      image_3.setImage(consRewardImgs[4]);
+      image_6.setPos(consReward_pos[1]);
+      image_6.setImage(consRewardImgs[3]);
+      image_9.setPos(consReward_pos[2]);
+      image_9.setImage(consRewardImgs[2]);
+      image_12.setPos(consReward_pos[3]);
+      image_12.setImage(consRewardImgs[1]);
+      image_15.setPos(consReward_pos[4]);
+      image_15.setImage(consRewardImgs[0]);
       slots_presentationComponents.push(arrow);
       slots_presentationComponents.push(image_3);
       slots_presentationComponents.push(image_6);
@@ -3906,16 +3909,7 @@ function selection_intervalRoutineBegin(snapshot) {
         }
     }
     
-    image_4.setPos(consReward_pos[0]);
-    image_4.setImage(consRewardImgs[4]);
-    image_7.setPos(consReward_pos[1]);
-    image_7.setImage(consRewardImgs[3]);
-    image_10.setPos(consReward_pos[2]);
-    image_10.setImage(consRewardImgs[2]);
-    image_13.setPos(consReward_pos[3]);
-    image_13.setImage(consRewardImgs[1]);
-    image_16.setPos(consReward_pos[4]);
-    image_16.setImage(consRewardImgs[0]);
+    
     polygon_selection_interval.setPos(boxPos);
     text_selection_interval.setText(textMsg);
     // keep track of which components have finished
@@ -3925,6 +3919,16 @@ function selection_intervalRoutineBegin(snapshot) {
     selection_intervalComponents.push(card_sqr_5);
     
     if (show_trial_history == true) {
+      image_4.setPos(consReward_pos[0]);
+      image_4.setImage(consRewardImgs[4]);
+      image_7.setPos(consReward_pos[1]);
+      image_7.setImage(consRewardImgs[3]);
+      image_10.setPos(consReward_pos[2]);
+      image_10.setImage(consRewardImgs[2]);
+      image_13.setPos(consReward_pos[3]);
+      image_13.setImage(consRewardImgs[1]);
+      image_16.setPos(consReward_pos[4]);
+      image_16.setImage(consRewardImgs[0]);
       selection_intervalComponents.push(arrow_2);
       selection_intervalComponents.push(image_4);
       selection_intervalComponents.push(image_7);
@@ -4285,11 +4289,6 @@ function reward_presentationRoutineBegin(snapshot) {
     
     image_2.setPos(rewPos);
     image_2.setImage(rewImg);
-    image_5.setImage(consRewardImgs[4]);
-    image_8.setImage(consRewardImgs[3]);
-    image_11.setImage(consRewardImgs[2]);
-    image_14.setImage(consRewardImgs[1]);
-    image_17.setImage(consRewardImgs[0]);
     text_reward_presentation.setText(textMsg);
     // keep track of which components have finished
     reward_presentationComponents = [];
@@ -4299,6 +4298,11 @@ function reward_presentationRoutineBegin(snapshot) {
     reward_presentationComponents.push(image_2); // reward display
     
     if (show_trial_history == true) {
+      image_5.setImage(consRewardImgs[4]);
+      image_8.setImage(consRewardImgs[3]);
+      image_11.setImage(consRewardImgs[2]);
+      image_14.setImage(consRewardImgs[1]);
+      image_17.setImage(consRewardImgs[0]);
       reward_presentationComponents.push(arrow_3);
       reward_presentationComponents.push(image_5);
       reward_presentationComponents.push(image_8);
