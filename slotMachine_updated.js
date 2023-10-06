@@ -178,7 +178,7 @@ psychoJS.start({
   expInfo: expInfo,
   resources: [
     // resources:
-    {'name': 'stimuli/The Slot Machine Game_FINAL_3.29.23.mp4', 'path': 'stimuli/The Slot Machine Game_FINAL_3.29.23.mp4'},
+    {'name': 'stimuli/SlotMachineGameVideo-10.06.23.mp4', 'path': 'stimuli/SlotMachineGameVideo-10.06.23.mp4'},
     {'name': 'stimuli/arrow_transparent.png', 'path': 'stimuli/arrow_transparent.png'},
     {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
     {'name': 'stimuli/arrow.png', 'path': 'stimuli/arrow.png'},
@@ -381,7 +381,7 @@ async function experimentInit() {
      win: psychoJS.window,
      name: 'movie',
      units: psychoJS.window.units,
-     movie: 'stimuli/The Slot Machine Game_FINAL_3.29.23.mp4',
+     movie: 'stimuli/SlotMachineGameVideo-10.06.23.mp4',
      pos: [0, 0],
      anchor: 'center',
      size: [1, 0.6],
