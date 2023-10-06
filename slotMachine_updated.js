@@ -444,7 +444,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_instruction3',
     text: 'Every day, the machines will be different.' +
-    '\n\nAlso, the winning machine may or may not change within the same day.' +
+    '\n\nAlso, the winning machine may or may not change within the same day. ' +
     'So the best machine may change after a while. You will have to adapt!'+
     '\n\nThe game takes about 10 minutes and starts with a practice.'+
     '\n\nPress LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
@@ -3537,8 +3537,9 @@ function reward_resetRoutineBegin(snapshot) {
     psychoJS.experiment.addData("blockNumber", block_counter)
     // Determine which block to run this time
     current_block_index = block_order[0]; // take first index of block numbers for this session
-    console.log("Block assignment: " + current_block_index)
-    psychoJS.experiment.addData("blockAssignment", current_block_index)
+    var block_assignment = current_block_index + 1;
+    console.log("Block assignment: " + block_assignment)
+    psychoJS.experiment.addData("blockAssignment", block_assignment)
 
     block_order.shift(); // remove the first index block number to prepare for the next block in the experiment
     // Get conditions for this block
