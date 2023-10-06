@@ -17,6 +17,10 @@ let expInfo = {
     'participant': '',
 };
 
+//// CUSTOM CONFIGURATIONS
+var show_trial_history = false; // toggle true or false to show points earned from previous trials (row of 5)
+
+//////////////////////////
 
 // Start code blocks for 'Before Experiment'
 // Run 'Before Experiment' code from code_practice_reset
@@ -258,12 +262,12 @@ var practice_slotsClock;
 var card_circ;
 var card_pent;
 var card_sqr;
-// var arrow_4;
-// var image;
-// var image_18;
-// var image_19;
-// var image_20;
-// var image_21;
+var arrow_4;
+var image;
+var image_18;
+var image_19;
+var image_20;
+var image_21;
 var text_practice_slots;
 var text_practice_slots_2;
 var polygon;
@@ -272,12 +276,12 @@ var practice_intervalClock;
 var card_circ_6;
 var card_pent_6;
 var card_sqr_6;
-// var arrow_5;
-// var image_22;
-// var image_23;
-// var image_24;
-// var image_25;
-// var image_26;
+var arrow_5;
+var image_22;
+var image_23;
+var image_24;
+var image_25;
+var image_26;
 var text_practice_interval;
 var polygon_2;
 var polygon_practice_interval;
@@ -288,12 +292,12 @@ var card_circ_7;
 var card_pent_7;
 var card_sqr_7;
 var image_27; // reward image
-// var arrow_6;
-// var image_28;
-// var image_29;
-// var image_30;
-// var image_31;
-// var image_32;
+var arrow_6;
+var image_28;
+var image_29;
+var image_30;
+var image_31;
+var image_32;
 var polygon_3;
 var text_practice_rewards;
 var practice_endClock;
@@ -310,12 +314,12 @@ var slots_presentationClock;
 var card_circ_3;
 var card_pent_3;
 var card_sqr_3;
-// var arrow;
-// var image_3;
-// var image_6;
-// var image_9;
-// var image_12;
-// var image_15;
+var arrow;
+var image_3;
+var image_6;
+var image_9;
+var image_12;
+var image_15;
 var text_slots_presentation;
 var text_slots_presentation_2;
 var polygon_4;
@@ -324,12 +328,12 @@ var selection_intervalClock;
 var card_circ_5;
 var card_pent_5;
 var card_sqr_5;
-// var arrow_2;
-// var image_4;
-// var image_7;
-// var image_10;
-// var image_13;
-// var image_16;
+var arrow_2;
+var image_4;
+var image_7;
+var image_10;
+var image_13;
+var image_16;
 var polygon_selection_interval;
 var polygon_5;
 var text_selection_interval;
@@ -338,12 +342,12 @@ var card_circ_4;
 var card_pent_4;
 var card_sqr_4;
 var image_2; // reward image
-// var arrow_3;
-// var image_5;
-// var image_8;
-// var image_11;
-// var image_14;
-// var image_17;
+var arrow_3;
+var image_5;
+var image_8;
+var image_11;
+var image_14;
+var image_17;
 var polygon_6;
 var text_reward_presentation;
 var Block_breakClock;
@@ -490,66 +494,69 @@ async function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -3.0 
   });
-  // arrow_4 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'arrow_4', units : undefined, 
-  //   image : 'stimuli/arrow_transparent.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : arrow_loc, size : arrowSize,
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -4.0 
-  // });
-  // image = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -5.0 
-  // });
-  // image_18 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_18', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -6.0 
-  // });
-  // image_19 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_19', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -7.0 
-  // });
-  // image_20 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_20', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -8.0 
-  // });
-  // image_21 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_21', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -9.0 
-  // });
+  if (show_trial_history == true) {
+    arrow_4 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'arrow_4', units : undefined, 
+      image : 'stimuli/arrow_transparent.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : arrow_loc, size : arrowSize,
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -4.0 
+    });
+    image = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -5.0 
+    });
+    image_18 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_18', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -6.0 
+    });
+    image_19 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_19', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -7.0 
+    });
+    image_20 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_20', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -8.0 
+    });
+    image_21 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_21', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -9.0 
+    });
+  }
+
   text_practice_slots = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_practice_slots',
@@ -620,66 +627,70 @@ async function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -3.0 
   });
-  // arrow_5 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'arrow_5', units : undefined, 
-  //   image : 'stimuli/arrow_transparent.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : arrow_loc, size : arrowSize,
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -4.0 
-  // });
-  // image_22 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_22', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -5.0 
-  // });
-  // image_23 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_23', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -6.0 
-  // });
-  // image_24 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_24', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -7.0 
-  // });
-  // image_25 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_25', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -8.0 
-  // });
-  // image_26 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_26', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -9.0 
-  // });
+
+  if (show_trial_history == true) {
+    arrow_5 = new visual.ImageStim({
+        win : psychoJS.window,
+        name : 'arrow_5', units : undefined, 
+        image : 'stimuli/arrow_transparent.png', mask : undefined,
+        anchor : 'center',
+        ori : 0.0, pos : arrow_loc, size : arrowSize,
+        color : new util.Color([1,1,1]), opacity : undefined,
+        flipHoriz : false, flipVert : false,
+        texRes : 128.0, interpolate : true, depth : -4.0 
+      });
+      image_22 = new visual.ImageStim({
+        win : psychoJS.window,
+        name : 'image_22', units : undefined, 
+        image : 'default.png', mask : undefined,
+        anchor : 'center',
+        ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+        color : new util.Color([1,1,1]), opacity : undefined,
+        flipHoriz : false, flipVert : false,
+        texRes : 128.0, interpolate : true, depth : -5.0 
+      });
+      image_23 = new visual.ImageStim({
+        win : psychoJS.window,
+        name : 'image_23', units : undefined, 
+        image : 'default.png', mask : undefined,
+        anchor : 'center',
+        ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+        color : new util.Color([1,1,1]), opacity : undefined,
+        flipHoriz : false, flipVert : false,
+        texRes : 128.0, interpolate : true, depth : -6.0 
+      });
+      image_24 = new visual.ImageStim({
+        win : psychoJS.window,
+        name : 'image_24', units : undefined, 
+        image : 'default.png', mask : undefined,
+        anchor : 'center',
+        ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+        color : new util.Color([1,1,1]), opacity : undefined,
+        flipHoriz : false, flipVert : false,
+        texRes : 128.0, interpolate : true, depth : -7.0 
+      });
+      image_25 = new visual.ImageStim({
+        win : psychoJS.window,
+        name : 'image_25', units : undefined, 
+        image : 'default.png', mask : undefined,
+        anchor : 'center',
+        ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+        color : new util.Color([1,1,1]), opacity : undefined,
+        flipHoriz : false, flipVert : false,
+        texRes : 128.0, interpolate : true, depth : -8.0 
+      });
+      image_26 = new visual.ImageStim({
+        win : psychoJS.window,
+        name : 'image_26', units : undefined, 
+        image : 'default.png', mask : undefined,
+        anchor : 'center',
+        ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+        color : new util.Color([1,1,1]), opacity : undefined,
+        flipHoriz : false, flipVert : false,
+        texRes : 128.0, interpolate : true, depth : -9.0 
+      });
+  }
+  
   text_practice_interval = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_practice_interval',
@@ -762,66 +773,70 @@ async function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -5.0 
   });
-  // arrow_6 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'arrow_6', units : undefined, 
-  //   image : 'stimuli/arrow_transparent.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : arrow_loc, size : arrowSize,
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -4.0 
-  // });
-  // image_28 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_28', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -6.0 
-  // });
-  // image_29 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_29', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[1], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -7.0 
-  // });
-  // image_30 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_30', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[2], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -8.0 
-  // });
-  // image_31 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_31', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[3], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -9.0 
-  // });
-  // image_32 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_32', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[4], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -10.0 
-  // });
+
+  if (show_trial_history == true) {
+    arrow_6 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'arrow_6', units : undefined, 
+      image : 'stimuli/arrow_transparent.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : arrow_loc, size : arrowSize,
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -4.0 
+    });
+    image_28 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_28', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -6.0 
+    });
+    image_29 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_29', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[1], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -7.0 
+    });
+    image_30 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_30', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[2], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -8.0 
+    });
+    image_31 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_31', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[3], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -9.0 
+    });
+    image_32 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_32', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[4], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -10.0 
+    });
+  }
+  
   polygon_3 = new visual.Rect ({
     win: psychoJS.window, name: 'polygon_3', 
     width: [0.17, 0.17][0], height: [0.17, 0.17][1],
@@ -919,66 +934,70 @@ async function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -3.0 
   });
-  // arrow = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'arrow', units : undefined, 
-  //   image : 'stimuli/arrow_transparent.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : arrow_loc, size : arrowSize,
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -4.0 
-  // });
-  // image_3 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_3', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -5.0 
-  // });
-  // image_6 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_6', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -6.0 
-  // });
-  // image_9 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_9', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -7.0 
-  // });
-  // image_12 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_12', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -8.0 
-  // });
-  // image_15 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_15', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -9.0 
-  // });
+
+  if (show_trial_history == true) {
+    arrow = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'arrow', units : undefined, 
+      image : 'stimuli/arrow_transparent.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : arrow_loc, size : arrowSize,
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -4.0 
+    });
+    image_3 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_3', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -5.0 
+    });
+    image_6 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_6', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -6.0 
+    });
+    image_9 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_9', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -7.0 
+    });
+    image_12 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_12', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -8.0 
+    });
+    image_15 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_15', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -9.0 
+    });
+  }
+  
   text_slots_presentation = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_slots_presentation',
@@ -1049,66 +1068,70 @@ async function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -3.0 
   });
-  // arrow_2 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'arrow_2', units : undefined, 
-  //   image : 'stimuli/arrow_transparent.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : arrow_loc, size : arrowSize,
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -4.0 
-  // });
-  // image_4 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_4', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -5.0 
-  // });
-  // image_7 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_7', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -6.0 
-  // });
-  // image_10 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_10', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -7.0 
-  // });
-  // image_13 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_13', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -8.0 
-  // });
-  // image_16 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_16', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -9.0 
-  // });
+
+  if (show_trial_history == true) {
+    arrow_2 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'arrow_2', units : undefined, 
+      image : 'stimuli/arrow_transparent.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : arrow_loc, size : arrowSize,
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -4.0 
+    });
+    image_4 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_4', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -5.0 
+    });
+    image_7 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_7', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -6.0 
+    });
+    image_10 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_10', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -7.0 
+    });
+    image_13 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_13', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -8.0 
+    });
+    image_16 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_16', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : [0, 0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -9.0 
+    });
+  }
+  
   polygon_selection_interval = new visual.Rect ({
     win: psychoJS.window, name: 'polygon_selection_interval', 
     width: card_size[0], height: card_size[1],
@@ -1192,66 +1215,70 @@ async function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -5.0 
   });
-  // arrow_3 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'arrow_3', units : undefined, 
-  //   image : 'stimuli/arrow_transparent.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : arrow_loc, size : arrowSize,
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -4.0 
-  // });
-  // image_5 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_5', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[0], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -6.0 
-  // });
-  // image_8 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_8', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[1], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -7.0 
-  // });
-  // image_11 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_11', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[2], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -8.0 
-  // });
-  // image_14 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_14', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[3], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -9.0 
-  // });
-  // image_17 = new visual.ImageStim({
-  //   win : psychoJS.window,
-  //   name : 'image_17', units : undefined, 
-  //   image : 'default.png', mask : undefined,
-  //   anchor : 'center',
-  //   ori : 0.0, pos : consReward_pos[4], size : [0.15, 0.15],
-  //   color : new util.Color([1,1,1]), opacity : undefined,
-  //   flipHoriz : false, flipVert : false,
-  //   texRes : 128.0, interpolate : true, depth : -10.0 
-  // });
+
+  if (show_trial_history == true) {
+    arrow_3 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'arrow_3', units : undefined, 
+      image : 'stimuli/arrow_transparent.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : arrow_loc, size : arrowSize,
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -4.0 
+    });
+    image_5 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_5', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[0], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -6.0 
+    });
+    image_8 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_8', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[1], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -7.0 
+    });
+    image_11 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_11', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[2], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -8.0 
+    });
+    image_14 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_14', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[3], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -9.0 
+    });
+    image_17 = new visual.ImageStim({
+      win : psychoJS.window,
+      name : 'image_17', units : undefined, 
+      image : 'default.png', mask : undefined,
+      anchor : 'center',
+      ori : 0.0, pos : consReward_pos[4], size : [0.15, 0.15],
+      color : new util.Color([1,1,1]), opacity : undefined,
+      flipHoriz : false, flipVert : false,
+      texRes : 128.0, interpolate : true, depth : -10.0 
+    });  
+  }
+  
   polygon_6 = new visual.Rect ({
     win: psychoJS.window, name: 'polygon_6', 
     width: [0.17, 0.17][0], height: [0.17, 0.17][1],
@@ -2321,16 +2348,16 @@ function practice_slotsRoutineBegin(snapshot) {
     endMsg = " ";
     endTrial = false;
     
-    // image.setPos(consReward_pos[0]);
-    // image.setImage(consRewardImgs[4]);
-    // image_18.setPos(consReward_pos[1]);
-    // image_18.setImage(consRewardImgs[3]);
-    // image_19.setPos(consReward_pos[2]);
-    // image_19.setImage(consRewardImgs[2]);
-    // image_20.setPos(consReward_pos[3]);
-    // image_20.setImage(consRewardImgs[1]);
-    // image_21.setPos(consReward_pos[4]);
-    // image_21.setImage(consRewardImgs[0]);
+    image.setPos(consReward_pos[0]);
+    image.setImage(consRewardImgs[4]);
+    image_18.setPos(consReward_pos[1]);
+    image_18.setImage(consRewardImgs[3]);
+    image_19.setPos(consReward_pos[2]);
+    image_19.setImage(consRewardImgs[2]);
+    image_20.setPos(consReward_pos[3]);
+    image_20.setImage(consRewardImgs[1]);
+    image_21.setPos(consReward_pos[4]);
+    image_21.setImage(consRewardImgs[0]);
     text_practice_slots.setText(textMsg);
     key_resp_practice_slots.keys = undefined;
     key_resp_practice_slots.rt = undefined;
@@ -2340,15 +2367,19 @@ function practice_slotsRoutineBegin(snapshot) {
     practice_slotsComponents.push(card_circ);
     practice_slotsComponents.push(card_pent);
     practice_slotsComponents.push(card_sqr);
-    // practice_slotsComponents.push(arrow_4);
-    // practice_slotsComponents.push(image);
-    // practice_slotsComponents.push(image_18);
-    // practice_slotsComponents.push(image_19);
-    // practice_slotsComponents.push(image_20);
-    // practice_slotsComponents.push(image_21);
+    
+    if (show_trial_history == true) {
+      practice_slotsComponents.push(arrow_4);
+      practice_slotsComponents.push(image);
+      practice_slotsComponents.push(image_18);
+      practice_slotsComponents.push(image_19);
+      practice_slotsComponents.push(image_20);
+      practice_slotsComponents.push(image_21);
+      practice_slotsComponents.push(polygon); // dark grey square marking current trial
+    }
+    
     practice_slotsComponents.push(text_practice_slots);
     practice_slotsComponents.push(text_practice_slots_2);
-    // practice_slotsComponents.push(polygon); // dark grey square marking current trial
     practice_slotsComponents.push(key_resp_practice_slots);
     
     for (const thisComponent of practice_slotsComponents)
@@ -2401,69 +2432,61 @@ function practice_slotsRoutineEachFrame() {
       // keep track of start time/frame for later
       card_sqr.tStart = t;  // (not accounting for frame time here)
       card_sqr.frameNStart = frameN;  // exact frame index
-      
       card_sqr.setAutoDraw(true);
     }
 
-    
-    // // *arrow_4* updates
-    // if (t >= 0.0 && arrow_4.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   arrow_4.tStart = t;  // (not accounting for frame time here)
-    //   arrow_4.frameNStart = frameN;  // exact frame index
-      
-    //   arrow_4.setAutoDraw(true);
-    // }
-
-    
-    // // *image* updates
-    // if (t >= 0.0 && image.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image.tStart = t;  // (not accounting for frame time here)
-    //   image.frameNStart = frameN;  // exact frame index
-      
-    //   image.setAutoDraw(true);
-    // }
-
-    
-    // // *image_18* updates
-    // if (t >= 0.0 && image_18.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_18.tStart = t;  // (not accounting for frame time here)
-    //   image_18.frameNStart = frameN;  // exact frame index
-      
-    //   image_18.setAutoDraw(true);
-    // }
-
-    
-    // // *image_19* updates
-    // if (t >= 0.0 && image_19.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_19.tStart = t;  // (not accounting for frame time here)
-    //   image_19.frameNStart = frameN;  // exact frame index
-      
-    //   image_19.setAutoDraw(true);
-    // }
-
-    
-    // // *image_20* updates
-    // if (t >= 0.0 && image_20.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_20.tStart = t;  // (not accounting for frame time here)
-    //   image_20.frameNStart = frameN;  // exact frame index
-      
-    //   image_20.setAutoDraw(true);
-    // }
-
-    
-    // // *image_21* updates
-    // if (t >= 0.0 && image_21.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_21.tStart = t;  // (not accounting for frame time here)
-    //   image_21.frameNStart = frameN;  // exact frame index
-      
-    //   image_21.setAutoDraw(true);
-    // }
+    if (show_trial_history) {
+      // *arrow_4* updates
+      if (t >= 0.0 && arrow_4.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        arrow_4.tStart = t;  // (not accounting for frame time here)
+        arrow_4.frameNStart = frameN;  // exact frame index
+        arrow_4.setAutoDraw(true);
+      }
+      // *image* updates
+      if (t >= 0.0 && image.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image.tStart = t;  // (not accounting for frame time here)
+        image.frameNStart = frameN;  // exact frame index
+        image.setAutoDraw(true);
+      }
+      // *image_18* updates
+      if (t >= 0.0 && image_18.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_18.tStart = t;  // (not accounting for frame time here)
+        image_18.frameNStart = frameN;  // exact frame index
+        image_18.setAutoDraw(true);
+      }
+      // *image_19* updates
+      if (t >= 0.0 && image_19.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_19.tStart = t;  // (not accounting for frame time here)
+        image_19.frameNStart = frameN;  // exact frame index
+        image_19.setAutoDraw(true);
+      }
+      // *image_20* updates
+      if (t >= 0.0 && image_20.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_20.tStart = t;  // (not accounting for frame time here)
+        image_20.frameNStart = frameN;  // exact frame index
+        image_20.setAutoDraw(true);
+      }
+      // *image_21* updates
+      if (t >= 0.0 && image_21.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_21.tStart = t;  // (not accounting for frame time here)
+        image_21.frameNStart = frameN;  // exact frame index 
+        image_21.setAutoDraw(true);
+      }
+      // *polygon* updates
+      if (t >= 0.0 && polygon.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        polygon.tStart = t;  // (not accounting for frame time here)
+        polygon.frameNStart = frameN;  // exact frame index
+        polygon.setAutoDraw(true);
+      }
+    }
+   
 
     
     // *text_practice_slots* updates
@@ -2489,15 +2512,6 @@ function practice_slotsRoutineEachFrame() {
     if (text_practice_slots_2.status === PsychoJS.Status.STARTED){ // only update if being drawn
       text_practice_slots_2.setText(endMsg, false);
     }
-    
-    // *polygon* updates
-    // if (t >= 0.0 && polygon.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   polygon.tStart = t;  // (not accounting for frame time here)
-    //   polygon.frameNStart = frameN;  // exact frame index
-      
-    //   polygon.setAutoDraw(true);
-    // }
 
     
     // *key_resp_practice_slots* updates
@@ -2614,16 +2628,16 @@ function practice_intervalRoutineBegin(snapshot) {
         }
     }
     
-    // image_22.setPos(consReward_pos[0]);
-    // image_22.setImage(consRewardImgs[4]);
-    // image_23.setPos(consReward_pos[1]);
-    // image_23.setImage(consRewardImgs[3]);
-    // image_24.setPos(consReward_pos[2]);
-    // image_24.setImage(consRewardImgs[2]);
-    // image_25.setPos(consReward_pos[3]);
-    // image_25.setImage(consRewardImgs[1]);
-    // image_26.setPos(consReward_pos[4]);
-    // image_26.setImage(consRewardImgs[0]);
+    image_22.setPos(consReward_pos[0]);
+    image_22.setImage(consRewardImgs[4]);
+    image_23.setPos(consReward_pos[1]);
+    image_23.setImage(consRewardImgs[3]);
+    image_24.setPos(consReward_pos[2]);
+    image_24.setImage(consRewardImgs[2]);
+    image_25.setPos(consReward_pos[3]);
+    image_25.setImage(consRewardImgs[1]);
+    image_26.setPos(consReward_pos[4]);
+    image_26.setImage(consRewardImgs[0]);
     text_practice_interval.setText(textMsg);
     polygon_practice_interval.setPos(boxPos);
     // keep track of which components have finished
@@ -2631,14 +2645,18 @@ function practice_intervalRoutineBegin(snapshot) {
     practice_intervalComponents.push(card_circ_6);
     practice_intervalComponents.push(card_pent_6);
     practice_intervalComponents.push(card_sqr_6);
-    // practice_intervalComponents.push(arrow_5);
-    // practice_intervalComponents.push(image_22);
-    // practice_intervalComponents.push(image_23);
-    // practice_intervalComponents.push(image_24);
-    // practice_intervalComponents.push(image_25);
-    // practice_intervalComponents.push(image_26);
+    
+    if (show_trial_history == true) {
+      practice_intervalComponents.push(arrow_5);
+      practice_intervalComponents.push(image_22);
+      practice_intervalComponents.push(image_23);
+      practice_intervalComponents.push(image_24);
+      practice_intervalComponents.push(image_25);
+      practice_intervalComponents.push(image_26);
+      practice_intervalComponents.push(polygon_2);
+    }
+
     practice_intervalComponents.push(text_practice_interval);
-    // practice_intervalComponents.push(polygon_2);
     practice_intervalComponents.push(polygon_practice_interval);
     
     for (const thisComponent of practice_intervalComponents)
@@ -2700,89 +2718,92 @@ function practice_intervalRoutineEachFrame() {
       card_sqr_6.setAutoDraw(false);
     }
     
-    // // *arrow_5* updates
-    // if (t >= 0.0 && arrow_5.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   arrow_5.tStart = t;  // (not accounting for frame time here)
-    //   arrow_5.frameNStart = frameN;  // exact frame index
+    if (show_trial_history == true) {
+       // *arrow_5* updates
+      if (t >= 0.0 && arrow_5.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        arrow_5.tStart = t;  // (not accounting for frame time here)
+        arrow_5.frameNStart = frameN;  // exact frame index 
+        arrow_5.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (arrow_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        arrow_5.setAutoDraw(false);
+      }
       
-    //   arrow_5.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (arrow_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   arrow_5.setAutoDraw(false);
-    // }
+      // *image_22* updates
+      if (t >= 0.0 && image_22.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_22.tStart = t;  // (not accounting for frame time here)
+        image_22.frameNStart = frameN;  // exact frame index
+        image_22.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_22.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_22.setAutoDraw(false);
+      }
+      
+      // *image_23* updates
+      if (t >= 0.0 && image_23.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_23.tStart = t;  // (not accounting for frame time here)
+        image_23.frameNStart = frameN;  // exact frame index 
+        image_23.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_23.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_23.setAutoDraw(false);
+      }
     
-    // // *image_22* updates
-    // if (t >= 0.0 && image_22.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_22.tStart = t;  // (not accounting for frame time here)
-    //   image_22.frameNStart = frameN;  // exact frame index
+      // *image_24* updates
+      if (t >= 0.0 && image_24.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_24.tStart = t;  // (not accounting for frame time here)
+        image_24.frameNStart = frameN;  // exact frame index
+        image_24.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_24.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_24.setAutoDraw(false);
+      }
       
-    //   image_22.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_22.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_22.setAutoDraw(false);
-    // }
-    
-    // // *image_23* updates
-    // if (t >= 0.0 && image_23.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_23.tStart = t;  // (not accounting for frame time here)
-    //   image_23.frameNStart = frameN;  // exact frame index
+      // *image_25* updates
+      if (t >= 0.0 && image_25.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_25.tStart = t;  // (not accounting for frame time here)
+        image_25.frameNStart = frameN;  // exact frame index  
+        image_25.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_25.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_25.setAutoDraw(false);
+      }
       
-    //   image_23.setAutoDraw(true);
-    // }
+      // *image_26* updates
+      if (t >= 0.0 && image_26.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_26.tStart = t;  // (not accounting for frame time here)
+        image_26.frameNStart = frameN;  // exact frame index
+        image_26.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_26.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_26.setAutoDraw(false);
+      }
 
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_23.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_23.setAutoDraw(false);
-    // }
-    
-    // // *image_24* updates
-    // if (t >= 0.0 && image_24.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_24.tStart = t;  // (not accounting for frame time here)
-    //   image_24.frameNStart = frameN;  // exact frame index
-      
-    //   image_24.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_24.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_24.setAutoDraw(false);
-    // }
-    
-    // // *image_25* updates
-    // if (t >= 0.0 && image_25.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_25.tStart = t;  // (not accounting for frame time here)
-    //   image_25.frameNStart = frameN;  // exact frame index
-      
-    //   image_25.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_25.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_25.setAutoDraw(false);
-    // }
-    
-    // // *image_26* updates
-    // if (t >= 0.0 && image_26.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_26.tStart = t;  // (not accounting for frame time here)
-    //   image_26.frameNStart = frameN;  // exact frame index
-      
-    //   image_26.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_26.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_26.setAutoDraw(false);
-    // }
+      // *polygon_2* updates
+      if (t >= 0.0 && polygon_2.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      polygon_2.tStart = t;  // (not accounting for frame time here)
+      polygon_2.frameNStart = frameN;  // exact frame index
+      polygon_2.setAutoDraw(true);
+    }
+    frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (polygon_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      polygon_2.setAutoDraw(false);
+    }
+    }
+   
     
     // *text_practice_interval* updates
     if (t >= 0.0 && text_practice_interval.status === PsychoJS.Status.NOT_STARTED) {
@@ -2798,19 +2819,6 @@ function practice_intervalRoutineEachFrame() {
       text_practice_interval.setAutoDraw(false);
     }
     
-    // // *polygon_2* updates
-    // if (t >= 0.0 && polygon_2.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   polygon_2.tStart = t;  // (not accounting for frame time here)
-    //   polygon_2.frameNStart = frameN;  // exact frame index
-      
-    //   polygon_2.setAutoDraw(true);
-    // }
-
-    frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (polygon_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      polygon_2.setAutoDraw(false);
-    }
     
     // *polygon_practice_interval* updates
     if (t >= 0.0 && polygon_practice_interval.status === PsychoJS.Status.NOT_STARTED) {
@@ -2991,11 +2999,11 @@ function practice_rewardsRoutineBegin(snapshot) {
     
     image_27.setPos(rewPos);
     image_27.setImage(rewImg);
-    // image_28.setImage(consRewardImgs[4]);
-    // image_29.setImage(consRewardImgs[3]);
-    // image_30.setImage(consRewardImgs[2]);
-    // image_31.setImage(consRewardImgs[1]);
-    // image_32.setImage(consRewardImgs[0]);
+    image_28.setImage(consRewardImgs[4]);
+    image_29.setImage(consRewardImgs[3]);
+    image_30.setImage(consRewardImgs[2]);
+    image_31.setImage(consRewardImgs[1]);
+    image_32.setImage(consRewardImgs[0]);
     text_practice_rewards.setText(textMsg);
     // keep track of which components have finished
     practice_rewardsComponents = [];
@@ -3003,13 +3011,17 @@ function practice_rewardsRoutineBegin(snapshot) {
     practice_rewardsComponents.push(card_pent_7);
     practice_rewardsComponents.push(card_sqr_7);
     practice_rewardsComponents.push(image_27); // reward display
-    // practice_rewardsComponents.push(arrow_6);
-    // practice_rewardsComponents.push(image_28);
-    // practice_rewardsComponents.push(image_29);
-    // practice_rewardsComponents.push(image_30);
-    // practice_rewardsComponents.push(image_31);
-    // practice_rewardsComponents.push(image_32);
-    // practice_rewardsComponents.push(polygon_3);
+    
+    if (show_trial_history == true) {
+      practice_rewardsComponents.push(arrow_6);
+      practice_rewardsComponents.push(image_28);
+      practice_rewardsComponents.push(image_29);
+      practice_rewardsComponents.push(image_30);
+      practice_rewardsComponents.push(image_31);
+      practice_rewardsComponents.push(image_32);
+      practice_rewardsComponents.push(polygon_3);
+    }
+    
     practice_rewardsComponents.push(text_practice_rewards);
     
     for (const thisComponent of practice_rewardsComponents)
@@ -3084,103 +3096,91 @@ function practice_rewardsRoutineEachFrame() {
       image_27.setAutoDraw(false);
     }
     
-    // // *arrow_6* updates
-    //  if (t >= 0.0 && arrow_6.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   arrow_6.tStart = t;  // (not accounting for frame time here)
-    //   arrow_6.frameNStart = frameN;  // exact frame index
+    if (show_trial_history == true) {
+      // *arrow_6* updates
+      if (t >= 0.0 && arrow_6.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        arrow_6.tStart = t;  // (not accounting for frame time here)
+        arrow_6.frameNStart = frameN;  // exact frame index
+        arrow_6.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (arrow_6.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        arrow_6.setAutoDraw(false);
+      }
       
-    //   arrow_6.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (arrow_6.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   arrow_6.setAutoDraw(false);
-    // }
-    
-    // // *image_28* updates
-    // if (t >= 0.0 && image_28.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_28.tStart = t;  // (not accounting for frame time here)
-    //   image_28.frameNStart = frameN;  // exact frame index
+      // *image_28* updates
+      if (t >= 0.0 && image_28.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_28.tStart = t;  // (not accounting for frame time here)
+        image_28.frameNStart = frameN;  // exact frame index 
+        image_28.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_28.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_28.setAutoDraw(false);
+      }
       
-    //   image_28.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_28.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_28.setAutoDraw(false);
-    // }
-    
-    // // *image_29* updates
-    // if (t >= 0.0 && image_29.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_29.tStart = t;  // (not accounting for frame time here)
-    //   image_29.frameNStart = frameN;  // exact frame index
+      // *image_29* updates
+      if (t >= 0.0 && image_29.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_29.tStart = t;  // (not accounting for frame time here)
+        image_29.frameNStart = frameN;  // exact frame index 
+        image_29.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_29.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_29.setAutoDraw(false);
+      }
       
-    //   image_29.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_29.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_29.setAutoDraw(false);
-    // }
-    
-    // // *image_30* updates
-    // if (t >= 0.0 && image_30.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_30.tStart = t;  // (not accounting for frame time here)
-    //   image_30.frameNStart = frameN;  // exact frame index
+      // *image_30* updates
+      if (t >= 0.0 && image_30.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_30.tStart = t;  // (not accounting for frame time here)
+        image_30.frameNStart = frameN;  // exact frame index
+        image_30.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_30.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_30.setAutoDraw(false);
+      }
       
-    //   image_30.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_30.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_30.setAutoDraw(false);
-    // }
-    
-    // // *image_31* updates
-    // if (t >= 0.0 && image_31.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_31.tStart = t;  // (not accounting for frame time here)
-    //   image_31.frameNStart = frameN;  // exact frame index
+      // *image_31* updates
+      if (t >= 0.0 && image_31.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_31.tStart = t;  // (not accounting for frame time here)
+        image_31.frameNStart = frameN;  // exact frame index
+        image_31.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_31.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_31.setAutoDraw(false);
+      }
       
-    //   image_31.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_31.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_31.setAutoDraw(false);
-    // }
-    
-    // // *image_32* updates
-    // if (t >= 0.0 && image_32.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_32.tStart = t;  // (not accounting for frame time here)
-    //   image_32.frameNStart = frameN;  // exact frame index
+      // *image_32* updates
+      if (t >= 0.0 && image_32.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_32.tStart = t;  // (not accounting for frame time here)
+        image_32.frameNStart = frameN;  // exact frame index 
+        image_32.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_32.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_32.setAutoDraw(false);
+      }
       
-    //   image_32.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_32.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_32.setAutoDraw(false);
-    // }
-    
-    // // *polygon_3* updates
-    // if (t >= 0.0 && polygon_3.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   polygon_3.tStart = t;  // (not accounting for frame time here)
-    //   polygon_3.frameNStart = frameN;  // exact frame index
-      
-    //   polygon_3.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (polygon_3.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   polygon_3.setAutoDraw(false);
-    // }
+      // *polygon_3* updates
+      if (t >= 0.0 && polygon_3.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        polygon_3.tStart = t;  // (not accounting for frame time here)
+        polygon_3.frameNStart = frameN;  // exact frame index
+        polygon_3.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (polygon_3.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        polygon_3.setAutoDraw(false);
+      }
+    }
     
     // *text_practice_rewards* updates
     if (t >= 0 && text_practice_rewards.status === PsychoJS.Status.NOT_STARTED) {
@@ -3511,6 +3511,7 @@ var currentCondition;
 var reward_resetComponents;
 var current_block_index;
 var mainSwitchTrial;
+var block_counter = 0; // main blocks start at 1
 
 function reward_resetRoutineBegin(snapshot) {
   return async function () {
@@ -3526,17 +3527,24 @@ function reward_resetRoutineBegin(snapshot) {
     // psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
     console.log("mainConditions: " + mainConditions)
     // update component parameters for each repeat
-    // Run 'Begin Routine' code from code_reward_reset
 
-    // determine which block to run this time
+    // Run 'Begin Routine' code from code_reward_reset
+    // Save block number
+    block_counter += 1;
+    console.log("Current block: " + block_counter)
+    psychoJS.experiment.addData("blockNumber", block_counter)
+    // Determine which block to run this time
     current_block_index = block_order[0]; // take first index of block numbers for this session
+    console.log("Block assignment: " + current_block_index)
+    psychoJS.experiment.addData("blockAssignment", current_block_index)
+
     block_order.shift(); // remove the first index block number to prepare for the next block in the experiment
-    // get conditions for this block
+    // Get conditions for this block
     currentCondition = mainConditions[current_block_index]; // array that provides trial indices at which the winning slot changes
     mainSwitchTrial = currentCondition[0];
     psychoJS.experiment.addData("currentCondition", currentCondition);
     console.log("This block currentCondition: " + currentCondition)
-    // get reward sequences for this block
+    // Get reward sequences for this block
     main_reward_seqs = mainRewardSeqs[current_block_index];
     psychoJS.experiment.addData("main_reward_seqs", main_reward_seqs);
     console.log("This block main_reward_seqs: " + main_reward_seqs)
@@ -3624,16 +3632,16 @@ function slots_presentationRoutineBegin(snapshot) {
     endMsg = " ";
     endTrial = false;
     
-    // image_3.setPos(consReward_pos[0]);
-    // image_3.setImage(consRewardImgs[4]);
-    // image_6.setPos(consReward_pos[1]);
-    // image_6.setImage(consRewardImgs[3]);
-    // image_9.setPos(consReward_pos[2]);
-    // image_9.setImage(consRewardImgs[2]);
-    // image_12.setPos(consReward_pos[3]);
-    // image_12.setImage(consRewardImgs[1]);
-    // image_15.setPos(consReward_pos[4]);
-    // image_15.setImage(consRewardImgs[0]);
+    image_3.setPos(consReward_pos[0]);
+    image_3.setImage(consRewardImgs[4]);
+    image_6.setPos(consReward_pos[1]);
+    image_6.setImage(consRewardImgs[3]);
+    image_9.setPos(consReward_pos[2]);
+    image_9.setImage(consRewardImgs[2]);
+    image_12.setPos(consReward_pos[3]);
+    image_12.setImage(consRewardImgs[1]);
+    image_15.setPos(consReward_pos[4]);
+    image_15.setImage(consRewardImgs[0]);
     text_slots_presentation.setText(textMsg);
     key_resp_slots_presentation.keys = undefined;
     key_resp_slots_presentation.rt = undefined;
@@ -3643,15 +3651,19 @@ function slots_presentationRoutineBegin(snapshot) {
     slots_presentationComponents.push(card_circ_3);
     slots_presentationComponents.push(card_pent_3);
     slots_presentationComponents.push(card_sqr_3);
-    // slots_presentationComponents.push(arrow);
-    // slots_presentationComponents.push(image_3);
-    // slots_presentationComponents.push(image_6);
-    // slots_presentationComponents.push(image_9);
-    // slots_presentationComponents.push(image_12);
-    // slots_presentationComponents.push(image_15);
+    
+    if (show_trial_history == true) {
+      slots_presentationComponents.push(arrow);
+      slots_presentationComponents.push(image_3);
+      slots_presentationComponents.push(image_6);
+      slots_presentationComponents.push(image_9);
+      slots_presentationComponents.push(image_12);
+      slots_presentationComponents.push(image_15);
+      slots_presentationComponents.push(polygon_4);
+    }
+
     slots_presentationComponents.push(text_slots_presentation);
     slots_presentationComponents.push(text_slots_presentation_2);
-    // slots_presentationComponents.push(polygon_4);
     slots_presentationComponents.push(key_resp_slots_presentation);
     
     for (const thisComponent of slots_presentationComponents)
@@ -3678,7 +3690,6 @@ function slots_presentationRoutineEachFrame() {
         }
     }
     
-    
     // *card_circ_3* updates
     if (t >= 0.0 && card_circ_3.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
@@ -3688,7 +3699,6 @@ function slots_presentationRoutineEachFrame() {
       card_circ_3.setAutoDraw(true);
     }
 
-    
     // *card_pent_3* updates
     if (t >= 0.0 && card_pent_3.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
@@ -3697,7 +3707,6 @@ function slots_presentationRoutineEachFrame() {
       
       card_pent_3.setAutoDraw(true);
     }
-
     
     // *card_sqr_3* updates
     if (t >= 0.0 && card_sqr_3.status === PsychoJS.Status.NOT_STARTED) {
@@ -3708,73 +3717,64 @@ function slots_presentationRoutineEachFrame() {
       card_sqr_3.setAutoDraw(true);
     }
 
-    
-    // // *arrow* updates
-    // if (t >= 0.0 && arrow.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   arrow.tStart = t;  // (not accounting for frame time here)
-    //   arrow.frameNStart = frameN;  // exact frame index
-      
-    //   arrow.setAutoDraw(true);
-    // }
-
-    
-    // // *image_3* updates
-    // if (t >= 0.0 && image_3.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_3.tStart = t;  // (not accounting for frame time here)
-    //   image_3.frameNStart = frameN;  // exact frame index
-      
-    //   image_3.setAutoDraw(true);
-    // }
-
-    
-    // // *image_6* updates
-    // if (t >= 0.0 && image_6.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_6.tStart = t;  // (not accounting for frame time here)
-    //   image_6.frameNStart = frameN;  // exact frame index
-      
-    //   image_6.setAutoDraw(true);
-    // }
-
-    
-    // // *image_9* updates
-    // if (t >= 0.0 && image_9.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_9.tStart = t;  // (not accounting for frame time here)
-    //   image_9.frameNStart = frameN;  // exact frame index
-      
-    //   image_9.setAutoDraw(true);
-    // }
-
-    
-    // // *image_12* updates
-    // if (t >= 0.0 && image_12.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_12.tStart = t;  // (not accounting for frame time here)
-    //   image_12.frameNStart = frameN;  // exact frame index
-      
-    //   image_12.setAutoDraw(true);
-    // }
-
-    
-    // // *image_15* updates
-    // if (t >= 0.0 && image_15.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_15.tStart = t;  // (not accounting for frame time here)
-    //   image_15.frameNStart = frameN;  // exact frame index
-      
-    //   image_15.setAutoDraw(true);
-    // }
-
+    if (show_trial_history == true) {
+      // *arrow* updates
+      if (t >= 0.0 && arrow.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        arrow.tStart = t;  // (not accounting for frame time here)
+        arrow.frameNStart = frameN;  // exact frame index 
+        arrow.setAutoDraw(true);
+      }
+      // *image_3* updates
+      if (t >= 0.0 && image_3.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_3.tStart = t;  // (not accounting for frame time here)
+        image_3.frameNStart = frameN;  // exact frame index
+        image_3.setAutoDraw(true);
+      }
+      // *image_6* updates
+      if (t >= 0.0 && image_6.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_6.tStart = t;  // (not accounting for frame time here)
+        image_6.frameNStart = frameN;  // exact frame index
+        image_6.setAutoDraw(true);
+      }
+      // *image_9* updates
+      if (t >= 0.0 && image_9.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_9.tStart = t;  // (not accounting for frame time here)
+        image_9.frameNStart = frameN;  // exact frame index 
+        image_9.setAutoDraw(true);
+      }
+      // *image_12* updates
+      if (t >= 0.0 && image_12.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_12.tStart = t;  // (not accounting for frame time here)
+        image_12.frameNStart = frameN;  // exact frame index
+        image_12.setAutoDraw(true);
+      }
+      // *image_15* updates
+      if (t >= 0.0 && image_15.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_15.tStart = t;  // (not accounting for frame time here)
+        image_15.frameNStart = frameN;  // exact frame index 
+        image_15.setAutoDraw(true);
+      }
+      // *polygon_4* updates
+      if (t >= 0.0 && polygon_4.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        polygon_4.tStart = t;  // (not accounting for frame time here)
+        polygon_4.frameNStart = frameN;  // exact frame index 
+        polygon_4.setAutoDraw(true);
+      }
+    }
     
     // *text_slots_presentation* updates
     if (t >= 0.0 && text_slots_presentation.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       text_slots_presentation.tStart = t;  // (not accounting for frame time here)
       text_slots_presentation.frameNStart = frameN;  // exact frame index
-      
+
       text_slots_presentation.setAutoDraw(true);
     }
 
@@ -3788,19 +3788,10 @@ function slots_presentationRoutineEachFrame() {
       text_slots_presentation_2.setAutoDraw(true);
     }
 
-    
     if (text_slots_presentation_2.status === PsychoJS.Status.STARTED){ // only update if being drawn
       text_slots_presentation_2.setText(endMsg, false);
     }
-    
-    // *polygon_4* updates
-    // if (t >= 0.0 && polygon_4.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   polygon_4.tStart = t;  // (not accounting for frame time here)
-    //   polygon_4.frameNStart = frameN;  // exact frame index
-      
-    //   polygon_4.setAutoDraw(true);
-    // }
+
 
     
     // *key_resp_slots_presentation* updates
@@ -3915,16 +3906,16 @@ function selection_intervalRoutineBegin(snapshot) {
         }
     }
     
-    // image_4.setPos(consReward_pos[0]);
-    // image_4.setImage(consRewardImgs[4]);
-    // image_7.setPos(consReward_pos[1]);
-    // image_7.setImage(consRewardImgs[3]);
-    // image_10.setPos(consReward_pos[2]);
-    // image_10.setImage(consRewardImgs[2]);
-    // image_13.setPos(consReward_pos[3]);
-    // image_13.setImage(consRewardImgs[1]);
-    // image_16.setPos(consReward_pos[4]);
-    // image_16.setImage(consRewardImgs[0]);
+    image_4.setPos(consReward_pos[0]);
+    image_4.setImage(consRewardImgs[4]);
+    image_7.setPos(consReward_pos[1]);
+    image_7.setImage(consRewardImgs[3]);
+    image_10.setPos(consReward_pos[2]);
+    image_10.setImage(consRewardImgs[2]);
+    image_13.setPos(consReward_pos[3]);
+    image_13.setImage(consRewardImgs[1]);
+    image_16.setPos(consReward_pos[4]);
+    image_16.setImage(consRewardImgs[0]);
     polygon_selection_interval.setPos(boxPos);
     text_selection_interval.setText(textMsg);
     // keep track of which components have finished
@@ -3932,14 +3923,18 @@ function selection_intervalRoutineBegin(snapshot) {
     selection_intervalComponents.push(card_circ_5);
     selection_intervalComponents.push(card_pent_5);
     selection_intervalComponents.push(card_sqr_5);
-    // selection_intervalComponents.push(arrow_2);
-    // selection_intervalComponents.push(image_4);
-    // selection_intervalComponents.push(image_7);
-    // selection_intervalComponents.push(image_10);
-    // selection_intervalComponents.push(image_13);
-    // selection_intervalComponents.push(image_16);
+    
+    if (show_trial_history == true) {
+      selection_intervalComponents.push(arrow_2);
+      selection_intervalComponents.push(image_4);
+      selection_intervalComponents.push(image_7);
+      selection_intervalComponents.push(image_10);
+      selection_intervalComponents.push(image_13);
+      selection_intervalComponents.push(image_16);
+      selection_intervalComponents.push(polygon_5);
+    }
+
     selection_intervalComponents.push(polygon_selection_interval);
-    // selection_intervalComponents.push(polygon_5);
     selection_intervalComponents.push(text_selection_interval);
     
     for (const thisComponent of selection_intervalComponents)
@@ -4000,89 +3995,92 @@ function selection_intervalRoutineEachFrame() {
       card_sqr_5.setAutoDraw(false);
     }
     
-    // // *arrow_2* updates
-    // if (t >= 0.0 && arrow_2.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   arrow_2.tStart = t;  // (not accounting for frame time here)
-    //   arrow_2.frameNStart = frameN;  // exact frame index
+    if (show_trial_history == true) {
+        // *arrow_2* updates
+      if (t >= 0.0 && arrow_2.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        arrow_2.tStart = t;  // (not accounting for frame time here)
+        arrow_2.frameNStart = frameN;  // exact frame index
+        arrow_2.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (arrow_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        arrow_2.setAutoDraw(false);
+      }
       
-    //   arrow_2.setAutoDraw(true);
-    // }
+      // *image_4* updates
+      if (t >= 0.0 && image_4.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_4.tStart = t;  // (not accounting for frame time here)
+        image_4.frameNStart = frameN;  // exact frame index 
+        image_4.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_4.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_4.setAutoDraw(false);
+      }
+      
+      // *image_7* updates
+      if (t >= 0.0 && image_7.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_7.tStart = t;  // (not accounting for frame time here)
+        image_7.frameNStart = frameN;  // exact frame index 
+        image_7.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_7.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_7.setAutoDraw(false);
+      }
+      
+      // *image_10* updates
+      if (t >= 0.0 && image_10.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_10.tStart = t;  // (not accounting for frame time here)
+        image_10.frameNStart = frameN;  // exact frame index
+        image_10.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_10.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_10.setAutoDraw(false);
+      }
+      
+      // *image_13* updates
+      if (t >= 0.0 && image_13.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_13.tStart = t;  // (not accounting for frame time here)
+        image_13.frameNStart = frameN;  // exact frame index
+        image_13.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_13.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_13.setAutoDraw(false);
+      }
+      
+      // *image_16* updates
+      if (t >= 0.0 && image_16.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_16.tStart = t;  // (not accounting for frame time here)
+        image_16.frameNStart = frameN;  // exact frame index
+        image_16.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_16.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_16.setAutoDraw(false);
+      }
 
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (arrow_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   arrow_2.setAutoDraw(false);
-    // }
+      // *polygon_5* updates
+      if (t >= 0.0 && polygon_5.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        polygon_5.tStart = t;  // (not accounting for frame time here)
+        polygon_5.frameNStart = frameN;  // exact frame index 
+        polygon_5.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (polygon_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        polygon_5.setAutoDraw(false);
+      }
+    }
     
-    // // *image_4* updates
-    // if (t >= 0.0 && image_4.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_4.tStart = t;  // (not accounting for frame time here)
-    //   image_4.frameNStart = frameN;  // exact frame index
-      
-    //   image_4.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_4.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_4.setAutoDraw(false);
-    // }
-    
-    // // *image_7* updates
-    // if (t >= 0.0 && image_7.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_7.tStart = t;  // (not accounting for frame time here)
-    //   image_7.frameNStart = frameN;  // exact frame index
-      
-    //   image_7.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_7.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_7.setAutoDraw(false);
-    // }
-    
-    // // *image_10* updates
-    // if (t >= 0.0 && image_10.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_10.tStart = t;  // (not accounting for frame time here)
-    //   image_10.frameNStart = frameN;  // exact frame index
-      
-    //   image_10.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_10.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_10.setAutoDraw(false);
-    // }
-    
-    // // *image_13* updates
-    // if (t >= 0.0 && image_13.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_13.tStart = t;  // (not accounting for frame time here)
-    //   image_13.frameNStart = frameN;  // exact frame index
-      
-    //   image_13.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_13.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_13.setAutoDraw(false);
-    // }
-    
-    // // *image_16* updates
-    // if (t >= 0.0 && image_16.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_16.tStart = t;  // (not accounting for frame time here)
-    //   image_16.frameNStart = frameN;  // exact frame index
-      
-    //   image_16.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_16.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_16.setAutoDraw(false);
-    // }
     
     // *polygon_selection_interval* updates
     if (t >= 0.0 && polygon_selection_interval.status === PsychoJS.Status.NOT_STARTED) {
@@ -4098,19 +4096,6 @@ function selection_intervalRoutineEachFrame() {
       polygon_selection_interval.setAutoDraw(false);
     }
     
-    // // *polygon_5* updates
-    // if (t >= 0.0 && polygon_5.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   polygon_5.tStart = t;  // (not accounting for frame time here)
-    //   polygon_5.frameNStart = frameN;  // exact frame index
-      
-    //   polygon_5.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + presentationInterval - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (polygon_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   polygon_5.setAutoDraw(false);
-    // }
     
     // *text_selection_interval* updates
     if (t >= 0.0 && text_selection_interval.status === PsychoJS.Status.NOT_STARTED) {
@@ -4300,11 +4285,11 @@ function reward_presentationRoutineBegin(snapshot) {
     
     image_2.setPos(rewPos);
     image_2.setImage(rewImg);
-    // image_5.setImage(consRewardImgs[4]);
-    // image_8.setImage(consRewardImgs[3]);
-    // image_11.setImage(consRewardImgs[2]);
-    // image_14.setImage(consRewardImgs[1]);
-    // image_17.setImage(consRewardImgs[0]);
+    image_5.setImage(consRewardImgs[4]);
+    image_8.setImage(consRewardImgs[3]);
+    image_11.setImage(consRewardImgs[2]);
+    image_14.setImage(consRewardImgs[1]);
+    image_17.setImage(consRewardImgs[0]);
     text_reward_presentation.setText(textMsg);
     // keep track of which components have finished
     reward_presentationComponents = [];
@@ -4312,13 +4297,17 @@ function reward_presentationRoutineBegin(snapshot) {
     reward_presentationComponents.push(card_pent_4);
     reward_presentationComponents.push(card_sqr_4);
     reward_presentationComponents.push(image_2); // reward display
-    // reward_presentationComponents.push(arrow_3);
-    // reward_presentationComponents.push(image_5);
-    // reward_presentationComponents.push(image_8);
-    // reward_presentationComponents.push(image_11);
-    // reward_presentationComponents.push(image_14);
-    // reward_presentationComponents.push(image_17);
-    // reward_presentationComponents.push(polygon_6);
+    
+    if (show_trial_history == true) {
+      reward_presentationComponents.push(arrow_3);
+      reward_presentationComponents.push(image_5);
+      reward_presentationComponents.push(image_8);
+      reward_presentationComponents.push(image_11);
+      reward_presentationComponents.push(image_14);
+      reward_presentationComponents.push(image_17);
+      reward_presentationComponents.push(polygon_6);
+    }
+    
     reward_presentationComponents.push(text_reward_presentation);
     
     for (const thisComponent of reward_presentationComponents)
@@ -4392,104 +4381,92 @@ function reward_presentationRoutineEachFrame() {
     if (image_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       image_2.setAutoDraw(false);
     }
-    
-    // // *arrow_3* updates
-    // if (t >= 0.0 && arrow_3.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   arrow_3.tStart = t;  // (not accounting for frame time here)
-    //   arrow_3.frameNStart = frameN;  // exact frame index
-      
-    //   arrow_3.setAutoDraw(true);
-    // }
 
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (arrow_3.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   arrow_3.setAutoDraw(false);
-    // }
-    
-    // // *image_5* updates
-    // if (t >= 0.0 && image_5.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_5.tStart = t;  // (not accounting for frame time here)
-    //   image_5.frameNStart = frameN;  // exact frame index
+    if (show_trial_history == true) {
+      // *arrow_3* updates
+      if (t >= 0.0 && arrow_3.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        arrow_3.tStart = t;  // (not accounting for frame time here)
+        arrow_3.frameNStart = frameN;  // exact frame index
+        arrow_3.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (arrow_3.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        arrow_3.setAutoDraw(false);
+      }
       
-    //   image_5.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_5.setAutoDraw(false);
-    // }
-    
-    // // *image_8* updates
-    // if (t >= 0.0 && image_8.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_8.tStart = t;  // (not accounting for frame time here)
-    //   image_8.frameNStart = frameN;  // exact frame index
+      // *image_5* updates
+      if (t >= 0.0 && image_5.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_5.tStart = t;  // (not accounting for frame time here)
+        image_5.frameNStart = frameN;  // exact frame index 
+        image_5.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_5.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_5.setAutoDraw(false);
+      }
       
-    //   image_8.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_8.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_8.setAutoDraw(false);
-    // }
-    
-    // // *image_11* updates
-    // if (t >= 0.0 && image_11.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_11.tStart = t;  // (not accounting for frame time here)
-    //   image_11.frameNStart = frameN;  // exact frame index
+      // *image_8* updates
+      if (t >= 0.0 && image_8.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_8.tStart = t;  // (not accounting for frame time here)
+        image_8.frameNStart = frameN;  // exact frame index
+        image_8.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_8.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_8.setAutoDraw(false);
+      }
       
-    //   image_11.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_11.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_11.setAutoDraw(false);
-    // }
-    
-    // // *image_14* updates
-    // if (t >= 0.0 && image_14.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_14.tStart = t;  // (not accounting for frame time here)
-    //   image_14.frameNStart = frameN;  // exact frame index
+      // *image_11* updates
+      if (t >= 0.0 && image_11.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_11.tStart = t;  // (not accounting for frame time here)
+        image_11.frameNStart = frameN;  // exact frame index
+        image_11.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_11.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_11.setAutoDraw(false);
+      }
       
-    //   image_14.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_14.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_14.setAutoDraw(false);
-    // }
-    
-    // // *image_17* updates
-    // if (t >= 0.0 && image_17.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   image_17.tStart = t;  // (not accounting for frame time here)
-    //   image_17.frameNStart = frameN;  // exact frame index
+      // *image_14* updates
+      if (t >= 0.0 && image_14.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_14.tStart = t;  // (not accounting for frame time here)
+        image_14.frameNStart = frameN;  // exact frame index
+        image_14.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_14.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_14.setAutoDraw(false);
+      }
       
-    //   image_17.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (image_17.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   image_17.setAutoDraw(false);
-    // }
-    
-    // *polygon_6* updates
-    // if (t >= 0.0 && polygon_6.status === PsychoJS.Status.NOT_STARTED) {
-    //   // keep track of start time/frame for later
-    //   polygon_6.tStart = t;  // (not accounting for frame time here)
-    //   polygon_6.frameNStart = frameN;  // exact frame index
+      // *image_17* updates
+      if (t >= 0.0 && image_17.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        image_17.tStart = t;  // (not accounting for frame time here)
+        image_17.frameNStart = frameN;  // exact frame index
+        image_17.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (image_17.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        image_17.setAutoDraw(false);
+      }
       
-    //   polygon_6.setAutoDraw(true);
-    // }
-
-    // frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    // if (polygon_6.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-    //   polygon_6.setAutoDraw(false);
-    // }
+      // *polygon_6* updates
+      if (t >= 0.0 && polygon_6.status === PsychoJS.Status.NOT_STARTED) {
+        // keep track of start time/frame for later
+        polygon_6.tStart = t;  // (not accounting for frame time here)
+        polygon_6.frameNStart = frameN;  // exact frame index
+        polygon_6.setAutoDraw(true);
+      }
+      frameRemains = 0.0 + rewardPresentationTime - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+      if (polygon_6.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+        polygon_6.setAutoDraw(false);
+      }
+    }
     
     // *text_reward_presentation* updates
     if (t >= 0 && text_reward_presentation.status === PsychoJS.Status.NOT_STARTED) {
