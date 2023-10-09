@@ -12,7 +12,7 @@ const { round } = util;
 
 
 // store info about the experiment session:
-let expName = 'slotMachine_updated';  // from the Builder filename that created this script
+let expName = 'SlotMachine_updated';  // from the Builder filename that created this script
 let expInfo = {
     'participant': '',
 };
@@ -152,16 +152,16 @@ const practice_blockLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(practice_blockLoopBegin(practice_blockLoopScheduler));
 flowScheduler.add(practice_blockLoopScheduler);
 flowScheduler.add(practice_blockLoopEnd);
-flowScheduler.add(practice_resetRoutineBegin());
-flowScheduler.add(practice_resetRoutineEachFrame());
-flowScheduler.add(practice_resetRoutineEnd());
-const practice_trialsLoopScheduler = new Scheduler(psychoJS);
-flowScheduler.add(practice_trialsLoopBegin(practice_trialsLoopScheduler));
-flowScheduler.add(practice_trialsLoopScheduler);
-flowScheduler.add(practice_trialsLoopEnd);
-flowScheduler.add(practice_endRoutineBegin());
-flowScheduler.add(practice_endRoutineEachFrame());
-flowScheduler.add(practice_endRoutineEnd());
+// flowScheduler.add(practice_resetRoutineBegin());
+// flowScheduler.add(practice_resetRoutineEachFrame());
+// flowScheduler.add(practice_resetRoutineEnd());
+// const practice_trialsLoopScheduler = new Scheduler(psychoJS);
+// flowScheduler.add(practice_trialsLoopBegin(practice_trialsLoopScheduler));
+// flowScheduler.add(practice_trialsLoopScheduler);
+// flowScheduler.add(practice_trialsLoopEnd);
+// flowScheduler.add(practice_endRoutineBegin());
+// flowScheduler.add(practice_endRoutineEachFrame());
+// flowScheduler.add(practice_endRoutineEnd());
 flowScheduler.add(Main_InstructionRoutineBegin());
 flowScheduler.add(Main_InstructionRoutineEachFrame());
 flowScheduler.add(Main_InstructionRoutineEnd());
@@ -358,7 +358,7 @@ var globalClock;
 var routineTimer;
 
 async function experimentInit() {
-  nPracticeBlocks = 1;
+  nPracticeBlocks = 2;
   nPracticeTrials = 15;
 
 
@@ -368,7 +368,7 @@ async function experimentInit() {
   text_welcome = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_welcome',
-    text: 'Welcome to the Slot Machine Game！\n\nPress any key to continue',
+    text: 'Welcome to the Slot Machine Game！\n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -406,7 +406,7 @@ async function experimentInit() {
     text: 'SLOT MACHINE GAME INSTRUCTIONS' +
     '\n\nImagine that you go to a casino to play with slot machines for 10 days.' +
     '\n\nEach day, you can play 15 rounds. Each round, you select a machine to play and you can earn a reward.'+
-    '\n\nPress any key to continue',
+    '\n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -427,7 +427,7 @@ async function experimentInit() {
     '\nOne machine earns low rewards - mostly 10 points, but sometimes 100 or 0 points.' +
     '\nOne machine earns no rewards - mostly 0 points, but sometimes 100 or 10 points.' +
     '\n\nIn this game, you will have to find the best machines to maximize your rewards.'+
-    '\n\nPress any key to continue',
+    '\n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0.0,
@@ -448,7 +448,7 @@ async function experimentInit() {
     'So the best machine may change after a while. You will have to adapt!'+
     '\n\nThe game takes about 10 minutes and starts with a practice.'+
     '\n\nPress LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
-    '\n\nPress any key to continue.',
+    '\n\nPress any key to start the practice.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0.0,
@@ -866,7 +866,9 @@ async function experimentInit() {
   text_practice_end = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_practice_end',
-    text: 'You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to continue',
+    text: 'You have successfully completed the practice.' +
+    '\n\nNow you are ready to start the game.'+
+    '\n\nPress SPACE key to continue.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -886,7 +888,8 @@ async function experimentInit() {
   text_main_instruction = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_main_instruction',
-    text: 'Press one of the following arrows on the keyboard to select your slot machine\n\nLEFT, UP, RIGHT\n\n\nPress SPACE key to continue',
+    text: 'Press one of the following arrows on the keyboard to select your slot machine' +
+    '\n\nLEFT, UP, RIGHT\n\n\nPress SPACE key to continue.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -1322,10 +1325,10 @@ async function experimentInit() {
   text_end_ins = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_end_ins',
-    text: '\nYou have successfully completed the task.\n\nThank you.',
+    text: '\nYou have successfully completed the task.\n\nThank you!',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
     depth: -1.0 
@@ -1983,7 +1986,7 @@ function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
     
     // Schedule all the trials in the trialList:
     for (const thisPracticeBlock of practice_block) {
-      // console.log("thisPracticeBlock: " + thisPracticeBlock)
+      // List of things that go into each practice block...
       snapshot = practice_block.getSnapshot();
       practice_blockLoopScheduler.add(importConditions(snapshot));
       practice_blockLoopScheduler.add(practice_resetRoutineBegin(snapshot));
@@ -2126,6 +2129,7 @@ function practice_trialsLoopBegin(practice_trialsLoopScheduler, snapshot) {
     
     // Schedule all the trials in the trialList:
     for (const thisPractice_trial of practice_trials) {
+      // List of things that go into each practice trial
       snapshot = practice_trials.getSnapshot();
       practice_trialsLoopScheduler.add(importConditions(snapshot));
       practice_trialsLoopScheduler.add(practice_slotsRoutineBegin(snapshot));
