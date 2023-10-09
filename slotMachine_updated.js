@@ -133,12 +133,15 @@ psychoJS.scheduleCondition(function() { return (psychoJS.gui.dialogComponent.but
 // flowScheduler gets run if the participants presses OK
 flowScheduler.add(updateInfo); // add timeStamp
 flowScheduler.add(experimentInit);
+// first page
 flowScheduler.add(welcomeRoutineBegin());
 flowScheduler.add(welcomeRoutineEachFrame());
 flowScheduler.add(welcomeRoutineEnd());
+// instruction video
 flowScheduler.add(intro_videoRoutineBegin());
 flowScheduler.add(intro_videoRoutineEachFrame());
 flowScheduler.add(intro_videoRoutineEnd());
+// written instructions
 flowScheduler.add(instruction1RoutineBegin());
 flowScheduler.add(instruction1RoutineEachFrame());
 flowScheduler.add(instruction1RoutineEnd());
@@ -148,27 +151,24 @@ flowScheduler.add(instruction2RoutineEnd());
 flowScheduler.add(instruction3RoutineBegin());
 flowScheduler.add(instruction3RoutineEachFrame());
 flowScheduler.add(instruction3RoutineEnd());
+// practice blocks
 const practice_blockLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(practice_blockLoopBegin(practice_blockLoopScheduler));
 flowScheduler.add(practice_blockLoopScheduler);
 flowScheduler.add(practice_blockLoopEnd);
-// flowScheduler.add(practice_resetRoutineBegin());
-// flowScheduler.add(practice_resetRoutineEachFrame());
-// flowScheduler.add(practice_resetRoutineEnd());
-// const practice_trialsLoopScheduler = new Scheduler(psychoJS);
-// flowScheduler.add(practice_trialsLoopBegin(practice_trialsLoopScheduler));
-// flowScheduler.add(practice_trialsLoopScheduler);
-// flowScheduler.add(practice_trialsLoopEnd);
-// flowScheduler.add(practice_endRoutineBegin());
-// flowScheduler.add(practice_endRoutineEachFrame());
-// flowScheduler.add(practice_endRoutineEnd());
+// transition from practice to real experiment: 
+flowScheduler.add(practice_endRoutineBegin()); // "You have successfully completed the practice."
+flowScheduler.add(practice_endRoutineEachFrame());
+flowScheduler.add(practice_endRoutineEnd());
 flowScheduler.add(Main_InstructionRoutineBegin());
 flowScheduler.add(Main_InstructionRoutineEachFrame());
 flowScheduler.add(Main_InstructionRoutineEnd());
+// main blocks
 const blockLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(blockLoopBegin(blockLoopScheduler));
 flowScheduler.add(blockLoopScheduler);
 flowScheduler.add(blockLoopEnd);
+// end of experiment message
 flowScheduler.add(End_insRoutineBegin());
 flowScheduler.add(End_insRoutineEachFrame());
 flowScheduler.add(End_insRoutineEnd());
@@ -403,7 +403,7 @@ async function experimentInit() {
   text_instruction1 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_instruction1',
-    text: 'SLOT MACHINE GAME INSTRUCTIONS' +
+    text: 'Slot Machine Game' +
     '\n\nImagine that you go to a casino to play with slot machines for 10 days.' +
     '\n\nEach day, you can play 15 rounds. Each round, you select a machine to play and you can earn a reward.'+
     '\n\nPress any key to continue.',
