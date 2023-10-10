@@ -2351,11 +2351,11 @@ function practice_slotsRoutineBegin(snapshot) {
     textMsg = ("Total reward: " + nCorr.toString());
     endMsg = " ";
     endTrial = false;
-    
+  
     
     text_practice_slots.setText(textMsg);
     // key_resp_practice_slots.keys = undefined;
-    key_resp_practice_slots.keys = '';
+    key_resp_practice_slots.keys = 999;
     key_resp_practice_slots.rt = undefined;
     _key_resp_practice_slots_allKeys = [];
     // keep track of which components have finished
