@@ -404,7 +404,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_instruction1',
     text: 'Slot Machine Game' +
-    '\n\nImagine that you go to a casino to play with slot machines for 10 days.' +
+    '\n\nImagine that you go to a casino to play with three slot machines for 10 days.' +
     '\n\nEach day, you can play 15 rounds. Each round, you select a machine to play and you can earn a reward.'+
     '\n\nPress any key to continue.',
     font: 'Arial',
