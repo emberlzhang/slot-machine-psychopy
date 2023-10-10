@@ -2355,6 +2355,7 @@ function practice_slotsRoutineBegin(snapshot) {
     
     text_practice_slots.setText(textMsg);
     key_resp_practice_slots.keys = undefined;
+    key_resp_practice_slots.keys = '';
     key_resp_practice_slots.rt = undefined;
     _key_resp_practice_slots_allKeys = [];
     // keep track of which components have finished
@@ -2905,7 +2906,7 @@ function practice_rewardsRoutineBegin(snapshot) {
             consRewardImgs.shift();
         }
         continueRoutine = false;
-    } else {
+    } else { // keep checking which trial at which to switch reward sequence assignments
         if (practice_trials.thisN + 1 > practiceSwitchTrial) {
           if (practice_reward_seqs.length > 1){
             practice_reward_seqs.shift(); // shift to the next slot reward sequence
