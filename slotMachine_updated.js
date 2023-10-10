@@ -2354,7 +2354,7 @@ function practice_slotsRoutineBegin(snapshot) {
     
     
     text_practice_slots.setText(textMsg);
-    key_resp_practice_slots.keys = undefined;
+    // key_resp_practice_slots.keys = undefined;
     key_resp_practice_slots.keys = '';
     key_resp_practice_slots.rt = undefined;
     _key_resp_practice_slots_allKeys = [];
