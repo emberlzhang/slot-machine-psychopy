@@ -2354,8 +2354,8 @@ function practice_slotsRoutineBegin(snapshot) {
   
     
     text_practice_slots.setText(textMsg);
-    // key_resp_practice_slots.keys = undefined;
-    key_resp_practice_slots.keys = 999;
+    key_resp_practice_slots.keys = undefined;
+    // key_resp_practice_slots.keys = 999;
     key_resp_practice_slots.rt = undefined;
     _key_resp_practice_slots_allKeys = [];
     // keep track of which components have finished
@@ -2583,10 +2583,11 @@ function practice_slotsRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_practice_slots.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_practice_slots.keys', key_resp_practice_slots.keys);
+    
     if (typeof key_resp_practice_slots.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_practice_slots.rt', key_resp_practice_slots.rt);
         psychoJS.experiment.addData('key_resp_practice_slots.duration', key_resp_practice_slots.duration);
+        psychoJS.experiment.addData('key_resp_practice_slots.keys', key_resp_practice_slots.keys);
         routineTimer.reset();
         }
     
