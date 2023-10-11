@@ -1999,7 +1999,7 @@ function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
       practice_blockLoopScheduler.add(Block_breakRoutineBegin(snapshot)); // Prints "next day starts" text
       practice_blockLoopScheduler.add(Block_breakRoutineEachFrame());
       practice_blockLoopScheduler.add(Block_breakRoutineEnd(snapshot));
-      practice_blockLoopScheduler.add(blockLoopEndIteration(blockLoopScheduler, snapshot));
+      practice_blockLoopScheduler.add(practice_blockLoopEndIteration(practice_blockLoopScheduler, snapshot));
     }
     
     return Scheduler.Event.NEXT;
@@ -2191,6 +2191,22 @@ async function practice_blockLoopEnd() {
   return Scheduler.Event.NEXT;
 }
 
+function practice_blockLoopEndIteration(scheduler, snapshot) {
+  // ------Prepare for next entry------
+  return async function () {
+    if (typeof snapshot !== 'undefined') {
+      // ------Check if user ended loop early------
+      if (snapshot.finished) {
+        // Check for and save orphaned data
+        if (psychoJS.experiment.isEntryEmpty()) {
+          psychoJS.experiment.nextEntry(snapshot);
+        }
+        scheduler.stop();
+      }
+    return Scheduler.Event.NEXT;
+    }
+  };
+}
 // Main Blocks and Experimental Trials
 var block;
 function blockLoopBegin(blockLoopScheduler, snapshot) {
@@ -2908,6 +2924,7 @@ function practice_rewardsRoutineBegin(snapshot) {
         }
         continueRoutine = false;
     } else { // keep checking which trial at which to switch reward sequence assignments
+        
         if (practice_trials.thisN + 1 > practiceSwitchTrial) {
           if (practice_reward_seqs.length > 1){
             practice_reward_seqs.shift(); // shift to the next slot reward sequence
