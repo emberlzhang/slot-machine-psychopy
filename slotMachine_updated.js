@@ -241,7 +241,6 @@ async function updateInfo() {
 }
 
 var intro_videoClock;
-var movieClock;
 var movie;
 var nPracticeBlocks;
 var nPracticeTrials;
@@ -361,7 +360,6 @@ async function experimentInit() {
   nPracticeBlocks = 2;
   nPracticeTrials = 15;
 
-
   // Initialize components for Routine "welcome"
   welcomeClock = new util.Clock();
   // Run 'Begin Experiment' code from code_welcome
@@ -380,7 +378,6 @@ async function experimentInit() {
   
    // Initialize components for Routine "intro_video"
    intro_videoClock = new util.Clock();
-   movieClock = new util.Clock();
    movie = new visual.MovieStim({
      win: psychoJS.window,
      name: 'movie',
@@ -2363,7 +2360,7 @@ function practice_slotsRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from Code_practice_slots
-    psychoJS.experiment.addData("key_resp_practice_slots.started", globalClock.getTime());
+    // psychoJS.experiment.addData("key_resp_practice_slots.started", globalClock.getTime());
     textMsg = ("Total reward: " + nCorr.toString());
     endMsg = " ";
     endTrial = false;
