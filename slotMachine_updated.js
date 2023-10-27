@@ -2636,11 +2636,10 @@ function practice_intervalRoutineBegin(snapshot) {
     if (endTrial) {
         continueRoutine = false;
     }
-    presentationInterval = util.randchoice(intervalAfterSelection);
-    psychoJS.experiment.addData("presentationInterval", presentationInterval);
-    if (((key_resp_practice_slots.keys === keyboardNumbers[0]) || (key_resp_practice_slots.keys === keyboardArrows[0]))) {
+    if (key_resp_practice_slots){
+      if (((key_resp_practice_slots.keys === keyboardNumbers[0]) || (key_resp_practice_slots.keys === keyboardArrows[0]))) {
         boxPos = cardPositions[0];
-    } else {
+      } else {
         if (((key_resp_practice_slots.keys === keyboardNumbers[1]) || (key_resp_practice_slots.keys === keyboardArrows[1]))) {
             boxPos = cardPositions[1];
         } else {
@@ -2648,7 +2647,12 @@ function practice_intervalRoutineBegin(snapshot) {
                 boxPos = cardPositions[2];
             }
         }
+      }
     }
+    
+    console.log("interval" + intervalAfterSelection)
+    presentationInterval = util.randchoice(intervalAfterSelection);
+    psychoJS.experiment.addData("presentationInterval", presentationInterval);
     
     
     text_practice_interval.setText(textMsg);
