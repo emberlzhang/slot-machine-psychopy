@@ -2367,9 +2367,9 @@ function practice_slotsRoutineBegin(snapshot) {
   
     
     text_practice_slots.setText(textMsg);
-    key_resp_practice_slots.keys = undefined;
+    key_resp_practice_slots.keys = [];
     // key_resp_practice_slots.keys = 999;
-    key_resp_practice_slots.rt = undefined;
+    key_resp_practice_slots.rt = [];
     _key_resp_practice_slots_allKeys = [];
     // keep track of which components have finished
     practice_slotsComponents = [];
@@ -2564,6 +2564,7 @@ function practice_slotsRoutineEachFrame() {
     
     // check if the Routine should terminate
     if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      console.log("not continue")
       return Scheduler.Event.NEXT;
     }
     
@@ -2576,6 +2577,7 @@ function practice_slotsRoutineEachFrame() {
     
     // refresh the screen if continuing
     if (continueRoutine) {
+      console.log("continue")
       return Scheduler.Event.FLIP_REPEAT;
     } else {
       return Scheduler.Event.NEXT;
