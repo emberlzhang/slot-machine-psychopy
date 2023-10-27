@@ -2955,7 +2955,7 @@ function practice_rewardsRoutineBegin(snapshot) {
             consRewardImgs.shift();
         }
         continueRoutine = false;
-        return Scheduler.Event.NEXT;
+  
     } else { // below code only runs if user presses key input
         currentTrialReward = 0;
         rand_val = Math.random();
@@ -3252,7 +3252,7 @@ function practice_rewardsRoutineEachFrame() {
         continueRoutine = true;
         break;
       }
-    
+
     // refresh the screen if continuing
     if (continueRoutine) {
       return Scheduler.Event.FLIP_REPEAT;
@@ -3266,11 +3266,13 @@ function practice_rewardsRoutineEachFrame() {
 function practice_rewardsRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'practice_rewards' ---
+    
     for (const thisComponent of practice_rewardsComponents) {
       if (typeof thisComponent.setAutoDraw === 'function') {
         thisComponent.setAutoDraw(false);
       }
     }
+  
     // the Routine "practice_rewards" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     console.log("this code gets run: practice_rewardsRoutineEnd")
