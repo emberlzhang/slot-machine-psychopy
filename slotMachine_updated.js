@@ -2929,38 +2929,35 @@ function practice_rewardsRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_practice_rewards
+    // keep checking which trial to switch reward sequence assignments
+    if (practice_trials.thisN + 1 > practiceSwitchTrial) {
+      if (practice_reward_seqs.length > 1){
+        practice_reward_seqs.shift(); // shift to the next slot reward sequence
+        console.log("practice_reward_seqs shifted")
+      }
+      if (practiceCondition.length > 1) {
+        practiceCondition.shift(); // shift to the next switch trial
+        console.log("practiceCondition shifted")
+        console.log("practiceCondition: " + practiceCondition)
+      }
+    }
+    // get this trial's slot reward sequence
+    practice_reward_seq = practice_reward_seqs[0]; 
+    console.log("practice_reward_seq: " + practice_reward_seq)
+    psychoJS.experiment.addData("practice_reward_seq: " + practice_reward_seq)
+    // get the upcoming switch trial number (Note: trial number, not trial index)
+    practiceSwitchTrial = practiceCondition[0];
+    console.log("practiceSwitchTrial: " + practiceSwitchTrial)
+
     if (endTrial) {
-        console.log("is this code running? option 1")
         consRewardImgs.push("stimuli/blank_transparent.png");
         if ((consRewardImgs.length > 5)) {
             consRewardImgs.shift();
         }
         continueRoutine = false;
     } else { // below code only runs if user presses key input
-        // keep checking which trial to switch reward sequence assignments
-        console.log("is this code running? option 2")
-        if (practice_trials.thisN + 1 > practiceSwitchTrial) {
-          if (practice_reward_seqs.length > 1){
-            practice_reward_seqs.shift(); // shift to the next slot reward sequence
-            console.log("practice_reward_seqs shifted")
-          }
-          if (practiceCondition.length > 1) {
-            practiceCondition.shift(); // shift to the next switch trial
-            console.log("practiceCondition shifted")
-            console.log("practiceCondition: " + practiceCondition)
-          }
-        }
-        // get this trial's slot reward sequence
-        practice_reward_seq = practice_reward_seqs[0]; 
-        console.log("practice_reward_seq: " + practice_reward_seq)
-        psychoJS.experiment.addData("practice_reward_seq: " + practice_reward_seq)
-        
-        // get the upcoming switch trial number (Note: trial number, not trial index)
-        practiceSwitchTrial = practiceCondition[0];
-        console.log("practiceSwitchTrial: " + practiceSwitchTrial)
-
-        rand_val = Math.random();
         currentTrialReward = 0;
+        rand_val = Math.random();
         x = util.index(practice_reward_seq, 1);
         y = util.index(practice_reward_seq, 2);
         z = util.index(practice_reward_seq, 3);
@@ -2984,7 +2981,6 @@ function practice_rewardsRoutineBegin(snapshot) {
                 }
             }
         } else {
-            console.log("is this code running? option 3")
             if (((key_resp_practice_slots.keys === keyboardNumbers[y]) || (key_resp_practice_slots.keys === keyboardArrows[y]))) {
                 if ((rand_val >= 0.2)) {
                     currentTrialReward = 10;
@@ -3027,6 +3023,7 @@ function practice_rewardsRoutineBegin(snapshot) {
                 }
             }
         }
+        
         psychoJS.experiment.addData("reward_Img", rewImg);
         psychoJS.experiment.addData("Cuml_rew", nCorr);
         psychoJS.experiment.addData("currentPracticeTrialReward", currentTrialReward);
