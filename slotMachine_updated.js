@@ -3024,7 +3024,9 @@ function practice_rewardsRoutineBegin(snapshot) {
                 }
             }
         }
-        
+        console.log("this code is finished oooo")
+        image_27.setPos(rewPos);
+        image_27.setImage(rewImg);
         psychoJS.experiment.addData("reward_Img", rewImg);
         psychoJS.experiment.addData("Cuml_rew", nCorr);
         psychoJS.experiment.addData("currentPracticeTrialReward", currentTrialReward);
@@ -3033,12 +3035,11 @@ function practice_rewardsRoutineBegin(snapshot) {
         if ((consRewardImgs.length > 5)) {
             consRewardImgs.shift();
         }
+        
     }
     textMsg = ("Total reward: " + nCorr.toString());
     console.log("this code is finished A")
-    image_27.setPos(rewPos);
-    image_27.setImage(rewImg);
-    console.log("this code is finished Aa")
+    
     text_practice_rewards.setText(textMsg);
     console.log("this code is finished B")
     // keep track of which components have finished
