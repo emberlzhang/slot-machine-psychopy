@@ -3032,7 +3032,8 @@ function practice_rewardsRoutineBegin(snapshot) {
             consRewardImgs.shift();
         }
     }
-    textMsg = ("Total reward: " + nCorr.toString());
+    // textMsg = ("Total reward: " + nCorr.toString());
+    textMsg = ("Total reward: ");
     
     image_27.setPos(rewPos);
     image_27.setImage(rewImg);
@@ -3060,7 +3061,7 @@ function practice_rewardsRoutineBegin(snapshot) {
     }
     
     practice_rewardsComponents.push(text_practice_rewards);
-    
+    console.log("this code is finished")
     for (const thisComponent of practice_rewardsComponents)
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
