@@ -2598,14 +2598,14 @@ function practice_slotsRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_practice_slots.corr, level);
     }
-    
+    console.log("ending trial now")
     if (typeof key_resp_practice_slots.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('key_resp_practice_slots.rt', key_resp_practice_slots.rt);
         psychoJS.experiment.addData('key_resp_practice_slots.duration', key_resp_practice_slots.duration);
         psychoJS.experiment.addData('key_resp_practice_slots.keys', key_resp_practice_slots.keys);
         routineTimer.reset();
-        }
-    
+    }
+    console.log("trial has ended now")
     key_resp_practice_slots.stop();
     // the Routine "practice_slots" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
@@ -2614,6 +2614,7 @@ function practice_slotsRoutineEnd(snapshot) {
     if (currentLoop === psychoJS.experiment) {
       psychoJS.experiment.nextEntry(snapshot);
     }
+    console.log("trial has completely ended")
     return Scheduler.Event.NEXT;
   }
 }
@@ -2636,6 +2637,9 @@ function practice_intervalRoutineBegin(snapshot) {
     if (endTrial) {
         continueRoutine = false;
     }
+    console.log("key_resp_practice_slots: " + key_resp_practice_slots)
+    console.log("key_resp_practice_slots: " + key_resp_practice_slots.keys)
+    console.log("key_resp_practice_slots: " + key_resp_practice_slots.rt)
     if (key_resp_practice_slots){
       if (((key_resp_practice_slots.keys === keyboardNumbers[0]) || (key_resp_practice_slots.keys === keyboardArrows[0]))) {
         boxPos = cardPositions[0];
@@ -2650,8 +2654,9 @@ function practice_intervalRoutineBegin(snapshot) {
       }
     }
     
-    console.log("interval" + intervalAfterSelection)
+    console.log("intervals: " + intervalAfterSelection)
     presentationInterval = util.randchoice(intervalAfterSelection);
+    console.log("presentation interval: " + presentationInterval)
     psychoJS.experiment.addData("presentationInterval", presentationInterval);
     
     
