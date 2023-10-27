@@ -2952,7 +2952,9 @@ function practice_rewardsRoutineBegin(snapshot) {
     if (endTrial) {
         consRewardImgs.push("stimuli/blank_transparent.png");
         if ((consRewardImgs.length > 5)) {
+            console.log("this code is run 2955")
             consRewardImgs.shift();
+            console.log("this code is run 2957")
         }
         continueRoutine = false;
     } else { // below code only runs if user presses key input
@@ -3023,18 +3025,18 @@ function practice_rewardsRoutineBegin(snapshot) {
                 }
             }
         }
-        
+        console.log("this code is finished 1")
         psychoJS.experiment.addData("reward_Img", rewImg);
         psychoJS.experiment.addData("Cuml_rew", nCorr);
         psychoJS.experiment.addData("currentPracticeTrialReward", currentTrialReward);
         consRewardImgs.push(rewImg);
+        console.log("this code is finished 2")
         if ((consRewardImgs.length > 5)) {
             consRewardImgs.shift();
         }
     }
-    // textMsg = ("Total reward: " + nCorr.toString());
-    textMsg = ("Total reward: ");
-    
+    textMsg = ("Total reward: " + nCorr.toString());
+    console.log("this code is finished 3")
     image_27.setPos(rewPos);
     image_27.setImage(rewImg);
     text_practice_rewards.setText(textMsg);
@@ -3044,7 +3046,7 @@ function practice_rewardsRoutineBegin(snapshot) {
     practice_rewardsComponents.push(card_pent_7);
     practice_rewardsComponents.push(card_sqr_7);
     practice_rewardsComponents.push(image_27); // reward display
-    
+    console.log("this code is finished 4")
     if (show_trial_history == true) {
       image_28.setImage(consRewardImgs[4]);
       image_29.setImage(consRewardImgs[3]);
@@ -3059,9 +3061,9 @@ function practice_rewardsRoutineBegin(snapshot) {
       practice_rewardsComponents.push(image_32);
       practice_rewardsComponents.push(polygon_3);
     }
-    
+    console.log("this code is finished 5")
     practice_rewardsComponents.push(text_practice_rewards);
-    console.log("this code is finished")
+    console.log("this code is finished 6")
     for (const thisComponent of practice_rewardsComponents)
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
@@ -3270,6 +3272,7 @@ function practice_rewardsRoutineEnd(snapshot) {
     }
     // the Routine "practice_rewards" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
+    console.log("this code gets run: practice_rewardsRoutineEnd")
     
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
@@ -3287,6 +3290,7 @@ function practice_endRoutineBegin(snapshot) {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
     
     //--- Prepare to start Routine 'practice_end' ---
+    console.log("this code gets run: practice_endRoutineBegin")
     t = 0;
     practice_endClock.reset(); // clock
     frameN = -1;
@@ -3314,6 +3318,7 @@ function practice_endRoutineBegin(snapshot) {
 function practice_endRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'practice_end' ---
+    console.log("this code gets run: practice_endRoutineEachFrame")
     // get current time
     t = practice_endClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
@@ -3382,6 +3387,7 @@ function practice_endRoutineEachFrame() {
 
 function practice_endRoutineEnd(snapshot) {
   return async function () {
+    console.log("this code gets run: practice_endRoutineEnd")
     //--- Ending Routine 'practice_end' ---
     for (const thisComponent of practice_endComponents) {
       if (typeof thisComponent.setAutoDraw === 'function') {
