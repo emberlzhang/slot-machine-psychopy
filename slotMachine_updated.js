@@ -2564,7 +2564,6 @@ function practice_slotsRoutineEachFrame() {
     
     // check if the Routine should terminate
     if (!continueRoutine) {  // a component has requested a forced-end of Routine
-      console.log("not continue")
       return Scheduler.Event.NEXT;
     }
     
@@ -2577,7 +2576,6 @@ function practice_slotsRoutineEachFrame() {
     
     // refresh the screen if continuing
     if (continueRoutine) {
-      console.log("continue")
       return Scheduler.Event.FLIP_REPEAT;
     } else {
       return Scheduler.Event.NEXT;
@@ -2604,10 +2602,6 @@ function practice_slotsRoutineEnd(snapshot) {
         psychoJS.experiment.addData('key_resp_practice_slots.duration', key_resp_practice_slots.duration);
         psychoJS.experiment.addData('key_resp_practice_slots.keys', key_resp_practice_slots.keys);
         routineTimer.reset();
-    } else {
-        psychoJS.experiment.addData('key_resp_practice_slots.rt', "");
-        psychoJS.experiment.addData('key_resp_practice_slots.duration', "");
-        psychoJS.experiment.addData('key_resp_practice_slots.keys', "");
     }
     
     key_resp_practice_slots.stop();
@@ -2641,7 +2635,7 @@ function practice_intervalRoutineBegin(snapshot) {
     if (endTrial) {
         continueRoutine = false;
     }
-    console.log("key_resp_practice_slots: " + key_resp_practice_slots)
+    
     console.log("key_resp_practice_slots: " + key_resp_practice_slots.keys)
     console.log("key_resp_practice_slots: " + key_resp_practice_slots.rt)
     if (key_resp_practice_slots){
@@ -2658,9 +2652,7 @@ function practice_intervalRoutineBegin(snapshot) {
       }
     }
     
-    console.log("intervals: " + intervalAfterSelection)
     presentationInterval = util.randchoice(intervalAfterSelection);
-    console.log("presentation interval: " + presentationInterval)
     psychoJS.experiment.addData("presentationInterval", presentationInterval);
     
     
@@ -3024,7 +3016,6 @@ function practice_rewardsRoutineBegin(snapshot) {
                 }
             }
         }
-        console.log("this code is finished oooo")
         image_27.setPos(rewPos);
         image_27.setImage(rewImg);
         psychoJS.experiment.addData("reward_Img", rewImg);
@@ -3038,17 +3029,15 @@ function practice_rewardsRoutineBegin(snapshot) {
         
     }
     textMsg = ("Total reward: " + nCorr.toString());
-    console.log("this code is finished A")
-    
     text_practice_rewards.setText(textMsg);
-    console.log("this code is finished B")
+    
     // keep track of which components have finished
     practice_rewardsComponents = [];
     practice_rewardsComponents.push(card_circ_7);
     practice_rewardsComponents.push(card_pent_7);
     practice_rewardsComponents.push(card_sqr_7);
     practice_rewardsComponents.push(image_27); // reward display
-    console.log("this code is finished C")
+    
     if (show_trial_history == true) {
       image_28.setImage(consRewardImgs[4]);
       image_29.setImage(consRewardImgs[3]);
@@ -3063,7 +3052,6 @@ function practice_rewardsRoutineBegin(snapshot) {
       practice_rewardsComponents.push(image_32);
       practice_rewardsComponents.push(polygon_3);
     }
-    console.log("this code is finished D")
     practice_rewardsComponents.push(text_practice_rewards);
     
     for (const thisComponent of practice_rewardsComponents)
@@ -3276,7 +3264,6 @@ function practice_rewardsRoutineEnd(snapshot) {
   
     // the Routine "practice_rewards" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
-    console.log("this code gets run: practice_rewardsRoutineEnd")
     
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
@@ -3294,7 +3281,6 @@ function practice_endRoutineBegin(snapshot) {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
     
     //--- Prepare to start Routine 'practice_end' ---
-    console.log("this code gets run: practice_endRoutineBegin")
     t = 0;
     practice_endClock.reset(); // clock
     frameN = -1;
@@ -3322,7 +3308,6 @@ function practice_endRoutineBegin(snapshot) {
 function practice_endRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'practice_end' ---
-    console.log("this code gets run: practice_endRoutineEachFrame")
     // get current time
     t = practice_endClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
