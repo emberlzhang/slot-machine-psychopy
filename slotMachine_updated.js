@@ -137,10 +137,6 @@ flowScheduler.add(experimentInit);
 flowScheduler.add(welcomeRoutineBegin());
 flowScheduler.add(welcomeRoutineEachFrame());
 flowScheduler.add(welcomeRoutineEnd());
-// instruction video
-flowScheduler.add(intro_videoRoutineBegin());
-flowScheduler.add(intro_videoRoutineEachFrame());
-flowScheduler.add(intro_videoRoutineEnd());
 // written instructions
 flowScheduler.add(instruction1RoutineBegin());
 flowScheduler.add(instruction1RoutineEachFrame());
@@ -151,6 +147,14 @@ flowScheduler.add(instruction2RoutineEnd());
 flowScheduler.add(instruction3RoutineBegin());
 flowScheduler.add(instruction3RoutineEachFrame());
 flowScheduler.add(instruction3RoutineEnd());
+// instruction video
+flowScheduler.add(intro_videoRoutineBegin());
+flowScheduler.add(intro_videoRoutineEachFrame());
+flowScheduler.add(intro_videoRoutineEnd());
+// practice start instruction
+flowScheduler.add(instruction4RoutineBegin());
+flowScheduler.add(instruction4RoutineEachFrame());
+flowScheduler.add(instruction4RoutineEnd());
 // practice blocks
 const practice_blockLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(practice_blockLoopBegin(practice_blockLoopScheduler));
@@ -256,6 +260,9 @@ var key_resp_instruction2;
 var instruction3Clock;
 var text_instruction3;
 var key_resp_instruction3;
+var instruction4Clock;
+var text_instruction4;
+var key_resp_instruction4;
 var practice_resetClock;
 var practice_slotsClock;
 var card_circ;
@@ -366,7 +373,7 @@ async function experimentInit() {
   text_welcome = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_welcome',
-    text: 'Welcome to the Slot Machine Game！\n\nYou will begin by watching an instruction video. \n\nPress any key to continue.',
+    text: 'Welcome to the Slot Machine Game！\n\n\nYou will begin by watching an instruction video. \n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -443,9 +450,10 @@ async function experimentInit() {
     text: 'Every day, the machines will be different.' +
     '\n\nAlso, the winning machine may or may not change within the same day. ' +
     'So the best machine may change after a while. You will have to adapt!'+
-    '\n\nThe game takes about 10 minutes and starts with a practice.'+
-    '\n\nPress LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
-    '\n\nPress any key to start the practice.',
+    // '\n\nThe game takes about 10 minutes and starts with a practice.'+
+    '\n\nNow you will watch an instruction video. Press any key to continue.',
+    // Press LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
+    // '\n\nPress any key to start the practice.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0.0,
@@ -455,6 +463,24 @@ async function experimentInit() {
   });
   key_resp_instruction3 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
+
+  // Initialize components for Routine "instruction4"
+  instruction4Clock = new util.Clock();
+  // Run 'Begin Experiment' code from code_instruction4
+  text_instruction4 = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_instruction4',
+    text: 'The game takes about 10 minutes and will start with a practice.'+
+    '\n\nPress any key to begin the practice!',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
+    depth: -1.0 
+  });
+  key_resp_instruction4 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+
 
   // Initialize components for Routine "practice_reset"
   practice_resetClock = new util.Clock();
@@ -885,8 +911,8 @@ async function experimentInit() {
   text_main_instruction = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_main_instruction',
-    text: 'Press one of the following arrows on the keyboard to select your slot machine' +
-    '\n\nLEFT, UP, RIGHT\n\n\nPress SPACE key to continue.',
+    text: 'Press one of the following arrows on the keyboard to select your slot machine:' +
+    '\n\nLEFT, UP, or RIGHT\n\n\nPress SPACE key to start the game.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -1955,6 +1981,137 @@ function instruction3RoutineEnd(snapshot) {
     
     key_resp_instruction3.stop();
     // the Routine "instruction3" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+var _key_resp_instruction3_allKeys;
+var instruction3Components;
+function instruction3RoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'instruction3' ---
+    t = 0;
+    instruction3Clock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    // Run 'Begin Routine' code from code_instruction3
+    psychoJS.experiment.addData("key_resp_instruction3.started", globalClock.getTime());
+    
+    key_resp_instruction3.keys = undefined;
+    key_resp_instruction3.rt = undefined;
+    _key_resp_instruction3_allKeys = [];
+    // keep track of which components have finished
+    instruction3Components = [];
+    instruction3Components.push(text_instruction3);
+    instruction3Components.push(key_resp_instruction3);
+    
+    for (const thisComponent of instruction3Components)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function instruction4RoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'instruction4' ---
+    // get current time
+    t = instruction4Clock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *text_instruction4* updates
+    if (t >= 0.0 && text_instruction4.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_instruction4.tStart = t;  // (not accounting for frame time here)
+      text_instruction4.frameNStart = frameN;  // exact frame index
+      
+      text_instruction4.setAutoDraw(true);
+    }
+
+    
+    // *key_resp_instruction4* updates
+    if (t >= 0.0 && key_resp_instruction4.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      key_resp_instruction4.tStart = t;  // (not accounting for frame time here)
+      key_resp_instruction4.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { key_resp_instruction4.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_instruction4.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { key_resp_instruction4.clearEvents(); });
+    }
+
+    if (key_resp_instruction4.status === PsychoJS.Status.STARTED) {
+      let theseKeys = key_resp_instruction4.getKeys({keyList: [], waitRelease: false});
+      _key_resp_instruction4_allKeys = _key_resp_instruction4_allKeys.concat(theseKeys);
+      if (_key_resp_instruction4_allKeys.length > 0) {
+        key_resp_instruction4.keys = _key_resp_instruction4_allKeys[_key_resp_instruction4_allKeys.length - 1].name;  // just the last key pressed
+        key_resp_instruction4.rt = _key_resp_instruction4_allKeys[_key_resp_instruction4_allKeys.length - 1].rt;
+        key_resp_instruction4.duration = _key_resp_instruction4_allKeys[_key_resp_instruction4_allKeys.length - 1].duration;
+        // a response ends the routine
+        continueRoutine = false;
+      }
+    }
+    
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of instruction4Components)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function instruction4RoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'instruction4' ---
+    for (const thisComponent of instruction4Components) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    // update the trial handler
+    if (currentLoop instanceof MultiStairHandler) {
+      currentLoop.addResponse(key_resp_instruction4.corr, level);
+    }
+    psychoJS.experiment.addData('key_resp_instruction4.keys', key_resp_instruction4.keys);
+    if (typeof key_resp_instruction4.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('key_resp_instruction4.rt', key_resp_instruction4.rt);
+        psychoJS.experiment.addData('key_resp_instruction4.duration', key_resp_instruction4.duration);
+        routineTimer.reset();
+        }
+    
+    key_resp_instruction4.stop();
+    // the Routine "instruction4" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
     // Routines running outside a loop should always advance the datafile row
