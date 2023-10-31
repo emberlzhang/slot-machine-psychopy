@@ -2003,16 +2003,16 @@ function instruction4RoutineBegin(snapshot) {
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
-    // Run 'Begin Routine' code from code_instruction3
-    psychoJS.experiment.addData("key_resp_instruction3.started", globalClock.getTime());
+    // Run 'Begin Routine' code from code_instruction4
+    psychoJS.experiment.addData("key_resp_instruction4.started", globalClock.getTime());
     
     key_resp_instruction4.keys = undefined;
     key_resp_instruction4.rt = undefined;
     _key_resp_instruction4_allKeys = [];
     // keep track of which components have finished
-    instruction3Components = [];
-    instruction3Components.push(text_instruction4);
-    instruction3Components.push(key_resp_instruction4);
+    instruction4Components = [];
+    instruction4Components.push(text_instruction4);
+    instruction4Components.push(key_resp_instruction4);
     
     for (const thisComponent of instruction4Components)
       if ('status' in thisComponent)
