@@ -451,7 +451,7 @@ async function experimentInit() {
     '\n\nAlso, the winning machine may or may not change within the same day. ' +
     'So the best machine may change after a while. You will have to adapt!'+
     // '\n\nThe game takes about 10 minutes and starts with a practice.'+
-    '\n\nNow you will watch an instruction video. Press any key to continue.',
+    '\n\nNext you will watch a brief video demonstration. Press any key to continue.',
     // Press LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
     // '\n\nPress any key to start the practice.',
     font: 'Arial',
@@ -1999,22 +1999,22 @@ function instruction4RoutineBegin(snapshot) {
     
     //--- Prepare to start Routine 'instruction3' ---
     t = 0;
-    instruction3Clock.reset(); // clock
+    instruction4Clock.reset(); // clock
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_instruction3
     psychoJS.experiment.addData("key_resp_instruction3.started", globalClock.getTime());
     
-    key_resp_instruction3.keys = undefined;
-    key_resp_instruction3.rt = undefined;
-    _key_resp_instruction3_allKeys = [];
+    key_resp_instruction4.keys = undefined;
+    key_resp_instruction4.rt = undefined;
+    _key_resp_instruction4_allKeys = [];
     // keep track of which components have finished
     instruction3Components = [];
-    instruction3Components.push(text_instruction3);
-    instruction3Components.push(key_resp_instruction3);
+    instruction3Components.push(text_instruction4);
+    instruction3Components.push(key_resp_instruction4);
     
-    for (const thisComponent of instruction3Components)
+    for (const thisComponent of instruction4Components)
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
     return Scheduler.Event.NEXT;
