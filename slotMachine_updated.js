@@ -1991,9 +1991,9 @@ function instruction3RoutineEnd(snapshot) {
   }
 }
 
-var _key_resp_instruction3_allKeys;
-var instruction3Components;
-function instruction3RoutineBegin(snapshot) {
+var _key_resp_instruction4_allKeys;
+var instruction4Components;
+function instruction4RoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
     
