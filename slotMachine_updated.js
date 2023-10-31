@@ -451,7 +451,7 @@ async function experimentInit() {
     '\n\nAlso, the winning machine may or may not change within the same day. ' +
     'So the best machine may change after a while. You will have to adapt!'+
     // '\n\nThe game takes about 10 minutes and starts with a practice.'+
-    '\n\nNext is a brief video demonstration, followed by some practice. Press any key to continue.',
+    '\n\nNext will be a brief video demonstration. Press any key to continue.',
     // Press LEFT, UP or RIGHT arrows on your keyboard to select your slot machine.'+
     // '\n\nPress any key to start the practice.',
     font: 'Arial',
