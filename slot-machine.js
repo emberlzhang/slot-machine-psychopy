@@ -1,5 +1,5 @@
 ﻿/**************************** 
- * Slotmachine_Updated Test *
+ * Slot Machine Task *
  ****************************/
 
 import { core, data, sound, util, visual, hardware } from './lib/psychojs-2023.1.3.js';
@@ -12,7 +12,7 @@ const { round } = util;
 
 
 // store info about the experiment session:
-let expName = 'SlotMachine_updated';  // from the Builder filename that created this script
+let expName = 'Slot Machine Game';  // from the Builder filename that created this script
 let expInfo = {
     'participant': '',
 };

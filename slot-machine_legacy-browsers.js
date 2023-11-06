@@ -1,10 +1,10 @@
 ﻿/**************************** 
- * Slotmachine_Updated Test *
+ * Slot Machine Task *
  ****************************/
 
 
 // store info about the experiment session:
-let expName = 'slotMachine_updated';  // from the Builder filename that created this script
+let expName = 'Slot Machine Task';  // from the Builder filename that created this script
 let expInfo = {
     'participant': '',
 };
