@@ -1381,7 +1381,7 @@ function welcomeRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_welcome
-    psychoJS.experiment.addData("key_resp_welcome.started", globalClock.getTime());
+    psychoJS.experiment.addData("key_resp_welcome_started", globalClock.getTime());
     
     key_resp_welcome.keys = undefined;
     key_resp_welcome.rt = undefined;
@@ -1480,10 +1480,10 @@ function welcomeRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_welcome.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_welcome.keys', key_resp_welcome.keys);
+    psychoJS.experiment.addData('key_resp_welcome_keys', key_resp_welcome.keys);
     if (typeof key_resp_welcome.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_welcome.rt', key_resp_welcome.rt);
-        psychoJS.experiment.addData('key_resp_welcome.duration', key_resp_welcome.duration);
+        psychoJS.experiment.addData('key_resp_welcome_rt', key_resp_welcome.rt);
+        psychoJS.experiment.addData('key_resp_welcome_duration', key_resp_welcome.duration);
         routineTimer.reset();
         }
     
@@ -1609,7 +1609,7 @@ function instruction1RoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_instruction1
-    psychoJS.experiment.addData("key_resp_instruction1.started", globalClock.getTime());
+    psychoJS.experiment.addData("key_resp_instruction1_started", globalClock.getTime());
     
     key_resp_instruction1.keys = undefined;
     key_resp_instruction1.rt = undefined;
@@ -1708,10 +1708,10 @@ function instruction1RoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_instruction1.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_instruction1.keys', key_resp_instruction1.keys);
+    psychoJS.experiment.addData('key_resp_instruction1_keys', key_resp_instruction1.keys);
     if (typeof key_resp_instruction1.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_instruction1.rt', key_resp_instruction1.rt);
-        psychoJS.experiment.addData('key_resp_instruction1.duration', key_resp_instruction1.duration);
+        psychoJS.experiment.addData('key_resp_instruction1_rt', key_resp_instruction1.rt);
+        psychoJS.experiment.addData('key_resp_instruction1_duration', key_resp_instruction1.duration);
         routineTimer.reset();
         }
     
@@ -1741,7 +1741,7 @@ function instruction2RoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_instruction2
-    psychoJS.experiment.addData("key_resp_instruction2.started", globalClock.getTime());
+    psychoJS.experiment.addData("key_resp_instruction2_started", globalClock.getTime());
     
     key_resp_instruction2.keys = undefined;
     key_resp_instruction2.rt = undefined;
@@ -1840,10 +1840,10 @@ function instruction2RoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_instruction2.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_instruction2.keys', key_resp_instruction2.keys);
+    psychoJS.experiment.addData('key_resp_instruction2_keys', key_resp_instruction2.keys);
     if (typeof key_resp_instruction2.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_instruction2.rt', key_resp_instruction2.rt);
-        psychoJS.experiment.addData('key_resp_instruction2.duration', key_resp_instruction2.duration);
+        psychoJS.experiment.addData('key_resp_instruction2_rt', key_resp_instruction2.rt);
+        psychoJS.experiment.addData('key_resp_instruction2_duration', key_resp_instruction2.duration);
         routineTimer.reset();
         }
     
@@ -1873,7 +1873,7 @@ function instruction3RoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_instruction3
-    psychoJS.experiment.addData("key_resp_instruction3.started", globalClock.getTime());
+    psychoJS.experiment.addData("key_resp_instruction3_started", globalClock.getTime());
     
     key_resp_instruction3.keys = undefined;
     key_resp_instruction3.rt = undefined;
@@ -1972,10 +1972,10 @@ function instruction3RoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_instruction3.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_instruction3.keys', key_resp_instruction3.keys);
+    psychoJS.experiment.addData('key_resp_instruction3_keys', key_resp_instruction3.keys);
     if (typeof key_resp_instruction3.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_instruction3.rt', key_resp_instruction3.rt);
-        psychoJS.experiment.addData('key_resp_instruction3.duration', key_resp_instruction3.duration);
+        psychoJS.experiment.addData('key_resp_instruction3_rt', key_resp_instruction3.rt);
+        psychoJS.experiment.addData('key_resp_instruction3_duration', key_resp_instruction3.duration);
         routineTimer.reset();
         }
     
@@ -2004,7 +2004,7 @@ function instruction4RoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_instruction4
-    psychoJS.experiment.addData("key_resp_instruction4.started", globalClock.getTime());
+    psychoJS.experiment.addData("key_resp_instruction4_started", globalClock.getTime());
     
     key_resp_instruction4.keys = undefined;
     key_resp_instruction4.rt = undefined;
@@ -2103,10 +2103,10 @@ function instruction4RoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_instruction4.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_instruction4.keys', key_resp_instruction4.keys);
+    psychoJS.experiment.addData('key_resp_instruction4_keys', key_resp_instruction4.keys);
     if (typeof key_resp_instruction4.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_instruction4.rt', key_resp_instruction4.rt);
-        psychoJS.experiment.addData('key_resp_instruction4.duration', key_resp_instruction4.duration);
+        psychoJS.experiment.addData('key_resp_instruction4_rt', key_resp_instruction4.rt);
+        psychoJS.experiment.addData('key_resp_instruction4_duration', key_resp_instruction4.duration);
         routineTimer.reset();
         }
     
@@ -2517,11 +2517,11 @@ function practice_slotsRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from Code_practice_slots
-    // psychoJS.experiment.addData("key_resp_practice_slots.started", globalClock.getTime());
+    psychoJS.experiment.addData("practice_trial_started", globalClock.getTime());
     textMsg = ("Total reward: " + nCorr.toString());
     endMsg = " ";
     endTrial = false;
-  
+    psychoJS.experiment.addData("practice_trial_num", practice_trials.thisN);
     
     text_practice_slots.setText(textMsg);
     key_resp_practice_slots.keys = [];
@@ -2755,9 +2755,9 @@ function practice_slotsRoutineEnd(snapshot) {
     }
     
     if (typeof key_resp_practice_slots.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_practice_slots.rt', key_resp_practice_slots.rt);
-        psychoJS.experiment.addData('key_resp_practice_slots.duration', key_resp_practice_slots.duration);
-        psychoJS.experiment.addData('key_resp_practice_slots.keys', key_resp_practice_slots.keys);
+        psychoJS.experiment.addData('practice_resp_rt', key_resp_practice_slots.rt);
+        psychoJS.experiment.addData('practice_resp_duration', key_resp_practice_slots.duration);
+        psychoJS.experiment.addData('practice_resp_keys', key_resp_practice_slots.keys);
         routineTimer.reset();
     }
     
@@ -2793,8 +2793,6 @@ function practice_intervalRoutineBegin(snapshot) {
         continueRoutine = false;
     }
     
-    console.log("key_resp_practice_slots: " + key_resp_practice_slots.keys)
-    console.log("key_resp_practice_slots: " + key_resp_practice_slots.rt)
     if (key_resp_practice_slots){
       if (((key_resp_practice_slots.keys === keyboardNumbers[0]) || (key_resp_practice_slots.keys === keyboardArrows[0]))) {
         boxPos = cardPositions[0];
@@ -2810,7 +2808,7 @@ function practice_intervalRoutineBegin(snapshot) {
     }
     
     presentationInterval = util.randchoice(intervalAfterSelection);
-    psychoJS.experiment.addData("presentationInterval", presentationInterval);
+    psychoJS.experiment.addData("prac_presentationInterval", presentationInterval);
     
     
     text_practice_interval.setText(textMsg);
@@ -3175,9 +3173,9 @@ function practice_rewardsRoutineBegin(snapshot) {
         }
         image_27.setPos(rewPos);
         image_27.setImage(rewImg);
-        psychoJS.experiment.addData("reward_Img", rewImg);
-        psychoJS.experiment.addData("Cuml_rew", nCorr);
-        psychoJS.experiment.addData("currentPracticeTrialReward", currentTrialReward);
+        psychoJS.experiment.addData("reward_img", rewImg);
+        psychoJS.experiment.addData("cumulative_reward", nCorr);
+        psychoJS.experiment.addData("trial_reward", currentTrialReward);
         consRewardImgs.push(rewImg);
         
         if ((consRewardImgs.length > 5)) {
@@ -3447,7 +3445,7 @@ function practice_endRoutineBegin(snapshot) {
     key_resp_practice_end.rt = undefined;
     _key_resp_practice_end_allKeys = [];
     // Run 'Begin Routine' code from code_3
-    psychoJS.experiment.addData("key_resp_practice_end.started", globalClock.getTime());
+    psychoJS.experiment.addData("practice_end_time", globalClock.getTime());
     
     // keep track of which components have finished
     practice_endComponents = [];
@@ -3544,10 +3542,10 @@ function practice_endRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_practice_end.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_practice_end.keys', key_resp_practice_end.keys);
+    psychoJS.experiment.addData('practice_end_keys', key_resp_practice_end.keys);
     if (typeof key_resp_practice_end.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_practice_end.rt', key_resp_practice_end.rt);
-        psychoJS.experiment.addData('key_resp_practice_end.duration', key_resp_practice_end.duration);
+        psychoJS.experiment.addData('practice_end_rt', key_resp_practice_end.rt);
+        psychoJS.experiment.addData('practice_end_duration', key_resp_practice_end.duration);
         routineTimer.reset();
         }
     
@@ -3576,10 +3574,9 @@ function Main_InstructionRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_main_instruction
-    psychoJS.experiment.addData("text_main_instruction.started", globalClock.getTime());
-    psychoJS.experiment.addData('BlockCondition',block_option);
-    psychoJS.experiment.addData('BlockOrderIndices',block_order);
-    psychoJS.experiment.addData("key_resp_main_instruction.started", globalClock.getTime());
+    psychoJS.experiment.addData("main_instruction_text_started", globalClock.getTime());
+    psychoJS.experiment.addData('block_condition',block_option);
+    psychoJS.experiment.addData('block_order_indices',block_order);
     
     key_resp_main_instruction.keys = undefined;
     key_resp_main_instruction.rt = undefined;
@@ -3678,10 +3675,10 @@ function Main_InstructionRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_main_instruction.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_main_instruction.keys', key_resp_main_instruction.keys);
+    psychoJS.experiment.addData('main_instruction_keys', key_resp_main_instruction.keys);
     if (typeof key_resp_main_instruction.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_main_instruction.rt', key_resp_main_instruction.rt);
-        psychoJS.experiment.addData('key_resp_main_instruction.duration', key_resp_main_instruction.duration);
+        psychoJS.experiment.addData('main_instruction_rt', key_resp_main_instruction.rt);
+        psychoJS.experiment.addData('main_instruction_duration', key_resp_main_instruction.duration);
         routineTimer.reset();
         }
     
@@ -3722,18 +3719,18 @@ function reward_resetRoutineBegin(snapshot) {
     // Save block number
     block_counter += 1;
     console.log("Current block: " + block_counter)
-    psychoJS.experiment.addData("blockNumber", block_counter)
+    psychoJS.experiment.addData("block_number", block_counter)
     // Determine which block to run this time
     current_block_index = block_order[0]; // take first index of block numbers for this session
     var block_assignment = current_block_index + 1;
     console.log("Block assignment: " + block_assignment)
-    psychoJS.experiment.addData("blockAssignment", block_assignment)
+    psychoJS.experiment.addData("block_assignment", block_assignment)
 
     block_order.shift(); // remove the first index block number to prepare for the next block in the experiment
     // Get conditions for this block
     currentCondition = mainConditions[current_block_index]; // array that provides trial indices at which the winning slot changes
     mainSwitchTrial = currentCondition[0];
-    psychoJS.experiment.addData("currentCondition", currentCondition);
+    psychoJS.experiment.addData("current_condition", currentCondition);
     console.log("This block currentCondition: " + currentCondition)
     // Get reward sequences for this block
     main_reward_seqs = mainRewardSeqs[current_block_index];
@@ -3818,11 +3815,14 @@ function slots_presentationRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from Code_slots_presentation
-    psychoJS.experiment.addData("key_resp_slots_presentation.started", globalClock.getTime());
+    psychoJS.experiment.addData("main_trial_started", globalClock.getTime());
     textMsg = ("Total reward: " + nCorr.toString());
     endMsg = " ";
     endTrial = false;
     
+    psychoJS.experiment.addData("block_number", block_counter)
+    psychoJS.experiment.addData("block_assignment", block_assignment)
+    psychoJS.experiment.addData("main_trial_num", main_trials.thisN)
     
     text_slots_presentation.setText(textMsg);
     key_resp_slots_presentation.keys = undefined;
@@ -4049,10 +4049,10 @@ function slots_presentationRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_slots_presentation.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_slots_presentation.keys', key_resp_slots_presentation.keys);
+    psychoJS.experiment.addData('main_trial_keys', key_resp_slots_presentation.keys);
     if (typeof key_resp_slots_presentation.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_slots_presentation.rt', key_resp_slots_presentation.rt);
-        psychoJS.experiment.addData('key_resp_slots_presentation.duration', key_resp_slots_presentation.duration);
+        psychoJS.experiment.addData('main_trial_rt', key_resp_slots_presentation.rt);
+        psychoJS.experiment.addData('main_trial_duration', key_resp_slots_presentation.duration);
         routineTimer.reset();
         }
     
@@ -4085,7 +4085,7 @@ function selection_intervalRoutineBegin(snapshot) {
         continueRoutine = false;
     }
     presentationInterval = util.randchoice(intervalAfterSelection);
-    psychoJS.experiment.addData("Main_presentationInterval", presentationInterval);
+    psychoJS.experiment.addData("main_presentationInterval", presentationInterval);
     if (((key_resp_slots_presentation.keys === keyboardNumbers[0]) || (key_resp_slots_presentation.keys === keyboardArrows[0]))) {
         boxPos = cardPositions[0];
     } else {
@@ -4360,7 +4360,7 @@ function reward_presentationRoutineBegin(snapshot) {
     reward_presentationClock.reset(); // clock
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
-    psychoJS.experiment.addData("rewardPresentationTime", rewardPresentationTime);
+    psychoJS.experiment.addData("reward_presentation_time", rewardPresentationTime);
     
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_reward_presentation
@@ -4381,25 +4381,10 @@ function reward_presentationRoutineBegin(snapshot) {
         // get the upcoming switch trial number (Note: trial number, not trial index)
         mainSwitchTrial = currentCondition[0];
         console.log("mainSwitchTrial: " + mainSwitchTrial)
-
-        // for (var i, _pj_c = 0, _pj_a = enumerate(currentCondition), _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
-        //     i = _pj_a[_pj_c];
-        //     if (((main_trials.thisN + 1) > i[1])) {
-        //         main_reward_seqs = DictCondRew[currentCondition];
-        //         main_reward_seq = main_reward_seqs[(i[0] + 1)];
-        //     }
-        // }
     
-        // for (const [index, element] of currentCondition.entries()) {
-        //     if (((main_trials.thisN + 1) > element)) {
-        //       main_reward_seqs = DictCondRew[currentCondition];
-        //       main_reward_seq = main_reward_seqs[(index + 1)];
-        //     }
-        // }
-    
-        psychoJS.experiment.addData("Main_reward_seq", main_reward_seq);
+        psychoJS.experiment.addData("main_reward_seq", main_reward_seq);
         rand_val = Math.random();
-        psychoJS.experiment.addData("Random value generated", rand_val);
+        psychoJS.experiment.addData("reward_rand_val", rand_val);
         currentTrialReward = 0;
         x = util.index(main_reward_seq, 1);
         y = util.index(main_reward_seq, 2);
@@ -4466,9 +4451,9 @@ function reward_presentationRoutineBegin(snapshot) {
                 }
             }
         }
-        psychoJS.experiment.addData("Main_reward_Img", rewImg);
-        psychoJS.experiment.addData("Main_Cumul_Reward", nCorr);
-        psychoJS.experiment.addData("Main_currentTrialReward", currentTrialReward);
+        psychoJS.experiment.addData("main_reward_img", rewImg);
+        psychoJS.experiment.addData("cumulative_reward", nCorr);
+        psychoJS.experiment.addData("current_reward", currentTrialReward);
         consRewardImgs.push(rewImg);
         if ((consRewardImgs.length > 5)) {
             consRewardImgs.shift();
@@ -4735,7 +4720,7 @@ function Block_breakRoutineBegin(snapshot) {
     routineTimer.add(5.000000);
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_block_break
-    psychoJS.experiment.addData("text_block_break.started", globalClock.getTime());
+    psychoJS.experiment.addData("block_break_started", globalClock.getTime());
     block_reward.push(nCorr);
     blockMsg = (("Total reward for this day: " + nCorr.toString()) + "\n You now have a break of 5 seconds.");
     
@@ -4914,44 +4899,23 @@ function importConditions(currentLoop) {
 }
 
 
-var final_pay;
-var blockID;
+var reward_score;
+var reward_amt;
 async function quitPsychoJS(message, isCompleted) {
   // Check for and save orphaned data
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
   
-  
-  
-  
-  
+
   // Run 'End Experiment' code from code
-  final_pay = util.randchoice(util.range(block_reward.length));
-  blockID = (final_pay + 1);
-  psychoJS.experiment.addData("reward_block_chosen", blockID);
+  reward_score = util.randchoice(util.range(block_reward.length));
+  reward_amt = (reward_score + 1);
+  psychoJS.experiment.addData("reward_amount", reward_amt);
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  // Save end task time
+  end_task_time = util.MonotonicClock.getDateStr();
+  psychoJS.experiment.addData("date_end_task", end_task_time);
   
   
   psychoJS.window.close();
