@@ -1,0 +1,15 @@
+﻿key_resp_welcome.started,key_resp_welcome.keys,key_resp_welcome.rt,key_resp_welcome.duration,participant,date,expName,psychopyVersion,OS,frameRate,key_resp_instruction1.started,key_resp_instruction1.keys,key_resp_instruction1.rt,key_resp_instruction1.duration,key_resp_instruction2.started,key_resp_instruction2.keys,key_resp_instruction2.rt,key_resp_instruction2.duration,key_resp_instruction3.started,key_resp_instruction3.keys,key_resp_instruction3.rt,key_resp_instruction3.duration,key_resp_instruction4.started,key_resp_instruction4.keys,key_resp_instruction4.rt,key_resp_instruction4.duration,practiceCondition,practice_reward_seqs,key_resp_practice_slots.rt,key_resp_practice_slots.duration,key_resp_practice_slots.keys,presentationInterval,"practice_reward_seq: 2,1,3",reward_Img,Cuml_rew,currentPracticeTrialReward,practice_trials.thisRepN,practice_trials.thisTrialN,practice_trials.thisN,practice_trials.thisIndex,practice_trials.ran
+0.0003,space,1.1029,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,1.1262,space,0.5497,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,1.6898,space,0.4281,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,2.1396,space,0.3661,,,,,,,,,,,,,,,,,,,,
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,156.0568,loption,0.4315,,,,,,,,,,,,,,,,
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,"[9,15]","[[2,1,3],[2,3,1]]",2.8724,,up,1.5,,stimuli/card_0_transparent.png,0,0,0,0,0,0,1
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,0.0653,,right,0.5,,stimuli/card_0_transparent.png,0,0,1,0,1,0,1
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,0.0466,,left,0.5,,stimuli/card_0_transparent.png,0,0,2,0,2,0,1
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,0.1234,,up,0.5,,stimuli/card_100_transparent.png,100,100,3,0,3,0,1
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,0.0029,,up,0.5,,stimuli/card_100_transparent.png,200,100,4,0,4,0,1
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,0.0073,,up,0.5,,stimuli/card_100_transparent.png,300,100,5,0,5,0,1
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,0.0853,,up,1,,stimuli/card_0_transparent.png,300,0,6,0,6,0,1
+,,,,,2023-11-06_17h26.32.414,Slot Machine Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,0.1008,,up,1.5,,stimuli/card_0_transparent.png,300,0,7,0,7,0,1
