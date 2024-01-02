@@ -16,6 +16,7 @@ let expName = 'Slot Machine Game';  // from the Builder filename that created th
 
 //// CUSTOM CONFIGURATIONS
 var show_trial_history = false; // toggle true or false to show points earned from previous trials (row of 5)
+var debug_mode = false; // toggle true reduces blocks from 10 to 1
 
 //// Handle URL Params and Participant Data
 let expInfo = { // these show up as fields on starting page if URL params are not present
@@ -982,8 +983,13 @@ async function experimentInit() {
   // Initialize components for Routine "Main_Instruction"
   Main_InstructionClock = new util.Clock();
   // Run 'Begin Experiment' code from code_main_instruction
-  nBlocks = 10;
-  nTrials = 15;
+  if (debug_mode == true) {
+    nBlocks = 1;
+    nTrials = 15;
+  } else {
+    nBlocks = 10;
+    nTrials = 15;
+  };
   
   text_main_instruction = new visual.TextStim({
     win: psychoJS.window,
@@ -4996,12 +5002,12 @@ async function quitPsychoJS(message, isCompleted) {
   psychoJS.experiment.addData("date_end_task", end_task_time);
   
   
-  // redirect to the new URL after finished
-  // figure out which line to insert this exactly
-  window.location.replace(redirect_url)
 
   psychoJS.window.close();
   psychoJS.quit({message: message, isCompleted: isCompleted});
+
+  // redirect to the new URL after finished
+  window.location.replace(redirect_url)
   
   return Scheduler.Event.QUIT;
 }
