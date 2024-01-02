@@ -84,7 +84,7 @@ switch(subject_data.study_id) { // study_id determines which study it goes to
 
 if (subject_data.path_id.toUpperCase() == "B") {
   // redirect to slot task
-  redirect_url = "http://run.pavlovia.com/janetlchang/fish-task/html" +  "?" + url_params;
+  redirect_url = "http://run.pavlovia.org/janetlchang/fish-task/html" +  "?" + url_params;
 } else if (subject_data.path_id.toUpperCase() == "A") {
   // fish task is last task, need to redirect to study completion page
     if (study_group.includes("invited") || subject_data.prolific_id == '') {
