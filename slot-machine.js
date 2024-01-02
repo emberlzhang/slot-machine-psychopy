@@ -3776,7 +3776,7 @@ var reward_resetComponents;
 var current_block_index;
 var mainSwitchTrial;
 var block_counter = 0; // main blocks start at 1
-
+var block_assignment;
 function reward_resetRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -3799,7 +3799,7 @@ function reward_resetRoutineBegin(snapshot) {
     psychoJS.experiment.addData("block_number", block_counter)
     // Determine which block to run this time
     current_block_index = block_order[0]; // take first index of block numbers for this session
-    var block_assignment = current_block_index + 1;
+    block_assignment = current_block_index + 1;
     console.log("Block assignment: " + block_assignment)
     psychoJS.experiment.addData("block_assignment", block_assignment)
 
