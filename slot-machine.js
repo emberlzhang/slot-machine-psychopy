@@ -13,12 +13,90 @@ const { round } = util;
 
 // store info about the experiment session:
 let expName = 'Slot Machine Game';  // from the Builder filename that created this script
-let expInfo = {
-    'participant': '',
-};
 
 //// CUSTOM CONFIGURATIONS
 var show_trial_history = false; // toggle true or false to show points earned from previous trials (row of 5)
+
+//// Handle URL Params and Participant Data
+let expInfo = { // these show up as fields on starting page if URL params are not present
+  'study_id': '',
+  'path_id': ''
+  // 'prolific_id': '',
+  // 'subject_id': ''
+  // 'session_id': ''
+};
+
+var subject_data = {};
+// Capture URL parameters and set study values
+var url_params = window.location.search.slice(1); // slice remove first char to get rid of beginning "?"
+// example of url_params: "prolific_id=pid1&study_id=si1&session_id=sid1&path_id=path"
+var indiv_params = url_params.split("&")
+console.log(url_params);
+console.log(indiv_params)
+
+var param;
+var par_vals;
+var study_group;
+var redcap_completionsurvey;
+var redirect_url;
+for (let i = 0; i < indiv_params.length; i++) {
+  var param = indiv_params[i]
+  var par_vals = param.split("=");
+  if (param.toLowerCase().includes("prolific_id")) { // only for prolific participants
+    console.log("pid found")
+    subject_data.prolific_id = par_vals[1];
+  } else if (param.toLowerCase().includes("study_id")) {
+    console.log("study id found")
+    subject_data.study_id = par_vals[1];
+  } else if (param.toLowerCase().includes("session_id")) {
+    console.log("sid found")
+    subject_data.session_id = par_vals[1];
+  } else if (param.toLowerCase().includes("path_id")) {
+    console.log("path found")
+    subject_data.path_id = par_vals[1];
+  } else if (param.toLowerCase().includes("subject_id")) { // only for invited subjects
+    console.log("subj id found")
+    subject_data.subject_id = par_vals[1];
+  }
+};
+
+console.log("Subject data collected: ")
+console.log(subject_data)
+
+switch(subject_data.study_id) { // study_id determines which study it goes to 
+  case "1A": study_group = "nicotine_grp_online";
+    break;
+  case "1B": study_group = "nicotine_ctrl_online";
+    break;
+  case "1C": study_group = "nicotine_grp_invited"; redcap_completionsurvey = "?s=nicotine_cc";
+    break;
+  case "1D": study_group = "nicotine_ctrl_invited"; redcap_completionsurvey = "?s=nicotine_ctrl_cc";
+    break; 
+  case "2A": study_group = "eatingdisorder_grp_online";
+    break;
+  case "2B": study_group = "eatingdisorder_ctrl_online";
+    break;
+  case "2A": study_group = "eatingdisorder_grp_invited"; redcap_completionsurvey = "?s=eatingdisorder_cc";
+    break;
+  case "2B": study_group = "eatingdisorder_ctrl_invited"; redcap_completionsurvey = "?s=eatingdisorder_ctrl_cc";
+    break;
+}
+
+if (subject_data.path_id.toUpperCase() == "B") {
+  // redirect to slot task
+  redirect_url = "http://run.pavlovia.com/janetlchang/fish-task/html" +  "?" + url_params;
+} else if (subject_data.path_id.toUpperCase() == "A") {
+  // fish task is last task, need to redirect to study completion page
+    if (study_group.includes("invited") || subject_data.prolific_id == '') {
+      // redirect for invited subject
+      redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
+    } else // redirect for prolific subject
+      redirect_url = "https://app.prolific.com/submissions/complete?cc=C19HH1X3" + "&" + url_params;
+}
+
+console.log("redirect_url: " + redirect_url)
+
+
 
 //////////////////////////
 
@@ -185,7 +263,6 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    // resources:
     {'name': 'stimuli/SlotMachineGameVideo-10.06.23.mp4', 'path': 'stimuli/SlotMachineGameVideo-10.06.23.mp4'},
     {'name': 'stimuli/arrow_transparent.png', 'path': 'stimuli/arrow_transparent.png'},
     {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
@@ -4918,6 +4995,10 @@ async function quitPsychoJS(message, isCompleted) {
   psychoJS.experiment.addData("date_end_task", end_task_time);
   
   
+  // redirect to the new URL after finished
+  // figure out which line to insert this exactly
+  window.location.replace(redirect_url)
+
   psychoJS.window.close();
   psychoJS.quit({message: message, isCompleted: isCompleted});
   
