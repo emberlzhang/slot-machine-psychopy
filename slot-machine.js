@@ -982,8 +982,10 @@ async function experimentInit() {
   // Initialize components for Routine "Main_Instruction"
   Main_InstructionClock = new util.Clock();
   // Run 'Begin Experiment' code from code_main_instruction
-  nBlocks = 10;
-  nTrials = 15;
+  // nBlocks = 10;
+  // nTrials = 15;
+  nBlocks = 0;
+  nTrials = 0;
   
   text_main_instruction = new visual.TextStim({
     win: psychoJS.window,
