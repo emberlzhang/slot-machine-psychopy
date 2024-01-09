@@ -1,0 +1,5 @@
+﻿key_resp_welcome_started,key_resp_welcome_keys,key_resp_welcome_rt,key_resp_welcome_duration,study_id,path_id,date,expName,psychopyVersion,OS,frameRate,subject_id,session_id,prolific_id,key_resp_instruction1_started,key_resp_instruction1_keys,key_resp_instruction1_rt,key_resp_instruction1_duration,key_resp_instruction2_started,key_resp_instruction2_keys,key_resp_instruction2_rt,key_resp_instruction2_duration,key_resp_instruction3_started,key_resp_instruction3_keys,key_resp_instruction3_rt,key_resp_instruction3_duration
+0.0006,lcommand,1.6449,,1C,B,2024-01-09_14h33.37.443,Slot Machine Game,2023.1.3,MacIntel,60.0024001,sid,session_id,pid,,,,,,,,,,,,
+,,,,1C,B,2024-01-09_14h33.37.443,Slot Machine Game,2023.1.3,MacIntel,60.0024001,sid,session_id,pid,1.6607,lcommand,0.2241,,,,,,,,,
+,,,,1C,B,2024-01-09_14h33.37.443,Slot Machine Game,2023.1.3,MacIntel,60.0024001,sid,session_id,pid,,,,,1.9054,lcommand,0.0902,,,,,
+,,,,1C,B,2024-01-09_14h33.37.443,Slot Machine Game,2023.1.3,MacIntel,60.0024001,sid,session_id,pid,,,,,,,,,2.0607,loption,0.1457,
