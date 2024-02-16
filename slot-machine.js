@@ -1,4 +1,4 @@
-﻿/**************************** 
+/**************************** 
  * Slot Machine Task *
  ****************************/
 
@@ -20,7 +20,7 @@ var debug_mode = false; // toggle true reduces blocks from 10 to 1
 
 //// Handle URL Params and Participant Data
 let expInfo = { // these show up as fields on starting page if URL params are not present
-  'study_id': '',
+  'group_id': '',
   'path_id': ''
   // 'prolific_id': '',
   // 'subject_id': ''
@@ -189,7 +189,7 @@ var main_reward_seqs = [];
 var main_reward_seq = [];
 // init psychoJS:
 const psychoJS = new PsychoJS({
-  debug: true
+  debug: false
 });
 
 // open window:
