@@ -21,10 +21,10 @@ var debug_mode = false; // toggle true reduces blocks from 10 to 1
 //// Handle URL Params and Participant Data
 let expInfo = { // these show up as fields on starting page if URL params are not present
   'group_id': '',
-  'path_id': ''
-  // 'prolific_id': '',
-  // 'subject_id': ''
-  // 'session_id': ''
+  'path_id': '',
+  // 'prolific_id': '', 
+  // 'subject_id': '',
+  // 'study_id': '',
 };
 
 var subject_data = {};
@@ -2661,13 +2661,21 @@ function practice_slotsRoutineEachFrame() {
     // update/draw components on each frame
     // Run 'Each Frame' code from Code_practice_slots
     if (((t > 5.0) && (key_resp_practice_slots.getKeys().length === 0))) {
-        endMsg = "Too slow";
-        endTrial = true;
-        if (((t > 5.5) && (key_resp_practice_slots.getKeys().length === 0))) {
-            continueRoutine = false;
-        }
+      endMsg = "Too slow";
+      endTrial = true;
+      if (((t > 5.5) && (key_resp_practice_slots.getKeys().length === 0))) {
+          continueRoutine = false;
+      }
     }
     
+    // Check if a key is pressed too soon (< 200ms)
+    if (t < 0.5 && key_resp_practice_slots.getKeys().length > 0) {
+      // do not register key response
+      // allow trial to continue
+      console.log("Pressed too soon")
+      // endMsg = "You pressed too soon";
+      // endTrial = true;
+    }
     
     // *card_circ* updates
     if (t >= 0.0 && card_circ.status === PsychoJS.Status.NOT_STARTED) {
@@ -2777,7 +2785,8 @@ function practice_slotsRoutineEachFrame() {
 
     
     // *key_resp_practice_slots* updates
-    if (t >= 0.0 && key_resp_practice_slots.status === PsychoJS.Status.NOT_STARTED) {
+    if (t >= 0.5 && key_resp_practice_slots.status === PsychoJS.Status.NOT_STARTED) {
+      console.log("this is a valid response")
       // keep track of start time/frame for later
       key_resp_practice_slots.tStart = t;  // (not accounting for frame time here)
       key_resp_practice_slots.frameNStart = frameN;  // exact frame index
@@ -3967,6 +3976,15 @@ function slots_presentationRoutineEachFrame() {
             continueRoutine = false;
         }
     }
+
+    // Check if a key is pressed too soon (< 200ms)
+    if (t < 0.5 && key_resp_slots_presentation.getKeys().length > 0) {
+      // do not register key response
+      // allow trial to continue
+      console.log("Pressed too soon")
+      // endMsg = "You pressed too soon";
+      // endTrial = true;
+    }
     
     // *card_circ_3* updates
     if (t >= 0.0 && card_circ_3.status === PsychoJS.Status.NOT_STARTED) {
@@ -4073,7 +4091,8 @@ function slots_presentationRoutineEachFrame() {
 
     
     // *key_resp_slots_presentation* updates
-    if (t >= 0.0 && key_resp_slots_presentation.status === PsychoJS.Status.NOT_STARTED) {
+    if (t >= 0.5 && key_resp_slots_presentation.status === PsychoJS.Status.NOT_STARTED) {
+      console.log("this is a valid response")
       // keep track of start time/frame for later
       key_resp_slots_presentation.tStart = t;  // (not accounting for frame time here)
       key_resp_slots_presentation.frameNStart = frameN;  // exact frame index
