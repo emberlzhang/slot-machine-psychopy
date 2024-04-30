@@ -74,37 +74,45 @@ for (let i = 0; i < indiv_params.length; i++) {
 console.log("Subject data collected: ")
 console.log(subject_data)
 
-switch(subject_data.group_id) { // study_id determines which study it goes to 
-  case "1A": study_group = "nicotine_grp_online";
-    break;
-  case "1B": study_group = "nicotine_ctrl_online";
-    break;
-  case "1C": study_group = "nicotine_grp_invited"; redcap_completionsurvey = "?s=nicotine_cc";
-    break;
-  case "1D": study_group = "nicotine_ctrl_invited"; redcap_completionsurvey = "?s=nicotine_ctrl_cc";
-    break; 
-  case "2A": study_group = "eatingdisorder_grp_online";
-    break;
-  case "2B": study_group = "eatingdisorder_ctrl_online";
-    break;
-  case "2A": study_group = "eatingdisorder_grp_invited"; redcap_completionsurvey = "?s=eatingdisorder_cc";
-    break;
-  case "2B": study_group = "eatingdisorder_ctrl_invited"; redcap_completionsurvey = "?s=eatingdisorder_ctrl_cc";
-    break;
-  case undefined: console.log("no group id found in switch case block")  
-    break;
-}
+// switch(subject_data.group_id) { // study_id determines which study it goes to 
+//   case "1A": study_group = "nicotine_grp_online";
+//     break;
+//   case "1B": study_group = "nicotine_ctrl_online";
+//     break;
+//   case "1C": study_group = "nicotine_grp_invited"; redcap_completionsurvey = "?s=nicotine_cc";
+//     break;
+//   case "1D": study_group = "nicotine_ctrl_invited"; redcap_completionsurvey = "?s=nicotine_ctrl_cc";
+//     break; 
+//   case "2A": study_group = "eatingdisorder_grp_online";
+//     break;
+//   case "2B": study_group = "eatingdisorder_ctrl_online";
+//     break;
+//   case "2A": study_group = "eatingdisorder_grp_invited"; redcap_completionsurvey = "?s=eatingdisorder_cc";
+//     break;
+//   case "2B": study_group = "eatingdisorder_ctrl_invited"; redcap_completionsurvey = "?s=eatingdisorder_ctrl_cc";
+//     break;
+//   case undefined: console.log("no group id found in switch case block")  
+//     break;
+// }
 
-if (subject_data.path_id.toUpperCase() == "B") {
-  // redirect to slot task
-  redirect_url = "http://run.pavlovia.org/janetlchang/fish-task/html" +  "?" + url_params;
-} else if (subject_data.path_id.toUpperCase() == "A") {
-  // fish task is last task, need to redirect to study completion page
-    // if (study_group.includes("invited") || subject_data.prolific_id == '') {
-    //   // redirect for invited subject
-    //   redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
-    // } else // redirect for prolific subject
-    redirect_url = "https://app.prolific.com/submissions/complete?cc=C2RO6365" + "&" + url_params; // completion code for prolific main general study for all groups
+if (subject_data.path_id) {
+  if (subject_data.path_id.toUpperCase() == "B") {
+    // redirect to slot task
+    redirect_url = "http://run.pavlovia.org/janetlchang/fish-task/html" +  "?" + url_params;
+  } else if (subject_data.path_id.toUpperCase() == "A") {
+    // fish task is last task, need to redirect to study completion page
+      // if (study_group.includes("invited") || subject_data.prolific_id == '') {
+      //   // redirect for invited subject
+      //   redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
+      // } else // redirect for prolific subject
+      redirect_url = "https://app.prolific.com/submissions/complete?cc=C2RO6365"; // completion code for prolific main general study for all groups
+  } else {
+    redirect_url = "";
+    console.log("no redirect url set due to invalid path ID")
+  }
+} else {
+  redirect_url = "";
+  console.log("no redirect url set due to missing path ID")
 }
 
 console.log("redirect_url: " + redirect_url)
@@ -1442,23 +1450,35 @@ async function experimentInit() {
   });
   
   var ending_text;
+  var alternate_redirect = "http://run.pavlovia.org/janetlchang/fish-task/html" +  "?" + url_params;
   if (redirect_url) { // if the redirect_url available (should be the case for prolific studies)
-    if (path_id==="A") { 
+    if (subject_data.path_id.toUpperCase === "B") { 
       ending_text = '\nYou have successfully completed the task.'+
-                    '\n\nYou will now be directed to the next part of the study. Thank you!';
-    } else { 
-      ending_text = '\nYou have successfully completed the task.'+ 
-                    '\n\nProlific users, your completion code is: C2RO6365'+
-                    '\n\nIn 10 seconds, you will be redirected to Prolific to complete the study.' +
-                    '\n\nIf you are not redirected, copy and paste the following webpage into your browser:' +
-                    '\n\nhttps://app.prolific.com/submissions/complete?cc=C2RO6365'; }
+                    '\n\nYou will now be directed to the next task of the study. Thank you!';
+    } else if (subject_data.path_id.toUpperCase === "A") { 
+      ending_text = '\nYou have successfully completed the task and this study.';
+                    // + 
+                    // '\n\nProlific users, your completion code is: C2RO6365'+
+                    // '\n\nIn 10 seconds, you will be redirected to Prolific to complete the study.' +
+                    // '\n\nIf you are not redirected, copy and paste the following webpage into your browser:' +
+                    // '\n\nhttps://app.prolific.com/submissions/complete?cc=C2RO6365'; 
+    } else { // if there is no redirect_url available
+      ending_text = '\nYou have successfully completed the task.';
+      console.log("Redirect URL was not null but not A / B")
+      // '\n\nAttention PROLIFIC users: ' + 
+      // '\n\nTo complete this study, please complete the "Fishing Game" task if you have not already done so, by going to this link:' + 
+      // '\n\n' + alternate_redirect +
+      // '\n\nIf you have already done BOTH Slot Machine and Fishing Game tasks, please return to Prolific and send us a message alerting us of your completion to receive your final compensation.' + 
+      // '\n\nThank you!'
+    } 
   } else { // if there is no redirect_url available
-    ending_text = '\nYou have successfully completed the task.' +
-    '\n\nAttention PROLIFIC users: ' + 
-    '\n\nTo complete this study, record the completion code: C2RO6365' + 
-    '\n\nOr go to the following webpage on your browser: ' +
-    '\n\nhttps://app.prolific.com/submissions/complete?cc=C2RO6365' + 
-    '\n\nThank you!'
+    ending_text = '\nYou have successfully completed the task.';
+    console.log("Redirect URL was null")
+    // '\n\nAttention PROLIFIC users: ' + 
+    // '\n\nTo complete this study, please complete the "Fishing Game" task if you have not already done so, by going to this link:' + 
+    // '\n\n' + alternate_redirect +
+    // '\n\nIf you have already done BOTH Slot Machine and Fishing Game tasks, please return to Prolific and send us a message alerting us of your completion to receive your final compensation.' + 
+    // '\n\nThank you!'
   }
   
   // Initialize components for Routine "End_ins"
@@ -1510,6 +1530,13 @@ function welcomeRoutineBegin(snapshot) {
     welcomeComponents.push(text_welcome);
     welcomeComponents.push(key_resp_welcome);
     
+    // Create new url params if non-existent in URL from user input
+    if (!url_params || url_params == "") {
+      url_params = "path_id=" + subject_data.path_id;
+      console.log("This is the new path ID after user input: " + subject_data.path_id)
+      console.log("This is the new url_params after user input: " + url_params)
+    }
+
     for (const thisComponent of welcomeComponents)
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
