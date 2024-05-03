@@ -316,6 +316,8 @@ psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.DEBUG);
 
 var currentLoop;
 var frameDur;
+var data_subject_id;
+let experiment_mode = "prolific";
 async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
@@ -323,6 +325,13 @@ async function updateInfo() {
   expInfo['psychopyVersion'] = '2023.1.3';
   expInfo['OS'] = window.navigator.platform;
 
+  if (experiment_mode = "prolific") {
+    data_subject_id = expInfo['prolific_id'];
+  } else if (experiment_mode = "invited") {
+    data_subject_id = expInfo['subject_id'];
+  } else {
+    data_subject_id = "";
+  }
 
   // store frame rate of monitor if we can measure it successfully
   expInfo['frameRate'] = psychoJS.window.getActualFrameRate();
@@ -336,7 +345,7 @@ async function updateInfo() {
   
 
   
-  psychoJS.experiment.dataFileName = (("." + "/") + `data/${expInfo["participant"]}_${expName}_${expInfo["date"]}`);
+  psychoJS.experiment.dataFileName = (("." + "/") + `data/${data_subject_id}_${expName}_${expInfo["date"]}`);
 
 
   return Scheduler.Event.NEXT;
@@ -2670,10 +2679,13 @@ function practice_slotsRoutineBegin(snapshot) {
     psychoJS.experiment.addData("practice_trial_num", practice_trials.thisN);
     
     text_practice_slots.setText(textMsg);
-    key_resp_practice_slots.keys = [];
+    key_resp_practice_slots.keys = undefined;
+    // key_resp_practice_slots.keys = [];
     // key_resp_practice_slots.keys = 999;
-    key_resp_practice_slots.rt = [];
-    _key_resp_practice_slots_allKeys = [];
+    key_resp_practice_slots.rt = undefined;
+    // key_resp_practice_slots.rt = [];
+    _key_resp_practice_slots_allKeys = undefined; 
+    // _key_resp_practice_slots_allKeys = [];
     // keep track of which components have finished
     practice_slotsComponents = [];
     practice_slotsComponents.push(card_circ);
@@ -3982,7 +3994,7 @@ function slots_presentationRoutineBegin(snapshot) {
     text_slots_presentation.setText(textMsg);
     key_resp_slots_presentation.keys = undefined;
     key_resp_slots_presentation.rt = undefined;
-    _key_resp_slots_presentation_allKeys = [];
+    _key_resp_slots_presentation_allKeys = undefined;
     // keep track of which components have finished
     slots_presentationComponents = [];
     slots_presentationComponents.push(card_circ_3);
@@ -4218,6 +4230,7 @@ function slots_presentationRoutineEnd(snapshot) {
     if (typeof key_resp_slots_presentation.keys !== 'undefined') {  // we had a response
         psychoJS.experiment.addData('main_trial_rt', key_resp_slots_presentation.rt);
         psychoJS.experiment.addData('main_trial_duration', key_resp_slots_presentation.duration);
+        psychoJS.experiment.addData('main_trial_keys', key_resp_slots_presentation.keys);
         routineTimer.reset();
         }
     
@@ -5082,7 +5095,6 @@ async function quitPsychoJS(message, isCompleted) {
   end_task_time = util.MonotonicClock.getDateStr();
   psychoJS.experiment.addData("date_end_task", end_task_time);
   
-  
   psychoJS.window.close();
   psychoJS.quit({message: message, isCompleted: isCompleted});
 
@@ -5090,7 +5102,7 @@ async function quitPsychoJS(message, isCompleted) {
   if (redirect_url) {
     window.location.replace(redirect_url)
   } else {
-
+    window.location.replace("http://prolific.com")
   }
   
   return Scheduler.Event.QUIT;
