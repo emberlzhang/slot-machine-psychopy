@@ -2686,6 +2686,7 @@ function practice_slotsRoutineBegin(snapshot) {
     // key_resp_practice_slots.rt = [];
     _key_resp_practice_slots_allKeys = undefined; 
     // _key_resp_practice_slots_allKeys = [];
+
     // keep track of which components have finished
     practice_slotsComponents = [];
     practice_slotsComponents.push(card_circ);
@@ -5003,7 +5004,6 @@ function End_insRoutineBegin(snapshot) {
   }
 }
 
-
 function End_insRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'End_ins' ---
@@ -5012,6 +5012,7 @@ function End_insRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
+
     // *text_end_ins* updates
     if (t >= 0.0 && text_end_ins.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
@@ -5051,7 +5052,9 @@ function End_insRoutineEachFrame() {
   };
 }
 
-
+var reward_score;
+var reward_amt;
+var end_task_time;
 function End_insRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'End_ins' ---
@@ -5060,6 +5063,14 @@ function End_insRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     }
+
+    // save end time and bonus calculation
+    reward_score = util.randchoice(util.range(block_correct.length));
+    reward_amt = (reward_score + 1);
+    psychoJS.experiment.addData("reward_amount", reward_amt);
+    end_task_time = util.MonotonicClock.getDateStr();
+    psychoJS.experiment.addData("date_end_task", end_task_time);
+
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
       psychoJS.experiment.nextEntry(snapshot);
@@ -5076,10 +5087,6 @@ function importConditions(currentLoop) {
     };
 }
 
-
-var reward_score;
-var reward_amt;
-var end_task_time;
 async function quitPsychoJS(message, isCompleted) {
   // Check for and save orphaned data
   if (psychoJS.experiment.isEntryEmpty()) {
@@ -5087,14 +5094,6 @@ async function quitPsychoJS(message, isCompleted) {
   }
   
   // Run 'End Experiment' code from code
-  reward_score = util.randchoice(util.range(block_reward.length));
-  reward_amt = (reward_score + 1);
-  psychoJS.experiment.addData("reward_amount", reward_amt);
-  
-  // Save end task time
-  end_task_time = util.MonotonicClock.getDateStr();
-  psychoJS.experiment.addData("date_end_task", end_task_time);
-  
   psychoJS.window.close();
   psychoJS.quit({message: message, isCompleted: isCompleted});
 
