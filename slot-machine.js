@@ -2684,8 +2684,7 @@ function practice_slotsRoutineBegin(snapshot) {
     // key_resp_practice_slots.keys = 999;
     key_resp_practice_slots.rt = undefined;
     // key_resp_practice_slots.rt = [];
-    _key_resp_practice_slots_allKeys = undefined; 
-    // _key_resp_practice_slots_allKeys = [];
+    _key_resp_practice_slots_allKeys = [];
 
     // keep track of which components have finished
     practice_slotsComponents = [];
