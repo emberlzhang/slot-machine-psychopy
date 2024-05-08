@@ -3994,7 +3994,7 @@ function slots_presentationRoutineBegin(snapshot) {
     text_slots_presentation.setText(textMsg);
     key_resp_slots_presentation.keys = undefined;
     key_resp_slots_presentation.rt = undefined;
-    _key_resp_slots_presentation_allKeys = undefined;
+    _key_resp_slots_presentation_allKeys = [];
     // keep track of which components have finished
     slots_presentationComponents = [];
     slots_presentationComponents.push(card_circ_3);
