@@ -4900,6 +4900,8 @@ function Block_breakRoutineBegin(snapshot) {
     // Run 'Begin Routine' code from code_block_break
     psychoJS.experiment.addData("block_break_started", globalClock.getTime());
     block_reward.push(nCorr);
+    console.log(block_reward)
+    psychoJS.experiment.addData("block_reward", block_reward);
     blockMsg = (("Total reward for this day: " + nCorr.toString()) + "\n You now have a break of 5 seconds.");
     
     text_block_break.setText(blockMsg);
@@ -5051,7 +5053,7 @@ function End_insRoutineEachFrame() {
   };
 }
 
-var reward_score;
+var reward_index;
 var reward_amt;
 var end_task_time;
 function End_insRoutineEnd(snapshot) {
@@ -5064,8 +5066,11 @@ function End_insRoutineEnd(snapshot) {
     }
 
     // save end time and bonus calculation
-    reward_score = util.randchoice(util.range(block_reward.length));
-    reward_amt = (reward_score + 1);
+    
+    psychoJS.experiment.addData("block_reward.length", block_reward.length-1);
+    psychoJS.experiment.addData("block_reward_all", block_reward);
+    reward_index = util.randchoice(util.range(0, block_reward.length-1));
+    reward_amt = block_reward[reward_index];
     psychoJS.experiment.addData("reward_amount", reward_amt);
     end_task_time = util.MonotonicClock.getDateStr();
     psychoJS.experiment.addData("date_end_task", end_task_time);
