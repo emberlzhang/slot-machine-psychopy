@@ -2278,6 +2278,7 @@ function instruction4RoutineEnd(snapshot) {
 }
 
 var practice_block;
+var practice_on;
 function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -2292,7 +2293,8 @@ function practice_blockLoopBegin(practice_blockLoopScheduler, snapshot) {
     });
     psychoJS.experiment.addLoop(practice_block); // add the loop to the experiment
     currentLoop = practice_block;  // we're now the current loop
-    
+    practice_on = true;
+
     // Schedule all the trials in the trialList:
     for (const thisPracticeBlock of practice_block) {
       // List of things that go into each practice block...
@@ -2532,6 +2534,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
     });
     psychoJS.experiment.addLoop(block); // add the loop to the experiment
     currentLoop = block;  // we're now the current loop
+    practice_on = false;
     
     // Schedule all the trials in the trialList:
     for (const thisBlock of block) {
@@ -4899,9 +4902,13 @@ function Block_breakRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_block_break
     psychoJS.experiment.addData("block_break_started", globalClock.getTime());
-    block_reward.push(nCorr);
-    console.log(block_reward)
-    psychoJS.experiment.addData("block_reward", block_reward);
+    
+    if (practice_on == false) {
+      block_reward.push(nCorr);
+      psychoJS.experiment.addData("block_reward", block_reward);
+      console.log(block_reward)
+    }
+    
     blockMsg = (("Total reward for this day: " + nCorr.toString()) + "\n You now have a break of 5 seconds.");
     
     text_block_break.setText(blockMsg);
@@ -5065,13 +5072,14 @@ function End_insRoutineEnd(snapshot) {
       }
     }
 
-    // save end time and bonus calculation
-    block_reward = block_reward.slice(2) // remove first two objects in array from practice blocks
+    // bonus calculation
+    // block_reward = block_reward.slice(2) // remove first two objects in array from practice blocks
     psychoJS.experiment.addData("block_reward.length", block_reward.length-1);
     psychoJS.experiment.addData("block_reward_all", block_reward);
     reward_index = util.randchoice(util.range(0, block_reward.length-1));
     reward_amt = block_reward[reward_index] / 10.00;
     psychoJS.experiment.addData("reward_amount", reward_amt);
+    // save end time
     end_task_time = util.MonotonicClock.getDateStr();
     psychoJS.experiment.addData("date_end_task", end_task_time);
 
