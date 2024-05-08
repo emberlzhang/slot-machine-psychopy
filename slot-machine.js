@@ -5064,7 +5064,7 @@ function End_insRoutineEnd(snapshot) {
     }
 
     // save end time and bonus calculation
-    reward_score = util.randchoice(util.range(block_correct.length));
+    reward_score = util.randchoice(util.range(block_reward.length));
     reward_amt = (reward_score + 1);
     psychoJS.experiment.addData("reward_amount", reward_amt);
     end_task_time = util.MonotonicClock.getDateStr();
