@@ -5066,11 +5066,11 @@ function End_insRoutineEnd(snapshot) {
     }
 
     // save end time and bonus calculation
-    
+    block_reward = block_reward.slice(2) // remove first two objects in array from practice blocks
     psychoJS.experiment.addData("block_reward.length", block_reward.length-1);
     psychoJS.experiment.addData("block_reward_all", block_reward);
     reward_index = util.randchoice(util.range(0, block_reward.length-1));
-    reward_amt = block_reward[reward_index];
+    reward_amt = block_reward[reward_index] / 10.00;
     psychoJS.experiment.addData("reward_amount", reward_amt);
     end_task_time = util.MonotonicClock.getDateStr();
     psychoJS.experiment.addData("date_end_task", end_task_time);
