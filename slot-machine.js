@@ -2535,7 +2535,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
     psychoJS.experiment.addLoop(block); // add the loop to the experiment
     currentLoop = block;  // we're now the current loop
     practice_on = false;
-    
+
     // Schedule all the trials in the trialList:
     for (const thisBlock of block) {
       console.log("thisBlock: " + thisBlock)
@@ -5077,7 +5077,7 @@ function End_insRoutineEnd(snapshot) {
     psychoJS.experiment.addData("block_reward.length", block_reward.length-1);
     psychoJS.experiment.addData("block_reward_all", block_reward);
     reward_index = util.randchoice(util.range(0, block_reward.length-1));
-    reward_amt = block_reward[reward_index] / 10.00;
+    reward_amt = block_reward[reward_index] / 100.00;
     psychoJS.experiment.addData("reward_amount", reward_amt);
     // save end time
     end_task_time = util.MonotonicClock.getDateStr();
