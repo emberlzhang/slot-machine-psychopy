@@ -21,11 +21,7 @@ var debug_mode = false; // toggle true reduces blocks from 10 to 1
 //// Handle URL Params and Participant Data
 let expInfo = { // these show up as fields on starting page if URL params are not present
   // If running a prolific study, use these params:
-<<<<<<< Updated upstream
-  'prolific_id': '', // asks the user to input if not found in url params
-=======
   'prolific_pid': '', // asks the user to input if not found in url params
->>>>>>> Stashed changes
   'path_id': '', // asks the user to input if not found in url params
   
   // If running study for invite-only participants, use these params: 
@@ -55,14 +51,9 @@ for (let i = 0; i < indiv_params.length; i++) {
   var param = indiv_params[i]
   var par_vals = param.split("=");
   if (param.toLowerCase().includes("prolific_id")) { // only for prolific participants
-<<<<<<< Updated upstream
-    console.log("pid found")
-    subject_data.prolific_id = par_vals[1];
-=======
     console.log("pid found (from url param, not user entered)")
     expInfo['prolific_pid'] = par_vals[1]; // this line required to make file name with prolific id from url param
     subject_data.prolific_pid = par_vals[1];
->>>>>>> Stashed changes
   } // else if (param.toLowerCase().includes("group_id")) { // now defunct because not using in Redcap
   //   console.log("group id found")
   //   subject_data.group_id = par_vals[1];
@@ -336,11 +327,7 @@ async function updateInfo() {
   expInfo['OS'] = window.navigator.platform;
 
   if (experiment_mode = "prolific") {
-<<<<<<< Updated upstream
-    data_subject_id = expInfo['prolific_id'];
-=======
     data_subject_id = expInfo['prolific_pid'];
->>>>>>> Stashed changes
   } else if (experiment_mode = "invited") {
     data_subject_id = expInfo['subject_id'];
   } else {
