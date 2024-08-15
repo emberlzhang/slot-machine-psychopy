@@ -2867,8 +2867,6 @@ function practice_slotsRoutineEachFrame() {
         let practiceReactionTime
         if (t >= 0.5 && key_resp_practice_slots.status === PsychoJS.Status.NOT_STARTED) {
             console.log("this is the time t: " + t)
-            practiceReactionTime = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].rt
-            console.log("this is the first key_resp rt: " + practiceReactionTime)
             // keep track of start time/frame for later
             key_resp_practice_slots.tStart = t;  // (not accounting for frame time here)
             key_resp_practice_slots.frameNStart = frameN;  // exact frame index
