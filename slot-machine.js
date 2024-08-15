@@ -4208,6 +4208,7 @@ function slots_presentationRoutineEachFrame() {
 
             // keyboard checking is just starting
             psychoJS.window.callOnFlip(function () { key_resp_slots_presentation.clock.reset(); });  // t=0 on next screen flip
+            // NOTE: modifying when START function happens will alter the calculated reaction times, be sure to add offset later
             psychoJS.window.callOnFlip(function () { key_resp_slots_presentation.start(); }); // start on screen flip
             psychoJS.window.callOnFlip(function () { key_resp_slots_presentation.clearEvents(); });
         }
