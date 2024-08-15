@@ -2895,7 +2895,7 @@ function practice_slotsRoutineEachFrame() {
             let theseKeys = key_resp_practice_slots.getKeys({ keyList: ['1', '2', '3', 'left', 'up', 'right'], waitRelease: false });
             _key_resp_practice_slots_allKeys = _key_resp_practice_slots_allKeys.concat(theseKeys);
 
-            if (_key_resp_slots_presentation_allKeys.length > 0) {
+            if (_key_resp_practice_slots_allKeys.length > 0) {
                 let pracLastKey = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1]
                 let pracReactionTime = pracLastKey.rt
                 console.log("this is the second key_resp rt: " + pracReactionTime)
