@@ -2864,7 +2864,7 @@ function practice_slotsRoutineEachFrame() {
         // 
 
         // *key_resp_practice_slots* updates
-        if (t >= 0 && key_resp_practice_slots.status === PsychoJS.Status.NOT_STARTED) {
+        if (t >= 0.5 && key_resp_practice_slots.status === PsychoJS.Status.NOT_STARTED) {
             console.log("===STARTING ROUTINE===")
             // keep track of start time/frame for later
             key_resp_practice_slots.tStart = t;  // (not accounting for frame time here)
@@ -2898,11 +2898,12 @@ function practice_slotsRoutineEachFrame() {
             if (_key_resp_practice_slots_allKeys.length > 0) {
                 let pracLastKey = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1]
                 let pracReactionTime = pracLastKey.rt
-                console.log("this is the second key_resp rt: " + pracReactionTime)
+                let pracRToffset = pracLastKey.rt + 0.5
+                console.log("This will be the recorded RT: " + pracReactionTime + " | " + pracRToffset)
                 // If reaction time is greater than or equal to 0.5 seconds, save the key press and end the routine
                 // if (pracReactionTime >= 0.5) {
                 key_resp_practice_slots.keys = pracLastKey.name; // Save the key pressed
-                key_resp_practice_slots.rt = pracReactionTime; // Save the reaction time
+                key_resp_practice_slots.rt = pracRToffset; // Save the reaction time
                 key_resp_practice_slots.key_press_time = globalClock.getTime();
 
                 // End the routine
@@ -4199,7 +4200,7 @@ function slots_presentationRoutineEachFrame() {
 
 
         // *key_resp_slots_presentation* updates
-        if (t >= 0 && key_resp_slots_presentation.status === PsychoJS.Status.NOT_STARTED) {
+        if (t >= 0.5 && key_resp_slots_presentation.status === PsychoJS.Status.NOT_STARTED) {
 
             // keep track of start time/frame for later
             key_resp_slots_presentation.tStart = t;  // (not accounting for frame time here)
@@ -4232,25 +4233,25 @@ function slots_presentationRoutineEachFrame() {
 
                 // Calculate reaction time from the routine start
                 let reactionTime = lastKey.rt;
+                let RToffset = lastKey.rt + 0.5
+                console.log("This will be the recorded RT: " + reactionTime + " | " + RToffset)
 
                 // If reaction time is greater than or equal to 0.5 seconds, save the key press and end the routine
-                if (reactionTime >= 0.5) {
-                    console.log("keypress valid time: " + reactionTime)
-                    key_resp_slots_presentation.keys = lastKey.name; // Save the key pressed
-                    key_resp_slots_presentation.rt = reactionTime; // Save the reaction time
+                // if (reactionTime >= 0.5) {
+                console.log("keypress valid time: " + reactionTime)
+                key_resp_slots_presentation.keys = lastKey.name; // Save the key pressed
+                key_resp_slots_presentation.rt = RToffset; // Save the reaction time
+                key_resp_slots_presentation.key_press_time = globalClock.getTime();
 
-                    // Save the current time in the game's globalClock when the key press was made
-                    key_resp_slots_presentation.key_press_time = globalClock.getTime();
-
-                    // End the routine
-                    continueRoutine = false;
-                }
-                // If reaction time is less than 0.5 seconds, don't save the key press and continue the routine
-                else {
-                    console.log("keypress too fast")
-                    key_resp_slots_presentation.keys = null;
-                    key_resp_slots_presentation.rt = null;
-                }
+                // End the routine
+                continueRoutine = false;
+                // }
+                // // If reaction time is less than 0.5 seconds, don't save the key press and continue the routine
+                // else {
+                //     console.log("keypress too fast")
+                //     key_resp_slots_presentation.keys = null;
+                //     key_resp_slots_presentation.rt = null;
+                // }
             }
         }
 
