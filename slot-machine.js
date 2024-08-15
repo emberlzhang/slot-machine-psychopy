@@ -2859,10 +2859,16 @@ function practice_slotsRoutineEachFrame() {
             text_practice_slots_2.setText(endMsg, false);
         }
 
+        // NOTES: PsychoJS.Status.NOT_STARTED turns to STARTED as soon as routine (slot display) starts
+        // t starts at zero when routine starts. and is always the time since start of this slot display routine
+        // 
 
         // *key_resp_practice_slots* updates
+        let practiceReactionTime
         if (t >= 0.5 && key_resp_practice_slots.status === PsychoJS.Status.NOT_STARTED) {
-            console.log("this is a valid response")
+            console.log("this is the time t: " + t)
+            practiceReactionTime = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].rt
+            console.log("this is the first key_resp rt: " + practiceReactionTime)
             // keep track of start time/frame for later
             key_resp_practice_slots.tStart = t;  // (not accounting for frame time here)
             key_resp_practice_slots.frameNStart = frameN;  // exact frame index
@@ -2877,6 +2883,8 @@ function practice_slotsRoutineEachFrame() {
             let theseKeys = key_resp_practice_slots.getKeys({ keyList: ['1', '2', '3', 'left', 'up', 'right'], waitRelease: false });
             _key_resp_practice_slots_allKeys = _key_resp_practice_slots_allKeys.concat(theseKeys);
             if (_key_resp_practice_slots_allKeys.length > 0) {
+                practiceReactionTime = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].rt
+                console.log("this is the second key_resp rt: " + practiceReactionTime)
                 key_resp_practice_slots.keys = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].name;  // just the last key pressed
                 key_resp_practice_slots.rt = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].rt;
                 key_resp_practice_slots.duration = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].duration;
