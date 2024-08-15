@@ -3295,7 +3295,7 @@ function practice_rewardsRoutineBegin(snapshot) {
         // get this trial's slot reward sequence
         practice_reward_seq = practice_reward_seqs[0];
         console.log("practice_reward_seq: " + practice_reward_seq)
-        psychoJS.experiment.addData("practice_reward_seq: " + practice_reward_seq)
+        psychoJS.experiment.addData("practice_reward_seq", practice_reward_seq)
         // get the upcoming switch trial number (Note: trial number, not trial index)
         practiceSwitchTrial = practiceCondition[0];
         console.log("practiceSwitchTrial: " + practiceSwitchTrial)
