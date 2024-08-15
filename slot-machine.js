@@ -4203,18 +4203,19 @@ function slots_presentationRoutineEachFrame() {
 
                 // If reaction time is greater than or equal to 0.5 seconds, save the key press and end the routine
                 if (reactionTime >= 0.5) {
+                    console.log("keypress valid time: " + reactionTime)
                     key_resp_slots_presentation.keys = lastKey.name; // Save the key pressed
                     key_resp_slots_presentation.rt = reactionTime; // Save the reaction time
 
-                    // Save the time in the game when the key press was made
-                    let currentTime = psychoJS.clock.getTime(); // Get the current time in the game
-                    key_resp_slots_presentation.main_trial_key_press_time = currentTime;
+                    // Save the current time in the game's globalClock when the key press was made
+                    key_resp_slots_presentation.main_trial_key_press_time = globalClock.getTime();
 
                     // End the routine
                     continueRoutine = false;
                 }
                 // If reaction time is less than 0.5 seconds, don't save the key press and continue the routine
                 else {
+                    console.log("keypress too fast")
                     key_resp_slots_presentation.keys = null;
                     key_resp_slots_presentation.rt = null;
                 }
