@@ -168,7 +168,7 @@ switch (block_option) {
         // actual nums: 1 2 3 4 5 6 7 8 9 10
         break;
     case 2:
-        block_order = [2, 4, 8, 0, 1, 3, 9, 6, 8, 5]; // block orders are by indices starting from zero.
+        block_order = [2, 4, 7, 0, 1, 3, 9, 6, 8, 5]; // block orders are by indices starting from zero.
         // actual nums: 3 5 8 1 2 4 10 7 9 6
         break;
     case 3:
