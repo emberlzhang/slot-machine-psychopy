@@ -2743,7 +2743,7 @@ function practice_slotsRoutineEachFrame() {
                 continueRoutine = false;
             }
         }
-
+        console.log("this is the time t: " + t)
         // Check if a key is pressed too soon (< 200ms)
         if (t < 0.5 && key_resp_practice_slots.getKeys().length > 0) {
             // do not register key response
@@ -2865,7 +2865,7 @@ function practice_slotsRoutineEachFrame() {
 
         // *key_resp_practice_slots* updates
         if (t >= 0 && key_resp_practice_slots.status === PsychoJS.Status.NOT_STARTED) {
-            console.log("starting the routine")
+            console.log("===STARTING ROUTINE===")
             // keep track of start time/frame for later
             key_resp_practice_slots.tStart = t;  // (not accounting for frame time here)
             key_resp_practice_slots.frameNStart = frameN;  // exact frame index
@@ -2900,19 +2900,19 @@ function practice_slotsRoutineEachFrame() {
                 let pracReactionTime = pracLastKey.rt
                 console.log("this is the second key_resp rt: " + pracReactionTime)
                 // If reaction time is greater than or equal to 0.5 seconds, save the key press and end the routine
-                if (pracReactionTime >= 0.5) {
-                    key_resp_practice_slots.keys = pracLastKey.name; // Save the key pressed
-                    key_resp_practice_slots.rt = pracReactionTime; // Save the reaction time
-                    key_resp_practice_slots.key_press_time = globalClock.getTime();
+                // if (pracReactionTime >= 0.5) {
+                key_resp_practice_slots.keys = pracLastKey.name; // Save the key pressed
+                key_resp_practice_slots.rt = pracReactionTime; // Save the reaction time
+                key_resp_practice_slots.key_press_time = globalClock.getTime();
 
-                    // End the routine
-                    continueRoutine = false;
-                }
-                // If reaction time is less than 0.5 seconds, don't save the key press and continue the routine
-                else {
-                    key_resp_practice_slots.keys = null;
-                    key_resp_practice_slots.rt = null;
-                }
+                // End the routine
+                continueRoutine = false;
+                // }
+                // // If reaction time is less than 0.5 seconds, don't save the key press and continue the routine
+                // else {
+                //     key_resp_practice_slots.keys = null;
+                //     key_resp_practice_slots.rt = null;
+                // }
             }
         }
 
