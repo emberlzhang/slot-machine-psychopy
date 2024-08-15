@@ -2903,7 +2903,7 @@ function practice_slotsRoutineEachFrame() {
                 if (pracReactionTime >= 0.5) {
                     key_resp_practice_slots.keys = pracLastKey.name; // Save the key pressed
                     key_resp_practice_slots.rt = pracReactionTime; // Save the reaction time
-                    key_resp_practice_slots.key_press_time = psychoJS.clock.getTime();
+                    key_resp_practice_slots.key_press_time = globalClock.getTime();
 
                     // End the routine
                     continueRoutine = false;
