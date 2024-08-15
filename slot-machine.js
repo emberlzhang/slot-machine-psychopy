@@ -2864,9 +2864,8 @@ function practice_slotsRoutineEachFrame() {
         // 
 
         // *key_resp_practice_slots* updates
-        let practiceReactionTime
-        if (t >= 0.5 && key_resp_practice_slots.status === PsychoJS.Status.NOT_STARTED) {
-            console.log("this is the time t: " + t)
+        if (t >= 0 && key_resp_practice_slots.status === PsychoJS.Status.NOT_STARTED) {
+            console.log("starting the routine")
             // keep track of start time/frame for later
             key_resp_practice_slots.tStart = t;  // (not accounting for frame time here)
             key_resp_practice_slots.frameNStart = frameN;  // exact frame index
@@ -2877,17 +2876,43 @@ function practice_slotsRoutineEachFrame() {
             psychoJS.window.callOnFlip(function () { key_resp_practice_slots.clearEvents(); });
         }
 
+        // if (key_resp_practice_slots.status === PsychoJS.Status.STARTED) {
+        //     let theseKeys = key_resp_practice_slots.getKeys({ keyList: ['1', '2', '3', 'left', 'up', 'right'], waitRelease: false });
+        //     _key_resp_practice_slots_allKeys = _key_resp_practice_slots_allKeys.concat(theseKeys);
+
+        //     if (_key_resp_practice_slots_allKeys.length > 0) {
+        //         let pracLastKey = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1]
+        //         let pracReactionTime = pracLastKey.rt
+        //         console.log("this is the second key_resp rt: " + pracReactionTime)
+        //         key_resp_practice_slots.keys = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].name;  // just the last key pressed
+        //         key_resp_practice_slots.rt = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].rt;
+        //         key_resp_practice_slots.duration = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].duration;
+        //         // a response ends the routine
+        //         continueRoutine = false;
+        //     }
+        // }
         if (key_resp_practice_slots.status === PsychoJS.Status.STARTED) {
             let theseKeys = key_resp_practice_slots.getKeys({ keyList: ['1', '2', '3', 'left', 'up', 'right'], waitRelease: false });
             _key_resp_practice_slots_allKeys = _key_resp_practice_slots_allKeys.concat(theseKeys);
-            if (_key_resp_practice_slots_allKeys.length > 0) {
-                practiceReactionTime = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].rt
-                console.log("this is the second key_resp rt: " + practiceReactionTime)
-                key_resp_practice_slots.keys = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].name;  // just the last key pressed
-                key_resp_practice_slots.rt = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].rt;
-                key_resp_practice_slots.duration = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1].duration;
-                // a response ends the routine
-                continueRoutine = false;
+
+            if (_key_resp_slots_presentation_allKeys.length > 0) {
+                let pracLastKey = _key_resp_practice_slots_allKeys[_key_resp_practice_slots_allKeys.length - 1]
+                let pracReactionTime = pracLastKey.rt
+                console.log("this is the second key_resp rt: " + pracReactionTime)
+                // If reaction time is greater than or equal to 0.5 seconds, save the key press and end the routine
+                if (pracReactionTime >= 0.5) {
+                    key_resp_practice_slots.keys = pracLastKey.name; // Save the key pressed
+                    key_resp_practice_slots.rt = pracReactionTime; // Save the reaction time
+                    key_resp_practice_slots.key_press_time = psychoJS.clock.getTime();
+
+                    // End the routine
+                    continueRoutine = false;
+                }
+                // If reaction time is less than 0.5 seconds, don't save the key press and continue the routine
+                else {
+                    key_resp_practice_slots.keys = null;
+                    key_resp_practice_slots.rt = null;
+                }
             }
         }
 
@@ -2933,7 +2958,8 @@ function practice_slotsRoutineEnd(snapshot) {
 
         if (typeof key_resp_practice_slots.keys !== 'undefined') {  // we had a response
             psychoJS.experiment.addData('practice_resp_rt', key_resp_practice_slots.rt);
-            psychoJS.experiment.addData('practice_resp_duration', key_resp_practice_slots.duration);
+            // psychoJS.experiment.addData('practice_resp_duration', key_resp_practice_slots.duration);
+            psychoJS.experiment.addData('practice_keypress_time', key_resp_practice_slots.key_press_time);
             psychoJS.experiment.addData('practice_resp_keys', key_resp_practice_slots.keys);
             routineTimer.reset();
         }
@@ -4173,8 +4199,8 @@ function slots_presentationRoutineEachFrame() {
 
 
         // *key_resp_slots_presentation* updates
-        if (t >= 0.5 && key_resp_slots_presentation.status === PsychoJS.Status.NOT_STARTED) {
-            console.log("this is a valid response")
+        if (t >= 0 && key_resp_slots_presentation.status === PsychoJS.Status.NOT_STARTED) {
+
             // keep track of start time/frame for later
             key_resp_slots_presentation.tStart = t;  // (not accounting for frame time here)
             key_resp_slots_presentation.frameNStart = frameN;  // exact frame index
@@ -4214,7 +4240,7 @@ function slots_presentationRoutineEachFrame() {
                     key_resp_slots_presentation.rt = reactionTime; // Save the reaction time
 
                     // Save the current time in the game's globalClock when the key press was made
-                    key_resp_slots_presentation.main_trial_key_press_time = globalClock.getTime();
+                    key_resp_slots_presentation.key_press_time = globalClock.getTime();
 
                     // End the routine
                     continueRoutine = false;
