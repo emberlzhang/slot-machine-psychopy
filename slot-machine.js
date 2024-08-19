@@ -44,8 +44,6 @@ console.log(indiv_params)
 
 var param;
 var par_vals;
-var study_group;
-var redcap_completionsurvey;
 var redirect_url;
 for (let i = 0; i < indiv_params.length; i++) {
     var param = indiv_params[i]
@@ -346,7 +344,7 @@ async function updateInfo() {
 
 
 
-    psychoJS.experiment.dataFileName = (("." + "/") + `data/${data_subject_id}_${expName}_${expInfo["date"]}`);
+    psychoJS.experiment.dataFileName = (("." + "/") + `data/${expName}_${expInfo["date"]}_${data_subject_id}`);
 
 
     return Scheduler.Event.NEXT;
