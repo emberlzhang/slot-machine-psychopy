@@ -344,7 +344,7 @@ async function updateInfo() {
 
 
 
-    psychoJS.experiment.dataFileName = (("." + "/") + `data/${expName}_${expInfo["date"]}_${data_subject_id}`);
+    psychoJS.experiment.dataFileName = (("." + "/") + `data/Slot_Machine_${expInfo["date"]}_${data_subject_id}`);
 
 
     return Scheduler.Event.NEXT;
