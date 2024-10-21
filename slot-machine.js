@@ -325,9 +325,9 @@ async function updateInfo() {
     expInfo['psychopyVersion'] = '2023.1.3';
     expInfo['OS'] = window.navigator.platform;
 
-    if (experiment_mode = "prolific") {
+    if (experiment_mode == "prolific") {
         data_subject_id = expInfo['prolific_pid'];
-    } else if (experiment_mode = "invited") {
+    } else if (experiment_mode == "invited") {
         data_subject_id = expInfo['subject_id'];
     } else {
         data_subject_id = "";
@@ -343,10 +343,8 @@ async function updateInfo() {
     // add info from the URL:
     util.addInfoFromUrl(expInfo);
 
-
-
+    console.log("data_subject_id: " + data_subject_id)
     psychoJS.experiment.dataFileName = (("." + "/") + `data/Slot_Machine_${expInfo["date"]}_${data_subject_id}`);
-
 
     return Scheduler.Event.NEXT;
 }
