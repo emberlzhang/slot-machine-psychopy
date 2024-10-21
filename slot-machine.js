@@ -96,7 +96,7 @@ console.log(subject_data)
 
 if (subject_data.path_id) {
     if (subject_data.path_id.toUpperCase() == "B") {
-        // redirect to slot task
+        // redirect to fish task
         redirect_url = "http://run.pavlovia.org/janetlchang/fish-task/html" + "?" + url_params;
     } else if (subject_data.path_id.toUpperCase() == "A") {
         // redirect to Prolific
