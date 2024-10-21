@@ -48,7 +48,7 @@ var redirect_url;
 for (let i = 0; i < indiv_params.length; i++) {
     var param = indiv_params[i]
     var par_vals = param.split("=");
-    if (param.toLowerCase().includes("prolific_id")) { // only for prolific participants
+    if (param.toLowerCase().includes("prolific_pid")) { // only for prolific participants
         console.log("pid found (from url param, not user entered)")
         expInfo['prolific_pid'] = par_vals[1]; // this line required to make file name with prolific id from url param
         subject_data.prolific_pid = par_vals[1];
@@ -99,12 +99,13 @@ if (subject_data.path_id) {
         // redirect to slot task
         redirect_url = "http://run.pavlovia.org/janetlchang/fish-task/html" + "?" + url_params;
     } else if (subject_data.path_id.toUpperCase() == "A") {
-        // fish task is last task, need to redirect to study completion page
-        // if (study_group.includes("invited") || subject_data.prolific_id == '') {
-        //   // redirect for invited subject
-        //   redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
-        // } else // redirect for prolific subject
+        // redirect to Prolific
+        // Note: This is different from Path C. Path A participants do Fish Task first, then Slot Task, before being redirected back to Prolific.
         redirect_url = "https://app.prolific.com/submissions/complete?cc=C2RO6365"; // completion code for prolific main general study for all groups
+    } else if (subject_data.path_id.toUpperCase() == "C") {
+        // redirect back to Prolific
+        // Note: This is different from Path A. Path C participants only do Slot Machine.
+        redirect_url = "https://app.prolific.com/submissions/complete?cc=C1OC9JFX"; // "Part 4" Prolific study
     } else {
         redirect_url = "";
         console.log("no redirect url set due to invalid path ID")
