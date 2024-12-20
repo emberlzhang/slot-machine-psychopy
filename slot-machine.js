@@ -3912,7 +3912,7 @@ function reward_resetRoutineBegin(snapshot) {
         continueRoutine = true; // until we're told otherwise
         nCorr = 0;
         consRewardImgs = ["stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png", "stimuli/blank_transparent.png"];
-        // psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
+        psychoJS.experiment.addData("mainConditions", mainConditions); // print all available conditions, in order: Block 1 to 15
         console.log("mainConditions: " + mainConditions)
         // update component parameters for each repeat
 
@@ -4607,6 +4607,23 @@ function reward_presentationRoutineBegin(snapshot) {
         continueRoutine = true; // until we're told otherwise
         psychoJS.experiment.addData("reward_presentation_time", rewardPresentationTime);
 
+        ////// process reward seq for the trial
+        if (main_trials.thisN + 1 > mainSwitchTrial) {
+            main_reward_seqs.shift(); // shift to the next slot reward sequence
+            currentCondition.shift(); // shift to the next switch trial
+        }
+        // get this trial's slot reward sequence
+        main_reward_seq = main_reward_seqs[0];
+        console.log("main_reward_seq: " + main_reward_seq)
+        // get the upcoming switch trial number (Note: trial number, not trial index)
+        mainSwitchTrial = currentCondition[0];
+        console.log("mainSwitchTrial: " + mainSwitchTrial)
+        /// SAVE DATA
+        psychoJS.experiment.addData("main_reward_seq", main_reward_seq);
+        rand_val = Math.random();
+        psychoJS.experiment.addData("reward_rand_val", rand_val);
+        currentTrialReward = 0;
+
         // update component parameters for each repeat
         // Run 'Begin Routine' code from code_reward_presentation
         if (endTrial) {
@@ -4616,21 +4633,7 @@ function reward_presentationRoutineBegin(snapshot) {
             }
             continueRoutine = false;
         } else {
-            if (main_trials.thisN + 1 > mainSwitchTrial) {
-                main_reward_seqs.shift(); // shift to the next slot reward sequence
-                currentCondition.shift(); // shift to the next switch trial
-            }
-            // get this trial's slot reward sequence
-            main_reward_seq = main_reward_seqs[0];
-            console.log("main_reward_seq: " + main_reward_seq)
-            // get the upcoming switch trial number (Note: trial number, not trial index)
-            mainSwitchTrial = currentCondition[0];
-            console.log("mainSwitchTrial: " + mainSwitchTrial)
 
-            psychoJS.experiment.addData("main_reward_seq", main_reward_seq);
-            rand_val = Math.random();
-            psychoJS.experiment.addData("reward_rand_val", rand_val);
-            currentTrialReward = 0;
             x = util.index(main_reward_seq, 1);
             y = util.index(main_reward_seq, 2);
             z = util.index(main_reward_seq, 3);
@@ -4696,14 +4699,16 @@ function reward_presentationRoutineBegin(snapshot) {
                     }
                 }
             }
-            psychoJS.experiment.addData("main_reward_img", rewImg);
-            psychoJS.experiment.addData("cumulative_reward", nCorr);
-            psychoJS.experiment.addData("current_reward", currentTrialReward);
+
             consRewardImgs.push(rewImg);
             if ((consRewardImgs.length > 5)) {
                 consRewardImgs.shift();
             }
         }
+        psychoJS.experiment.addData("main_reward_img", rewImg);
+        psychoJS.experiment.addData("cumulative_reward", nCorr);
+        psychoJS.experiment.addData("current_reward", currentTrialReward);
+
         textMsg = ("Total reward: " + nCorr.toString());
 
         image_2.setPos(rewPos);
