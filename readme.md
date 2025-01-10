@@ -21,11 +21,6 @@ PsychoJS-based slot machine game based on the three-armed bandit task in cogniti
 - JavaScript
 - Keyboard for input
 
-## Input/Response Settings
-
-- Hard-coded button press from a keyboard
-- Experimenter needs to enter condition subject ID upon starting the game
-
 ## Experimental Flow
 
 1. **Instructions**: Initial setup and game rules
@@ -40,10 +35,25 @@ PsychoJS-based slot machine game based on the three-armed bandit task in cogniti
 ## Usage
 
 1. Launch the PsychoJS experiment
-2. Enter the required subject ID and condition
+2. User (or experimenter) enters their subject ID and condition.
 3. Follow on-screen instructions
 4. Complete practice trials
 5. Proceed with main experimental trials
+
+## URL Parameters
+
+The experiment can be configured using URL parameters:
+
+- `Path_ID`: Specifies the participant's path/condition
+- `Prolific_ID`: Participant identifier for Prolific platform integration
+- Additional parameters can be captured from the URL for experiment configuration
+
+Example URL format:
+```
+https://[experiment-url]/?Path_ID=1&Prolific_ID=123456789
+```
+
+These parameters are automatically captured when the experiment loads and used to configure the session.
 
 ## Data Output
 
