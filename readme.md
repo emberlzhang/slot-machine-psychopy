@@ -1,12 +1,11 @@
 # Slot Machine Task
 
-PsychoPy Slot Machine Game Online Version 2023
-Originally developed by Ember Zhang
-Adapted from 6 Block 20 trials Version 2022 August by Rupak Krishnamurthy and MATLAB version provided by Vincenzo Fiore
+Slot Machine Game Online PsychoJS Version (2023-2025) Developed by Ember Zhang
+Adapted from PsychoPy Desktop Version August 2022 by Rupak Krishnamurthy and Vincenzo Fiore.
 
 ## Overview
 
-PsychoPy-based slot machine game designed for psychological research. The game simulates a slot machine experience while collecting experimental data on participant behavior and decision-making.
+PsychoJS-based slot machine game based on the three-armed bandit task in cognitive-behavioral research. The game simulates a slot machine experience while collecting experimental data on participant behavior and decision-making.
 
 ## Features
 
@@ -18,8 +17,8 @@ PsychoPy-based slot machine game designed for psychological research. The game s
 
 ## Technical Requirements
 
-- PsychoPy
-- Python 3.x
+- PsychoJS
+- JavaScript
 - Keyboard for input
 
 ## Input/Response Settings
@@ -40,7 +39,7 @@ PsychoPy-based slot machine game designed for psychological research. The game s
 
 ## Usage
 
-1. Launch the PsychoPy experiment
+1. Launch the PsychoJS experiment
 2. Enter the required subject ID and condition
 3. Follow on-screen instructions
 4. Complete practice trials
