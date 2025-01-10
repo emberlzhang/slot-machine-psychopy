@@ -4607,7 +4607,7 @@ function reward_presentationRoutineBegin(snapshot) {
         continueRoutine = true; // until we're told otherwise
         psychoJS.experiment.addData("reward_presentation_time", rewardPresentationTime);
 
-        ////// process reward seq for the trial
+        ////// process reward seq for the trial regardless of any key inputs
         if (main_trials.thisN + 1 > mainSwitchTrial) {
             main_reward_seqs.shift(); // shift to the next slot reward sequence
             currentCondition.shift(); // shift to the next switch trial
