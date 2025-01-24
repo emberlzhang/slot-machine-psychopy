@@ -1,11 +1,14 @@
 # Slot Machine Task
 
-Slot Machine Game Online PsychoJS Version (2023-2025) Developed by Ember Zhang
-Adapted from PsychoPy Desktop Version August 2022 by Rupak Krishnamurthy and Vincenzo Fiore.
-
 ## Overview
 
 PsychoJS-based slot machine game based on the three-armed bandit task in cognitive-behavioral research. The game simulates a slot machine experience while collecting experimental data on participant behavior and decision-making.
+
+## Authors
+
+Current: Online Game Version in PsychoJS (2023-2025), by Ember Zhang
+
+Past: Desktop Game Version in PsychoPy (2022), by Rupak Krishnamurthy and Vincenzo Fiore
 
 ## Features
 
